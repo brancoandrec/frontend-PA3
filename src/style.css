@@ -186,3 +186,63 @@ h3{
 a{
   text-decoration: none;
 }
+
+.login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-container a {
+  display: block;
+  text-align: center;
+  color: #007BFF;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+.login-container .btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-container .btn:hover {
+  background-color: #0056b3;
+}
+
+h2 {
+  color:black;
+}
+
+.container-login{
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    height: 100vh;  
+}
