@@ -1,2 +1,2 @@
-# petrobras-pesquisa
-Projeto de pesquisa para as comunidades de entorno da petrobras
+#Projeto Controle de Estoque
+Projeto de front-end desenvolvido para Projeto Aplicado III. Onde deve ser feito o controle de estoque do Instituto Senai de Inovação.
