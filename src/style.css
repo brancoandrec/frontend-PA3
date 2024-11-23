@@ -1,20 +1,95 @@
-.gradient-background {
-    background: linear-gradient(300deg,  #FDC82F,#008542);
-    background-size: 180% 180%;
-    animation: gradient-animation 18s ease infinite;
-  }
-  
-  @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+body{
+  background-color: black;
+}
+.main-content{
+  margin-left:250px;
+  background-color: black;
+  height: 70vh;
+  width: 100vh;
+  margin: 100px;
+  flex: 1;
+}
+
+.item{
+}
+
+/* Contêiner de grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  gap: 20px; /* Espaçamento entre os itens */
+  width: 100%; /* Ocupa toda a largura */
+  max-width: 800px; /* Largura máxima do contêiner */
+  margin: 0 auto; /* Centraliza a div */
+  padding: 20px;
+  height: 400px;
+  align-items: center;
+}
+
+/* Estilos para os itens */
+.item {
+  background-color: #3498db;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  height: 200px;
+  font-size: xx-large;
+
+}
+
+/* Menu lateral */
+.sidebar {
+  height: 100vh; /* 100% da altura da tela */
+  width: 250px; /* Largura do menu */
+  background-color: #333; /* Cor de fundo do menu */
+  color: white;
+  position: fixed; /* Fixa o menu na lateral */
+  top: 0;
+  left: 0;
+  flex-direction: column; /* Organiza os itens do menu em coluna */
+  justify-content: center; /* Alinha os itens no centro verticalmente */
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar o menu */
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos para os itens do menu */
+.sidebar ul {
+  list-style-type: none; /* Remove os marcadores */
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 25px;
+  text-align: center;
+  font-size:xx-large;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background-color: #575757; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilos para o conteúdo principal */
+.content {
+  margin-left: 250px; /* Deixa espaço para o menu lateral */
+  padding: 20px;
+  flex: 1; /* Ocupa o restante do espaço */
+}
+
+h1 {
+  color: #333;
+}
 
  .outset {
     border-style: outset;
@@ -32,8 +107,8 @@
   text-align: center;
 }
 
-.logo-petro-navbar {
-    height: 40px;
+.logo-isi-menu {
+    height: 70px;
 }
 
 .branco {
@@ -89,6 +164,4 @@
     background-color: white;
     width: 480px;
     height: 640px;
-    /* border-bottom-left-radius: 70px;
-    border-bottom-right-radius: 70px; */
 }
