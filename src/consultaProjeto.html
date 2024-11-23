@@ -28,12 +28,12 @@
             <h1>Consulta de Projeto</h1>
             <br><br>
     
-            <table id="tabelaUsuarios">
+            <table id="tabelaProjetos">
               <thead>
                 <tr>
                   <th>ID</th>
                   <th>Nome</th>
-                  <th>Email</th>
+                  <th>Descrição</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,32 +43,32 @@
 
             <script>
               // Função para carregar os itens do backend
-              function carregarUsuarios() {
-                fetch('http://localhost:8080/usuario/buscar') // URL da API do backend
+              function carregarProjetos() {
+                fetch('http://localhost:8080/projeto/buscar') // URL da API do backend
                   .then(response => response.json()) // Converte a resposta para JSON
-                  .then(usuarios => {
-                    const tbody = document.getElementById('tabelaUsuarios').getElementsByTagName('tbody')[0];
-            
+                  .then(projetos => {
+                    const tbody = document.getElementById('tabelaProjetos').getElementsByTagName('tbody')[0];
+      
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
             
                     // Adiciona cada usuário como uma linha na tabela
-                    usuarios.forEach(usuario => {
+                    projetos.forEach(projeto => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
                       
                       // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
-                      tdId.textContent = usuario.codigo; // ID do usuário
+                      tdId.textContent = projeto.id; // ID do usuário
                       row.appendChild(tdId);
             
                       const tdNome = document.createElement('td');
-                      tdNome.textContent = usuario.nome; // Nome do usuário
+                      tdNome.textContent = projeto.nome; // Nome do usuário
                       row.appendChild(tdNome);
             
-                      const tdEmail = document.createElement('td');
-                      tdEmail.textContent = usuario.email; // Email do usuário
-                      row.appendChild(tdEmail);
+                      const tdDescricao = document.createElement('td');
+                      tdDescricao.textContent = projeto.descricao; // Email do usuário
+                      row.appendChild(tdDescricao);
             
                       // Adiciona a linha à tabela
                       tbody.appendChild(row);
@@ -80,7 +80,7 @@
               }
             
               // Chama a função para carregar os itens quando a página for carregada
-              window.onload = carregarUsuarios;
+              window.onload = carregarProjetos;
             </script>
 
 
