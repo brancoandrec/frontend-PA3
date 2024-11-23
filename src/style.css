@@ -10,8 +10,6 @@ body{
   flex: 1;
 }
 
-.item{
-}
 
 /* Contêiner de grid */
 .grid-container {
@@ -23,7 +21,25 @@ body{
   margin: 0 auto; /* Centraliza a div */
   padding: 20px;
   height: 400px;
+  justify-content: center;
   align-items: center;
+}
+
+label{
+  color: white;
+}
+
+h1 {
+  color: white;
+}
+
+.container{
+  padding: 100px;
+  margin-left:250px;
+}
+
+h3{
+  color: white;
 }
 
 /* Estilos para os itens */
@@ -87,9 +103,9 @@ body{
   flex: 1; /* Ocupa o restante do espaço */
 }
 
-h1 {
+/* h1 {
   color: #333;
-}
+} */
 
  .outset {
     border-style: outset;
@@ -164,4 +180,8 @@ h1 {
     background-color: white;
     width: 480px;
     height: 640px;
+}
+
+a{
+  text-decoration: none;
 }
