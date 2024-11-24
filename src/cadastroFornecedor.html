@@ -28,7 +28,9 @@
             <br><br>
             <h1>Cadastro de Fornecedor</h1>
             <br><br>
-    <form action="/submit" method="POST">
+
+
+    <form id="formFornecedor" method="POST">
         <h3>Fornecedor</h3>
         <label for="name">Nome:</label>
         <input type="text" id="name" name="name" required>
@@ -46,6 +48,45 @@
         <!-- Botão para enviar -->
         <button type="submit">Enviar</button>
     </form>
+
+    <script>
+        document.getElementById("formFornecedor").addEventListener("submit", function(event) {
+            event.preventDefault();  // Impede o envio padrão do formulário
+
+            // Captura os dados dos campos
+            const name = document.getElementById("name").value;
+            const endereco = document.getElementById("endereco").value;
+            const telefone = document.getElementById("telefone").value;
+
+            const fornecedor = {
+                nome:name,
+                endereco:endereco,
+                contato:telefone
+            };
+
+            // Envia os dados para o backend via POST
+            fetch('http://localhost:8080/fornecedor/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',  // Tipo de conteúdo sendo enviado
+                },
+                body: JSON.stringify(fornecedor)  // Converte o objeto para JSON
+            })
+            .then(response => response.json())  // Converte a resposta do backend para JSON
+            .then(data => {
+                console.log('Sucesso:', data);
+                document.getElementById("formFornecedor").reset();  // Manipule a resposta, se necessário
+            })
+            .catch((error) => {
+                console.error('Erro:', error);  // Manipule erros
+            });
+        });
+    </script>
+
+
+
+
+
 
 </body>
       </div>
