@@ -18,6 +18,8 @@
               <li><img class="logo-isi-menu" src="../images/image_53.png__486x175_q85_crop_subsampling-2_upscale.png" alt="logo instituto senai de inovação"></li>
               <li><a href="cadastro.html">Cadastro</a></li>
               <li><a href="consulta.html">Consulta</a></li>
+              <li><a href="alterar.html">Alterar</a></li>
+              <li><a href="deletar.html">Deletar</a></li>
           </ul>
       </div>
       <div class="container">
@@ -26,7 +28,8 @@
             <br><br>
             <h1>Cadastro de Local</h1>
             <br><br>
-    <form action="/submit" method="POST">
+
+    <form id="formLocalArmazen" method="POST">
         <h3>Local</h3>
         <label for="sala">Sala:</label>
         <input type="text" id="sala" name="sala" required>
@@ -40,6 +43,42 @@
         <!-- Botão para enviar -->
         <button type="submit">Enviar</button>
     </form>
+
+    <script>
+        document.getElementById("formLocalArmazen").addEventListener("submit", function(event) {
+            event.preventDefault();  // Impede o envio padrão do formulário
+
+            // Captura os dados dos campos
+            const sala = document.getElementById("sala").value;
+            const armario = document.getElementById("armario").value;
+
+            const localArmazen = {
+                sala: sala,
+                armario: armario
+            };
+
+            // Envia os dados para o backend via POST
+            fetch('http://localhost:8080/localarmazen/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',  // Tipo de conteúdo sendo enviado
+                },
+                body: JSON.stringify(localArmazen)  // Converte o objeto para JSON
+            })
+            .then(response => response.json())  // Converte a resposta do backend para JSON
+            .then(data => {
+                console.log('Sucesso:', data);
+                document.getElementById("formLocalArmazen").reset();  // Manipule a resposta, se necessário
+            })
+            .catch((error) => {
+                console.error('Erro:', error);  // Manipule erros
+            });
+        });
+    </script>
+
+
+
+
 
 </body>
       </div>

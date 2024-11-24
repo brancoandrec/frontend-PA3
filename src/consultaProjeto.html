@@ -19,6 +19,8 @@
               <li><img class="logo-isi-menu" src="../images/image_53.png__486x175_q85_crop_subsampling-2_upscale.png" alt="logo instituto senai de inovação"></li>
               <li><a href="cadastro.html">Cadastro</a></li>
               <li><a href="consulta.html">Consulta</a></li>
+              <li><a href="alterar.html">Alterar</a></li>
+              <li><a href="deletar.html">Deletar</a></li>
           </ul>
       </div>
       <div class="container">
@@ -59,15 +61,15 @@
                       
                       // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
-                      tdId.textContent = projeto.id; // ID do usuário
+                      tdId.textContent = projeto.id; 
                       row.appendChild(tdId);
             
                       const tdNome = document.createElement('td');
-                      tdNome.textContent = projeto.nome; // Nome do usuário
+                      tdNome.textContent = projeto.nome; 
                       row.appendChild(tdNome);
             
                       const tdDescricao = document.createElement('td');
-                      tdDescricao.textContent = projeto.descricao; // Email do usuário
+                      tdDescricao.textContent = projeto.descricao; 
                       row.appendChild(tdDescricao);
             
                       // Adiciona a linha à tabela

@@ -11,6 +11,9 @@ body{
   flex: 1;
 }
 
+table{
+  width: 800px;
+}
 
 /* Contêiner de grid */
 .grid-container {

@@ -19,6 +19,8 @@
               <li><img class="logo-isi-menu" src="../images/image_53.png__486x175_q85_crop_subsampling-2_upscale.png" alt="logo instituto senai de inovação"></li>
               <li><a href="cadastro.html">Cadastro</a></li>
               <li><a href="consulta.html">Consulta</a></li>
+              <li><a href="alterar.html">Alterar</a></li>
+              <li><a href="deletar.html">Deletar</a></li>
           </ul>
       </div>
       <div class="container">
@@ -28,12 +30,16 @@
             <h1>Consulta de Compra</h1>
             <br><br>
     
-            <table id="tabelaUsuarios">
+            <table id="tabelaCompras">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Nome</th>
-                  <th>Email</th>
+                  <th>Data Compra</th>
+                  <th>Data Invoice</th>
+                  <th>Data Recebimento</th>
+                  <th>Preço</th>
+                  <th>ID Fornecedor</th>
+                  <th>ID Projeto</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,32 +49,32 @@
 
             <script>
               // Função para carregar os itens do backend
-              function carregarUsuarios() {
-                fetch('http://localhost:8080/usuario/buscar') // URL da API do backend
+              function carregarCompras() {
+                fetch('http://localhost:8080/compra/buscar') // URL da API do backend
                   .then(response => response.json()) // Converte a resposta para JSON
-                  .then(usuarios => {
-                    const tbody = document.getElementById('tabelaUsuarios').getElementsByTagName('tbody')[0];
+                  .then(compras => {
+                    const tbody = document.getElementById('tabelaCompras').getElementsByTagName('tbody')[0];
             
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
             
                     // Adiciona cada usuário como uma linha na tabela
-                    usuarios.forEach(usuario => {
+                    compras.forEach(compra => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
                       
                       // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
-                      tdId.textContent = usuario.codigo; // ID do usuário
+                      tdId.textContent = compra.id; 
                       row.appendChild(tdId);
             
-                      const tdNome = document.createElement('td');
-                      tdNome.textContent = usuario.nome; // Nome do usuário
-                      row.appendChild(tdNome);
+                      const tdDataCompra = document.createElement('td');
+                      tdDataCompra.textContent = compra.data_compra; 
+                      row.appendChild(tdDataCompra);
             
-                      const tdEmail = document.createElement('td');
-                      tdEmail.textContent = usuario.email; // Email do usuário
-                      row.appendChild(tdEmail);
+                      const tdDataInvoice = document.createElement('td');
+                      tdDataInvoice.textContent = compra.DataInvoice; 
+                      row.appendChild(tdDataInvoice);
             
                       // Adiciona a linha à tabela
                       tbody.appendChild(row);
@@ -80,7 +86,7 @@
               }
             
               // Chama a função para carregar os itens quando a página for carregada
-              window.onload = carregarUsuarios;
+              window.onload = carregarCompras;
             </script>
 
 </body>

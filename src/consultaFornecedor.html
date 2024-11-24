@@ -19,6 +19,8 @@
               <li><img class="logo-isi-menu" src="../images/image_53.png__486x175_q85_crop_subsampling-2_upscale.png" alt="logo instituto senai de inovação"></li>
               <li><a href="cadastro.html">Cadastro</a></li>
               <li><a href="consulta.html">Consulta</a></li>
+              <li><a href="alterar.html">Alterar</a></li>
+              <li><a href="deletar.html">Deletar</a></li>
           </ul>
       </div>
       <div class="container">
@@ -28,12 +30,13 @@
             <h1>Consulta de Fornecedor</h1>
             <br><br>
     
-            <table id="tabelaUsuarios">
+            <table id="tabelaFornecedor">
               <thead>
                 <tr>
                   <th>ID</th>
                   <th>Nome</th>
-                  <th>Email</th>
+                  <th>Contato</th>
+                  <th>Endereço</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,32 +46,36 @@
 
             <script>
               // Função para carregar os itens do backend
-              function carregarUsuarios() {
-                fetch('http://localhost:8080/usuario/buscar') // URL da API do backend
+              function carregarFornecedor() {
+                fetch('http://localhost:8080/fornecedor/buscar') // URL da API do backend
                   .then(response => response.json()) // Converte a resposta para JSON
-                  .then(usuarios => {
-                    const tbody = document.getElementById('tabelaUsuarios').getElementsByTagName('tbody')[0];
+                  .then(fornecedores => {
+                    const tbody = document.getElementById('tabelaFornecedor').getElementsByTagName('tbody')[0];
             
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
             
                     // Adiciona cada usuário como uma linha na tabela
-                    usuarios.forEach(usuario => {
+                    fornecedores.forEach(fornecedor => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
                       
                       // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
-                      tdId.textContent = usuario.codigo; // ID do usuário
+                      tdId.textContent = fornecedor.id; 
                       row.appendChild(tdId);
             
                       const tdNome = document.createElement('td');
-                      tdNome.textContent = usuario.nome; // Nome do usuário
+                      tdNome.textContent = fornecedor.nome; 
                       row.appendChild(tdNome);
             
-                      const tdEmail = document.createElement('td');
-                      tdEmail.textContent = usuario.email; // Email do usuário
-                      row.appendChild(tdEmail);
+                      const tdContato = document.createElement('td');
+                      tdContato.textContent = fornecedor.contato; 
+                      row.appendChild(tdContato);
+
+                      const tdEndereco = document.createElement('td');
+                      tdEndereco.textContent = fornecedor.endereco; 
+                      row.appendChild(tdEndereco);
             
                       // Adiciona a linha à tabela
                       tbody.appendChild(row);
@@ -80,7 +87,7 @@
               }
             
               // Chama a função para carregar os itens quando a página for carregada
-              window.onload = carregarUsuarios;
+              window.onload = carregarFornecedor;
             </script>
 </body>
       </div>
