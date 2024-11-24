@@ -26,9 +26,7 @@
       <div class="container">
 
             <a href="consulta.html"> <- voltar </a>
-            <br><br>
-            <h1>Consulta de Local</h1>
-            <br><br>
+           <br><br>
     
             <table id="tabelaLocais">
               <thead>
@@ -41,7 +39,15 @@
               <tbody>
                 <!-- As linhas serão inseridas aqui -->
               </tbody>
+              <h1>Deletar Local</h1>
+    
             </table>
+            <br><br>
+            <form id="deleteForm">
+                <label for="localId">ID do local:</label>
+                <input type="number" id="localId" name="localId" required>
+                <button type="submit">Deletar</button>
+            </form>
 
             <script>
               // Função para carregar os itens do backend
@@ -59,7 +65,7 @@
                       // Cria uma nova linha
                       const row = document.createElement('tr');
                       
-                      
+                      // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
                       tdId.textContent = local.id; 
                       row.appendChild(tdId);
@@ -83,6 +89,23 @@
             
               // Chama a função para carregar os itens quando a página for carregada
               window.onload = carregarLocais;
+           
+                document.getElementById('deleteForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+        
+                    const localId = document.getElementById('localId').value;
+        
+                    // Fazendo uma requisição para o backend para deletar o local
+                    fetch(`http://localhost:8080/localarmazen/excluir/${localId}`, {
+                        method: 'DELETE',
+                    })
+                    .then(response => response.json())
+                    document.getElementById("deleteForm").reset();
+                    setTimeout(function() {
+                // Atualiza a tabela após 2 segundos
+                carregarLocais();
+                     }, 500); 
+                });
             </script>
 </body>
       </div>
