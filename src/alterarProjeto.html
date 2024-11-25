@@ -38,6 +38,7 @@
                   <th>ID</th>
                   <th>Nome</th>
                   <th>Descrição</th>
+                  <th>Data de Início</th>
                 </tr>
               </thead>
               <tbody>
@@ -66,7 +67,7 @@
               <br><br>
 
               <!-- Botão para enviar -->
-              <button type="submit">Enviar</button>
+              <button type="submit" id="enviarBtn">Enviar</button>
           </form>
           <script>
             // Função para carregar os itens do backend
@@ -98,7 +99,10 @@
                     row.appendChild(tdDescricao);
 
                     const tdDataInicio = document.createElement('td');
-                    tdDataInicio.textContent = projeto.DataInicio; 
+
+
+                    
+                    tdDataInicio.textContent = projeto.dataInicio; 
                     row.appendChild(tdDataInicio);
           
                     // Adiciona a linha à tabela
@@ -177,7 +181,7 @@
             };
 
             // Enviando os dados com uma requisição PUT usando fetch
-            fetch(`http://localhost:8080/projeto/alterar/${projetoId}`, {
+            fetch(`http://localhost:8080/projeto/alterar`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
