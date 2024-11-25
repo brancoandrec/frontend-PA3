@@ -30,6 +30,8 @@
             <h1>Alterar Local</h1>
             <br><br>
     
+            <!-- TABELA -->
+
             <table id="tabelaLocais">
               <thead>
                 <tr>
@@ -44,11 +46,13 @@
             </table>
             <br><br>
             <form id="deleteForm">
+              <!-- INPUT -->
                 <label for="localId">ID do local para alterar: </label>
                 <input type="number" id="localId" name="localId" required>
                 <button type="submit" id="alterarBtn">Alterar</button>
             </form>
             <br><br>
+            <!-- FORM PARA ALTERAR -->
             <form id="formLocalArmazen" method="POST">
               <h3>Local</h3>
               <br>
@@ -63,6 +67,7 @@
           </form>
             <script>
               // Função para carregar os itens do backend
+              // MOSTRAR ITENS
               function carregarLocais() {
                 fetch('http://localhost:8080/localarmazen/buscar') // URL da API do backend
                   .then(response => response.json()) // Converte a resposta para JSON
@@ -105,7 +110,7 @@
 
 
 
-
+              // BUSCAR PELO ID
               document.getElementById('alterarBtn').addEventListener('click', function(event) {
                 event.preventDefault();
                 const localId = document.getElementById('localId').value;
@@ -131,7 +136,7 @@
 
 
 
-
+              // FAZER PUT
               document.getElementById('enviarBtn').addEventListener('click', function(event) {
                 event.preventDefault();
                 const localId = document.getElementById('localId').value;
@@ -171,7 +176,7 @@
 
 
               // Chama a função para carregar os itens quando a página for carregada
-              window.onload = carregarLocais;
+              window.onload = carregarLocais();
 
             
             </script>
