@@ -81,14 +81,14 @@
                       tdId.textContent = local.id; 
                       row.appendChild(tdId);
             
-                      const tdArmario = document.createElement('td');
-                      tdArmario.textContent = local.armario;
-                      row.appendChild(tdArmario);
-            
                       const tdSala = document.createElement('td');
                       tdSala.textContent = local.sala; 
                       row.appendChild(tdSala);
-            
+                      
+                      const tdArmario = document.createElement('td');
+                      tdArmario.textContent = local.armario;
+                      row.appendChild(tdArmario);
+
                       // Adiciona a linha à tabela
                       tbody.appendChild(row);
                     });
@@ -97,10 +97,18 @@
                     console.error('Erro ao carregar os itens:', error);
                   });
               }
-              const localId = document.getElementById('localId').value;
             
+
+
+
+
+
+
+
+
               document.getElementById('alterarBtn').addEventListener('click', function(event) {
                 event.preventDefault();
+                const localId = document.getElementById('localId').value;
                  // URL do seu backend para pegar os dados
               const url = `http://localhost:8080/localarmazen/buscarporid/${localId}`;
                 // Troque pela URL do seu backend
@@ -110,13 +118,61 @@
             .then(response => response.json())  // Converter a resposta para JSON
               .then(data => {
                 // Preencher os inputs com os dados recebidos
-                setTimeout( 1000); 
+                setTimeout(1000); 
                 document.getElementById('sala').value = data.sala;
                 document.getElementById('armario').value = data.armario;
               })})
               
+
+
+
+
+
+
+
+
+
+              document.getElementById('enviarBtn').addEventListener('click', function(event) {
+                event.preventDefault();
+                const localId = document.getElementById('localId').value;
+                const sala = document.getElementById("sala").value;
+                const armario = document.getElementById("armario").value;
+                const dados = {
+                  id:localId,
+                sala: sala,
+                armario: armario
+            };
+
+            // Enviando os dados com uma requisição PUT usando fetch
+            fetch(`http://localhost:8080/localarmazen/alterar/${localId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dados) // Convertendo o objeto para JSON
+            })
+            .then(
+              response => response.json()) // Processando a resposta
+            .then(data => {
+              console.log("Resposta do servidor:", data);
+              carregarLocais(); 
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            });
+            
+              }) 
+
+
+
+
+
+
+
+
               // Chama a função para carregar os itens quando a página for carregada
               window.onload = carregarLocais;
+
             
             </script>
 </body>
