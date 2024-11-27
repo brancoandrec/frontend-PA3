@@ -69,12 +69,44 @@
                       row.appendChild(tdId);
             
                       const tdDataCompra = document.createElement('td');
-                      tdDataCompra.textContent = compra.data_compra; 
+                      const dataCompra = compra.dataRecebimento;
+                      const dataCompraFormat = formataData(dataCompra);
+                      tdDataCompra.textContent = dataCompraFormat; 
                       row.appendChild(tdDataCompra);
             
                       const tdDataInvoice = document.createElement('td');
-                      tdDataInvoice.textContent = compra.DataInvoice; 
+                      const dataInvoice = compra.dataRecebimento;
+                      const dataInvoiceFormat = formataData(dataInvoice);
+                      tdDataInvoice.textContent = dataInvoiceFormat; 
                       row.appendChild(tdDataInvoice);
+
+                      const tdDataRecebimento = document.createElement('td');
+                      const isoDateString = compra.dataRecebimento;
+                      const formattedDate = formataData(isoDateString);
+                      tdDataRecebimento.textContent = formattedDate; 
+                      row.appendChild(tdDataRecebimento);
+
+                      const tdPreco = document.createElement('td');
+                      tdPreco.textContent = compra.preco; 
+                      row.appendChild(tdPreco);
+            
+                      const tdIdFornecedor = document.createElement('td');
+                      if(compra.fornecedor.id){
+                        tdIdFornecedor.textContent = compra.fornecedor.nome;
+                      } else {
+                        tdIdFornecedor.textContent = "";
+                      }
+                      
+                      row.appendChild(tdIdFornecedor);
+            
+                      const tdProjetoId = document.createElement('td');
+                      if(compra.projeto.id) {
+                        tdProjetoId.textContent = compra.projeto.nome; 
+                      } else {
+                        tdProjetoId.textContent = "";
+                      }
+                      
+                      row.appendChild(tdProjetoId);
             
                       // Adiciona a linha à tabela
                       tbody.appendChild(row);
@@ -85,6 +117,22 @@
                   });
               }
             
+              function formataData(dataParaConverter){
+                
+                            // Criar um objeto Date a partir da string ISO
+                            const date = new Date(dataParaConverter);
+
+                            // Extrair o dia, mês e ano
+                            const day = String(date.getDate()).padStart(2, '0'); // Garante que o dia tenha 2 dígitos
+                            const month = String(date.getMonth() + 1).padStart(2, '0'); // Meses começam do 0, então soma-se 1
+                            const year = date.getFullYear();
+
+                            // Formatar a data no formato DD-MM-YYYY
+                            const formattedDate = `${day}-${month}-${year}`;
+                            return formattedDate;
+
+              }
+
               // Chama a função para carregar os itens quando a página for carregada
               window.onload = carregarCompras;
             </script>

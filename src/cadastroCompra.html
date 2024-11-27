@@ -63,21 +63,21 @@
             const preco = document.getElementById("preco").value;
             const fornecedor_id = document.getElementById("fornecedor_id").value;
             const projeto_id = document.getElementById("projeto_id").value;
-            const data_compra = document.getElementById("data_compra").value;
-            const data_invoice = document.getElementById("data_invoice").value;
-            const data_recebimento = document.getElementById("data_recebimento").value;
+            const data_compra = document.getElementById("dataCompra").value;
+            const data_invoice = document.getElementById("dataInvoice").value;
+            const data_recebimento = document.getElementById("dataRecebimento").value;
 
             const fornecedor = {
-                data_compra:data_compra,
-                data_invoice:data_invoice,
-                data_recebimento:data_recebimento,
+                dataCompra:data_compra,
+                dataInvoice:data_invoice,
+                dataRecebimento:data_recebimento,
                 preco:preco,
-                projeto_id:projeto_id,
-                fornecedor_id:fornecedor_id
+                projeto:projeto_id,
+                fornecedor:fornecedor_id
             };
 
             // Envia os dados para o backend via POST
-            fetch('http://localhost:8080/fornecedor/add', {
+            fetch('http://localhost:8080/compra/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',  // Tipo de conteúdo sendo enviado
@@ -87,7 +87,7 @@
             .then(response => response.json())  // Converte a resposta do backend para JSON
             .then(data => {
                 console.log('Sucesso:', data);
-                document.getElementById("formFornecedor").reset();  // Manipule a resposta, se necessário
+                document.getElementById("formCompra").reset();  // Manipule a resposta, se necessário
             })
             .catch((error) => {
                 console.error('Erro:', error);  // Manipule erros
