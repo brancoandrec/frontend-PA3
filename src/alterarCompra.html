@@ -241,12 +241,13 @@ function carregarCompras() {
             .then(data => {
                 console.log('Sucesso:', data);
                 document.getElementById("formCompra").reset();  // Manipule a resposta, se necessário
+                carregarCompras();
             })
             .catch((error) => {
                 console.error('Erro:', error);  // Manipule erros
             });
         });
-        window.onload = carregarCompras;
+        window.onload = carregarCompras();
         
     </script>
 
