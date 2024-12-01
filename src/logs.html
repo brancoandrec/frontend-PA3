@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -28,19 +27,18 @@
 
             <a href="consulta.html"> <- voltar </a>
             <br><br>
-            <h1>Consulta de Compra</h1>
+            <h1>Consulta de Logs</h1>
             <br><br>
     
             <table id="tabelaCompras">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Data Compra</th>
-                  <th>Data Invoice</th>
-                  <th>Data Recebimento</th>
-                  <th>Preço</th>
-                  <th>ID Fornecedor</th>
-                  <th>ID Projeto</th>
+                  <th>Metodo</th>
+                  <th>Classe</th>
+                  <th>Nome Metodo</th>
+                  <th>Timestamp</th>
+                  
                 </tr>
               </thead>
               <tbody>
@@ -51,63 +49,68 @@
             <script>
               // Função para carregar os itens do backend
               function carregarCompras() {
-                fetch('http://localhost:8080/compra/buscar') // URL da API do backend
+                fetch('http://localhost:8080/log/buscar') // URL da API do backend
                   .then(response => response.json()) // Converte a resposta para JSON
-                  .then(compras => {
+                  .then(log => {
                     const tbody = document.getElementById('tabelaCompras').getElementsByTagName('tbody')[0];
             
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
             
                     // Adiciona cada usuário como uma linha na tabela
-                    compras.forEach(compra => {
+                    log.forEach(log => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
                       
                       // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
-                      tdId.textContent = compra.id; 
+                      tdId.textContent = log.id; 
                       row.appendChild(tdId);
-            
-                      const tdDataCompra = document.createElement('td');
-                      const dataCompra = compra.dataRecebimento;
-                      const dataCompraFormat = formataData(dataCompra);
-                      tdDataCompra.textContent = dataCompraFormat; 
-                      row.appendChild(tdDataCompra);
-            
-                      const tdDataInvoice = document.createElement('td');
-                      const dataInvoice = compra.dataRecebimento;
-                      const dataInvoiceFormat = formataData(dataInvoice);
-                      tdDataInvoice.textContent = dataInvoiceFormat; 
-                      row.appendChild(tdDataInvoice);
-
-                      const tdDataRecebimento = document.createElement('td');
-                      const isoDateString = compra.dataRecebimento;
-                      const formattedDate = formataData(isoDateString);
-                      tdDataRecebimento.textContent = formattedDate; 
-                      row.appendChild(tdDataRecebimento);
-
-                      const tdPreco = document.createElement('td');
-                      tdPreco.textContent = compra.preco; 
-                      row.appendChild(tdPreco);
-            
-                      const tdIdFornecedor = document.createElement('td');
-                      if(compra.fornecedor.id){
-                        tdIdFornecedor.textContent = compra.fornecedor.nome;
-                      } else {
-                        tdIdFornecedor.textContent = "";
-                      }
                       
-                      row.appendChild(tdIdFornecedor);
+                      const tdMetodo = document.createElement('td');
+                      tdMetodo.textContent = log.httpMetodo; 
+                      row.appendChild(tdMetodo);
+
+                      const tdClasse = document.createElement('td');
+                      tdClasse.textContent = log.classe; 
+                      row.appendChild(tdClasse);
+
+
+                      const tdNomeMetodo = document.createElement('td');
+                      tdNomeMetodo.textContent = log.nomeMetodo; 
+                      row.appendChild(tdNomeMetodo);
+
+
+
+                      // const tdId = document.createElement('td');
+                      // tdId.textContent = log.id; 
+                      // row.appendChild(tdId);
+
+                      const tdTimeStamp = document.createElement('td');
+                      const timeStamp = log.timestamp;
+                      const timeStampFormat = formataData(timeStamp);
+                      tdTimeStamp.textContent = timeStampFormat; 
+                      row.appendChild(tdTimeStamp);
             
-                      const tdProjetoId = document.createElement('td');
-                      if(compra.projeto.id) {
-                        tdProjetoId.textContent = compra.projeto.nome; 
-                      } else {
-                        tdProjetoId.textContent = "";
-                      }
+                      // const tdDataInvoice = document.createElement('td');
+                      // const dataInvoice = log.dataRecebimento;
+                      // const dataInvoiceFormat = formataData(dataInvoice);
+                      // tdDataInvoice.textContent = dataInvoiceFormat; 
+                      // row.appendChild(tdDataInvoice);
+
+                      // const tdDataRecebimento = document.createElement('td');
+                      // const isoDateString = log.dataRecebimento;
+                      // const formattedDate = formataData(isoDateString);
+                      // tdDataRecebimento.textContent = formattedDate; 
+                      // row.appendChild(tdDataRecebimento);
+
+                      // const tdDataCompra = document.createElement('td');
+                      // const dataCompra = log.dataRecebimento;
+                      // const dataCompraFormat = formataData(dataCompra);
+                      // tdDataCompra.textContent = dataCompraFormat; 
+                      // row.appendChild(tdDataCompra);
                       
-                      row.appendChild(tdProjetoId);
+                     
             
                       // Adiciona a linha à tabela
                       tbody.appendChild(row);
