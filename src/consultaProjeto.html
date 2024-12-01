@@ -50,8 +50,8 @@
           </table>
 <br><br>
           <form id="alterarForm">
-            <label for="projetoNome">Nome do projeto para consultar: </label>
-            <input type="text" id="projetoNome" name="projetoNome" required>
+            <label for="projetoId">Id do projeto para consultar: </label>
+            <input type="text" id="projetoId" name="projetoId" required>
             <button type="submit" id="alterarBtn">Selecionar</button>
           </form>
 
@@ -129,15 +129,13 @@
 
 
               function carregarItens() {
-                const projetoNome = document.getElementById('projetoNome').value; // Obtém o valor do input
+                const projetoId = document.getElementById('projetoId').value; // Obtém o valor do input
 
-                fetch(`http://localhost:8080/conjuntoitens/projeto?projeto=${encodeURIComponent(projetoNome)}`)
+                fetch(`http://localhost:8080/conjuntoitens/projeto?projeto=${projetoId}`)
                   .then(response => response.json())
                   .then(projetosItens => {
 
-                    if (projetosItens.length === 0) { // Verifica se o JSON está vazio
-                alert("Verifique se o nome esta correto");
-            }
+                    
 
                     const tbody = document.getElementById('itensProjeto').getElementsByTagName('tbody')[0];
 
