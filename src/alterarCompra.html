@@ -27,10 +27,13 @@
 
             <a href="cadastro.html"> <- voltar </a>
             <br><br>
-            <h1>Cadastro de Compra</h1>
+            <h1>Alterar de Compra</h1>
             <br><br>
-    <form id="formCompra" method="POST">
+    <form id="formCompra" method="PUT">
         <h3>Compra</h3>
+        <label for="compraId">ID Compra:</label>
+        <input type="number" id="compraId" name="compraId" required>
+        <br><br>
         <label for="fornecedor_id">ID Fornecedor:</label>
         <input type="number" id="fornecedor_id" name="fornecedor_id" required>
         <br><br>
@@ -61,6 +64,7 @@
             event.preventDefault();  // Impede o envio padrão do formulário
 
             // Captura os dados dos campos
+            const compra_id = document.getElementById("compraId").value;
             const preco = document.getElementById("preco").value;
             const fornecedor_id = document.getElementById("fornecedor_id").value;
             const projeto_id = document.getElementById("projeto_id").value;
@@ -68,7 +72,8 @@
             const data_invoice = document.getElementById("dataInvoice").value;
             const data_recebimento = document.getElementById("dataRecebimento").value;
 
-            const fornecedor = {                
+            const fornecedor = {
+                id:compra_id,
                 dataCompra:data_compra,
                 dataInvoice:data_invoice,
                 dataRecebimento:data_recebimento,
@@ -77,9 +82,9 @@
                 fornecedor:{id:fornecedor_id}
             };
 
-            // Envia os dados para o backend via POST
-            fetch('http://localhost:8080/compra/add', {
-                method: 'POST',
+            // Envia os dados para o backend via PUT
+            fetch('http://localhost:8080/compra/alterar', {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',  // Tipo de conteúdo sendo enviado
                 },
