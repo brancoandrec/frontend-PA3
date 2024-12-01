@@ -15,6 +15,22 @@ table{
   width: 800px;
 }
 
+.deletar {
+  background-color: #fff;
+}
+
+.alterar {
+  background-color: darkgreen;
+}
+
+.consulta {
+  background-color: yellow;
+}
+
+.cadastro {
+  background-color: #007BFF;
+}
+
 /* Contêiner de grid */
 .grid-container {
   display: grid;
@@ -48,7 +64,6 @@ h3{
 
 /* Estilos para os itens */
 .item {
-  background-color: #3498db;
   color: black;
   padding: 20px;
   text-align: center;
