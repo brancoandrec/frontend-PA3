@@ -131,7 +131,7 @@
               function carregarItens() {
                 const projetoId = document.getElementById('projetoId').value; // Obtém o valor do input
 
-                fetch(`http://localhost:8080/conjuntoitens/projeto?projeto=${projetoId}`)
+                fetch(`http://localhost:8080/conjuntoitens/projeto/${projetoId}`)
                   .then(response => response.json())
                   .then(projetosItens => {
 
