@@ -66,8 +66,11 @@
                 <tr>
                   <th>ID</th>
                   <th>Nome do item</th>
+                  <th>Quantidade</th>
                   <th>Tipo</th>
                   <th>Descrição</th>
+                  <th>Sala</th>
+                  <th>Armario</th>
 
                 </tr>
               </thead>
@@ -152,6 +155,10 @@
                       tdNome.textContent = projetoItens.item.nome;
                       row.appendChild(tdNome);
 
+                      const tdQuantidade = document.createElement('td');
+                      tdQuantidade.textContent = projetoItens.quantidade;
+                      row.appendChild(tdQuantidade);
+
                       const tdTipo = document.createElement('td');
                       tdTipo.textContent = projetoItens.item.tipo;
                       row.appendChild(tdTipo);
@@ -159,6 +166,14 @@
                       const tdDescricao = document.createElement('td');
                       tdDescricao.textContent = projetoItens.item.descricao;
                       row.appendChild(tdDescricao);
+
+                      const tdSala = document.createElement('td');
+                      tdSala.textContent = projetoItens.localArmazen.sala;
+                      row.appendChild(tdSala);
+
+                      const tdArmario = document.createElement('td');
+                      tdArmario.textContent = projetoItens.localArmazen.armario;
+                      row.appendChild(tdArmario);
 
                       tbody.appendChild(row); // Adiciona a linha à tabela
                     });
