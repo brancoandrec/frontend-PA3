@@ -25,9 +25,9 @@
       </div>
       <div class="container">
 
-            <a href="cadastro.html"> <- voltar </a>
+            <a href="alterar.html"> <- voltar </a>
             <br><br>
-            <h1>Alterar de Compra</h1>
+            <h1>Alterar Compra</h1>
 <br>
 <table id="tabelaCompras">
     <thead>
@@ -241,12 +241,13 @@ function carregarCompras() {
             .then(data => {
                 console.log('Sucesso:', data);
                 document.getElementById("formCompra").reset();  // Manipule a resposta, se necessário
+                carregarCompras();
             })
             .catch((error) => {
                 console.error('Erro:', error);  // Manipule erros
             });
         });
-        window.onload = carregarCompras;
+        window.onload = carregarCompras();
         
     </script>
 
