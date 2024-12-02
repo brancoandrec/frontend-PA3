@@ -81,12 +81,11 @@
                   // Limpa a tabela antes de adicionar os novos dados
                   tbody.innerHTML = '';
           
-                  // Adiciona cada usuário como uma linha na tabela
+                 
                   projetos.forEach(projeto => {
                     // Cria uma nova linha
                     const row = document.createElement('tr');
                     
-                    // Cria as células para ID, Nome e Email
                     const tdId = document.createElement('td');
                     tdId.textContent = projeto.id; 
                     row.appendChild(tdId);
@@ -118,11 +117,6 @@
             // Chama a função para carregar os itens quando a página for carregada
             window.onload = carregarProjetos;
           
-
-
-
-
-
 
               // BUSCAR PELO ID
               document.getElementById('alterarBtn').addEventListener('click', function(event) {
@@ -158,13 +152,6 @@
                   // Agora você pode definir o valor no input[type="date"]
                 document.getElementById('dataInicio').value = formattedDate;
               })})
-              
-
-
-
-
-
-
 
 
               // FAZER PUT
@@ -202,13 +189,7 @@
               }) 
 
 
-
-
-
-
-
-
-              // Chama a função para carregar os itens quando a página for carregada
+              // Chama a função para carregar os projetos quando a página for carregada
               window.onload = carregarProjetos;
 
             

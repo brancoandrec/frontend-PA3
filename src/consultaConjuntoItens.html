@@ -62,12 +62,10 @@
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
             
-                    // Adiciona cada usuário como uma linha na tabela
                     conjuntos.forEach(conjuntoItens => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
                       
-                      // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
                       tdId.textContent = conjuntoItens.id; 
                       row.appendChild(tdId);
@@ -136,9 +134,6 @@
                 return formattedDate;
 
   }
-            
-              
-
               // Chama a função para carregar os itens quando a página for carregada
               window.onload = carregarConjuntoItens;
             </script>

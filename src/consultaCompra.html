@@ -53,18 +53,7 @@
               <!-- As linhas serão inseridas aqui -->
             </tbody>
           </table>
-          <!-- <form id="alterarForm">
-            <label for="projetoNome">Nome do projeto para consultar: </label>
-            <input type="text" id="projetoNome" name="projetoNome" required>
-            <button type="submit" id="alterarBtn">Selecionar</button>
-          </form> -->
-
           <script>
-            // document.getElementById('alterarForm').addEventListener('submit', function (event) {
-            //     event.preventDefault(); // Impede o recarregamento padrão
-            //     carregarItens(); // Chama a função de carregamento
-            //   });
-
             // Função para carregar os itens do backend
             function carregarCompras() {
               fetch('http://localhost:8080/compra/buscar') // URL da API do backend
@@ -75,12 +64,10 @@
                   // Limpa a tabela antes de adicionar os novos dados
                   tbody.innerHTML = '';
 
-                  // Adiciona cada usuário como uma linha na tabela
                   compras.forEach(compra => {
                     // Cria uma nova linha
                     const row = document.createElement('tr');
 
-                    // Cria as células para ID, Nome e Email
                     const tdId = document.createElement('td');
                     tdId.textContent = compra.id;
                     row.appendChild(tdId);
@@ -163,65 +150,7 @@
               return formattedDate;
 
             }
-
-
-
-            // function carregarItens() {
-            //   const projetoNome = document.getElementById('projetoNome').value; // Obtém o valor do input
-
-            //   fetch(`http://localhost:8080/compra/`)
-            //     .then(response => response.json())
-            //     .then(projetosItens => {
-
-            //       if (projetosItens.length === 0) { // Verifica se o JSON está vazio
-            //         alert("Verifique se o nome esta correto");
-            //       }
-
-            //       const tbody = document.getElementById('itensProjeto').getElementsByTagName('tbody')[0];
-
-            //       tbody.innerHTML = ''; // Limpa a tabela antes de adicionar os novos dados
-
-            //       // Preenche a tabela com os itens retornados
-            //       projetosItens.forEach(projetoItens => {
-            //         const row = document.createElement('tr');
-
-            //         const tdId = document.createElement('td');
-            //         tdId.textContent = projetoItens.item.id;
-            //         row.appendChild(tdId);
-
-            //         const tdNome = document.createElement('td');
-            //         tdNome.textContent = projetoItens.item.nome;
-            //         row.appendChild(tdNome);
-
-            //         const tdQuantidade = document.createElement('td');
-            //         tdQuantidade.textContent = projetoItens.quantidade;
-            //         row.appendChild(tdQuantidade);
-
-            //         const tdTipo = document.createElement('td');
-            //         tdTipo.textContent = projetoItens.item.tipo;
-            //         row.appendChild(tdTipo);
-
-            //         const tdDescricao = document.createElement('td');
-            //         tdDescricao.textContent = projetoItens.item.descricao;
-            //         row.appendChild(tdDescricao);
-
-            //         const tdSala = document.createElement('td');
-            //         tdSala.textContent = projetoItens.localArmazen.sala;
-            //         row.appendChild(tdSala);
-
-            //         const tdArmario = document.createElement('td');
-            //         tdArmario.textContent = projetoItens.localArmazen.armario;
-            //         row.appendChild(tdArmario);
-
-            //         tbody.appendChild(row); // Adiciona a linha à tabela
-            //       });
-            //     })
-            //     .catch(error => {
-            //       console.error('Erro ao carregar os itens:', error);
-            //     });
-            // }
-
-            // Chama a função para carregar os itens quando a página for carregada
+            
             window.onload = carregarCompras;
           </script>
 

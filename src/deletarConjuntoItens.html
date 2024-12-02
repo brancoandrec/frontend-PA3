@@ -71,12 +71,10 @@
                                     // Limpa a tabela antes de adicionar os novos dados
                                     tbody.innerHTML = '';
 
-                                    // Adiciona cada usuário como uma linha na tabela
                                     itens.forEach(conjuntoitens => {
                                         // Cria uma nova linha
                                         const row = document.createElement('tr');
 
-                                        // Cria as células para ID, Nome e Email
                                         const tdId = document.createElement('td');
                                         tdId.textContent = conjuntoitens.id; // ID do item
                                         row.appendChild(tdId);

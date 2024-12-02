@@ -56,12 +56,10 @@
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
             
-                    // Adiciona cada usuário como uma linha na tabela
                     fornecedores.forEach(fornecedor => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
                       
-                      // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
                       tdId.textContent = fornecedor.id; 
                       row.appendChild(tdId);

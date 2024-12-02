@@ -61,12 +61,10 @@
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
             
-                    // Adiciona cada usuário como uma linha na tabela
                     locais.forEach(local => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
                       
-                      // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
                       tdId.textContent = local.id; 
                       row.appendChild(tdId);
@@ -103,7 +101,7 @@
                     .then(response => response.json())
                     document.getElementById("deleteForm").reset();
                     setTimeout(function() {
-                // Atualiza a tabela após 2 segundos
+                // Atualiza a tabela após 0,5 segundos
                 carregarLocais();
                      }, 500); 
                 });

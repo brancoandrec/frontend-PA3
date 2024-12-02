@@ -57,12 +57,10 @@
                   // Limpa a tabela antes de adicionar os novos dados
                   tbody.innerHTML = '';
           
-                  // Adiciona cada usuário como uma linha na tabela
                   projetos.forEach(projeto => {
                     // Cria uma nova linha
                     const row = document.createElement('tr');
                     
-                    // Cria as células para ID, Nome e Email
                     const tdId = document.createElement('td');
                     tdId.textContent = projeto.id; 
                     row.appendChild(tdId);

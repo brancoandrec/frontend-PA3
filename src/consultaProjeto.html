@@ -79,10 +79,6 @@
               </tbody>
             </table>
 
-
-
-
-
             <script>
 
               document.getElementById('alterarForm').addEventListener('submit', function (event) {
@@ -100,12 +96,10 @@
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
 
-                    // Adiciona cada usuário como uma linha na tabela
                     projetos.forEach(projeto => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
 
-                      // Cria as células para ID, Nome e Email
                       const tdId = document.createElement('td');
                       tdId.textContent = projeto.id;
                       row.appendChild(tdId);
@@ -127,7 +121,6 @@
                   });
               }
 
-
               function carregarItens() {
                 const projetoId = document.getElementById('projetoId').value; // Obtém o valor do input
 
@@ -135,7 +128,6 @@
                   .then(response => response.json())
                   .then(projetosItens => {
 
-                    
 
                     const tbody = document.getElementById('itensProjeto').getElementsByTagName('tbody')[0];
 
@@ -180,9 +172,6 @@
                     console.error('Erro ao carregar os itens:', error);
                   });
               }
-
-
-
 
               // Chama a função para carregar os itens quando a página for carregada
               window.onload = carregarProjetos;

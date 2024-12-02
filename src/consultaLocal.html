@@ -55,7 +55,6 @@
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
             
-                    // Adiciona cada usuário como uma linha na tabela
                     locais.forEach(local => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
@@ -82,7 +81,7 @@
                   });
               }
             
-              // Chama a função para carregar os itens quando a página for carregada
+              // Chama a função para carregar os locais quando a página for carregada
               window.onload = carregarLocais;
             </script>
 </body>

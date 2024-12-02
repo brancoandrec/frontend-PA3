@@ -62,7 +62,6 @@
                     // Limpa a tabela antes de adicionar os novos dados
                     tbody.innerHTML = '';
             
-                    // Adiciona cada usuário como uma linha na tabela
                     itens.forEach(item => {
                       // Cria uma nova linha
                       const row = document.createElement('tr');
@@ -102,7 +101,7 @@
         
                     const itemId = document.getElementById('itemId').value;
         
-                    // Fazendo uma requisição para o backend para deletar o local
+                    // Fazendo uma requisição para o backend para deletar o item
                     fetch(`http://localhost:8080/item/excluir/${itemId}`, {
                         method: 'DELETE',
                     })

@@ -141,7 +141,7 @@ function carregarCompras() {
                     row.appendChild(tdPreco);
 
                     const tdIdFornecedor = document.createElement('td');
-                    if (compra.fornecedor.id) {
+                    if (compra.fornecedor) {
                       tdIdFornecedor.textContent = compra.fornecedor.id;
                     } else {
                       tdIdFornecedor.textContent = "";
