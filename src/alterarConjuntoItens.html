@@ -41,9 +41,12 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Quantidade</th>
+                                <th>Item ID</th>
                                 <th>Item</th>
+                                <th>Local ID</th>
                                 <th>Sala</th>
                                 <th>Armario</th>
+                                <th>Proejto ID</th>
                                 <th>Projeto</th>
                             </tr>
                         </thead>
@@ -102,9 +105,17 @@
                                         tdQuantidade.textContent = conjuntoitens.quantidade;
                                         row.appendChild(tdQuantidade);
 
+                                        const tdItemId = document.createElement('td');
+                                        tdItemId.textContent = conjuntoitens.item.id;
+                                        row.appendChild(tdItemId);
+
                                         const tdItem = document.createElement('td');
                                         tdItem.textContent = conjuntoitens.item.nome;
                                         row.appendChild(tdItem);
+
+                                        const tdLocalId = document.createElement('td');
+                                        tdLocalId.textContent = conjuntoitens.localArmazen.id;
+                                        row.appendChild(tdLocalId);
 
                                         const tdSala = document.createElement('td');
                                         tdSala.textContent = conjuntoitens.localArmazen.sala;
@@ -113,6 +124,11 @@
                                         const tdArmario = document.createElement('td');
                                         tdArmario.textContent = conjuntoitens.localArmazen.sala;
                                         row.appendChild(tdArmario);
+
+                                        const tdProjetoID = document.createElement('td');
+                                        tdProjetoID.textContent = conjuntoitens.projeto.id;
+                                        row.appendChild(tdProjetoID);
+
 
                                         const tdProjeto = document.createElement('td');
                                         tdProjeto.textContent = conjuntoitens.projeto.nome;
