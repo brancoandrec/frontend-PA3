@@ -37,6 +37,9 @@
         <label for="projeto_id">ID Projeto:</label>
         <input type="number" id="projeto_id" name="projeto_id" required>
         <br><br>
+        <label for="item_id">IDs dos Itens (separados por vírgulas):</label>
+        <input type="text" id="item_id" name="item_id" required>
+        <br><br>        
         <label for="preco">Preço:</label>
         <input type="number" id="preco" name="preco" required>
         <br><br>
@@ -67,14 +70,19 @@
             const data_compra = document.getElementById("dataCompra").value;
             const data_invoice = document.getElementById("dataInvoice").value;
             const data_recebimento = document.getElementById("dataRecebimento").value;
+            const itemIds = document.getElementById("item_id").value
+                .split(',')
+                .map(id => ({ id: parseInt(id.trim()) })); // Cria um array de objetos { id: X }
 
-            const fornecedor = {                
-                dataCompra:data_compra,
-                dataInvoice:data_invoice,
-                dataRecebimento:data_recebimento,
-                preco:preco,
-                projeto:{id:projeto_id},
-                fornecedor:{id:fornecedor_id}
+
+                const compra = {                
+                dataCompra: data_compra,
+                dataInvoice: data_invoice,
+                dataRecebimento: data_recebimento,
+                preco: preco,
+                projeto: { id: parseInt(projeto_id) },
+                fornecedor: { id: parseInt(fornecedor_id) },
+                item: itemIds // Adiciona a lista de itens
             };
 
             // Envia os dados para o backend via POST
@@ -83,7 +91,7 @@
                 headers: {
                     'Content-Type': 'application/json',  // Tipo de conteúdo sendo enviado
                 },
-                body: JSON.stringify(fornecedor)  // Converte o objeto para JSON
+                body: JSON.stringify(compra)  // Converte o objeto para JSON
             })
             .then(response => response.json())  // Converte a resposta do backend para JSON
             .then(data => {
