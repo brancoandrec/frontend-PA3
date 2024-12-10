@@ -33,6 +33,7 @@
     <thead>
       <tr>
         <th>ID</th>
+        <!-- <th>Itens ID</th> -->
         <th>Itens</th>
         <th>Data Compra</th>
         <th>Data Invoice</th>
@@ -57,6 +58,9 @@
         <h3>Compra</h3>
         <label for="compraId">ID Compra:</label>
         <input type="number" id="compraId" name="compraId" required>
+        <br><br>
+        <label for="item_id">IDs dos Itens (separados por vírgulas):</label>
+        <input type="text" id="item_id" name="item_id" required>
         <br><br>
         <label for="fornecedor_id">ID Fornecedor:</label>
         <input type="number" id="fornecedor_id" name="fornecedor_id" required>
@@ -158,14 +162,14 @@ function carregarCompras() {
 
                     row.appendChild(tdNomeFornecedor);
 
-                    const tdProjetoId = document.createElement('td');
-                    if (compra.projeto.id) {
-                      tdProjetoId.textContent = compra.projeto.id;
-                    } else {
-                      tdProjetoId.textContent = "";
-                    }
+                    // const tdItemId = document.createElement('td');
+                    // if (compra.item.id) {
+                    //   tdItemId.textContent = compra.item.id;
+                    // } else {
+                    //   tdItemId.textContent = "";
+                    // }
 
-                    row.appendChild(tdProjetoId);
+                    // row.appendChild(tdItemId);
 
 
                     const tdProjetoNome = document.createElement('td');
@@ -176,6 +180,15 @@ function carregarCompras() {
                     }
 
                     row.appendChild(tdProjetoNome);
+
+                    const tdProjetoId = document.createElement('td');
+                    if (compra.projeto.id) {
+                      tdProjetoId.textContent = compra.projeto.id;
+                    } else {
+                      tdProjetoId.textContent = "";
+                    }
+
+                    row.appendChild(tdProjetoId);
 
 
                     // Adiciona a linha à tabela
@@ -218,15 +231,19 @@ function carregarCompras() {
             const data_compra = document.getElementById("dataCompra").value;
             const data_invoice = document.getElementById("dataInvoice").value;
             const data_recebimento = document.getElementById("dataRecebimento").value;
+            const itemIds = document.getElementById("item_id").value
+                .split(',')
+                .map(id => ({ id: parseInt(id.trim()) })); // Cria um array de objetos { id: X }
 
-            const fornecedor = {
+            const compra = {
                 id:compra_id,
                 dataCompra:data_compra,
                 dataInvoice:data_invoice,
                 dataRecebimento:data_recebimento,
                 preco:preco,
-                projeto:{id:projeto_id},
-                fornecedor:{id:fornecedor_id}
+                projeto: { id: parseInt(projeto_id) },
+                fornecedor: { id: parseInt(fornecedor_id) },
+                item: itemIds // Adiciona a lista de itens
             };
 
             // Envia os dados para o backend via PUT
@@ -235,7 +252,7 @@ function carregarCompras() {
                 headers: {
                     'Content-Type': 'application/json',  // Tipo de conteúdo sendo enviado
                 },
-                body: JSON.stringify(fornecedor)  // Converte o objeto para JSON
+                body: JSON.stringify(compra)  // Converte o objeto para JSON
             })
             .then(response => response.json())  // Converte a resposta do backend para JSON
             .then(data => {
