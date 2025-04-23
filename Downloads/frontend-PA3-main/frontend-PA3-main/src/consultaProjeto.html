@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de estoque</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body class="tudo">
+  <div class="div-container gradient-background">
+    <div class="sidebar">
+      <ul>
+        <li><img class="logo-isi-menu" src="../images/image_53.png__486x175_q85_crop_subsampling-2_upscale.png"
+            alt="logo instituto senai de inovação"></li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+        <li><a href="consulta.html">Consulta</a></li>
+        <li><a href="alterar.html">Alterar</a></li>
+        <li><a href="deletar.html">Deletar</a></li>
+        <li><a href="logs.html">Logs</a></li>
+      </ul>
+    </div>
+    <div class="container">
+
+      <a href="consulta.html"> <- voltar </a>
+          <br><br>
+          <h1>Consulta de Projeto</h1>
+          <br><br>
+
+          <table id="tabelaProjetos">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- As linhas serão inseridas aqui -->
+            </tbody>
+          </table>
+<br><br>
+          <form id="alterarForm">
+            <label for="projetoId">Id do projeto para consultar: </label>
+            <input type="text" id="projetoId" name="projetoId" required>
+            <button type="submit" id="alterarBtn">Selecionar</button>
+          </form>
+
+
+          <br><br>
+          <!-- FORM PARA ALTERAR -->
+          <form id="formProjeto" method="POST">
+
+            <h1>Itens do Projeto</h1>
+            <table id="itensProjeto">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nome do item</th>
+                  <th>Quantidade</th>
+                  <th>Tipo</th>
+                  <th>Descrição</th>
+                  <th>Sala</th>
+                  <th>Armario</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <!-- As linhas serão inseridas aqui -->
+              </tbody>
+            </table>
+
+            <script>
+
+              document.getElementById('alterarForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Impede o recarregamento padrão
+                carregarItens(); // Chama a função de carregamento
+              });
+
+              // Função para carregar os itens do backend
+              function carregarProjetos() {
+                fetch(`http://localhost:8080/projeto/buscar`) // URL da API do backend
+                  .then(response => response.json()) // Converte a resposta para JSON
+                  .then(projetos => {
+                    const tbody = document.getElementById('tabelaProjetos').getElementsByTagName('tbody')[0];
+
+                    // Limpa a tabela antes de adicionar os novos dados
+                    tbody.innerHTML = '';
+
+                    projetos.forEach(projeto => {
+                      // Cria uma nova linha
+                      const row = document.createElement('tr');
+
+                      const tdId = document.createElement('td');
+                      tdId.textContent = projeto.id;
+                      row.appendChild(tdId);
+
+                      const tdNome = document.createElement('td');
+                      tdNome.textContent = projeto.nome;
+                      row.appendChild(tdNome);
+
+                      const tdDescricao = document.createElement('td');
+                      tdDescricao.textContent = projeto.descricao;
+                      row.appendChild(tdDescricao);
+
+                      // Adiciona a linha à tabela
+                      tbody.appendChild(row);
+                    });
+                  })
+                  .catch(error => {
+                    console.error('Erro ao carregar os itens:', error);
+                  });
+              }
+
+              function carregarItens() {
+                const projetoId = document.getElementById('projetoId').value; // Obtém o valor do input
+
+                fetch(`http://localhost:8080/conjuntoitens/projeto/${projetoId}`)
+                  .then(response => response.json())
+                  .then(projetosItens => {
+
+
+                    const tbody = document.getElementById('itensProjeto').getElementsByTagName('tbody')[0];
+
+                    tbody.innerHTML = ''; // Limpa a tabela antes de adicionar os novos dados
+                      
+                    // Preenche a tabela com os itens retornados
+                    projetosItens.forEach(projetoItens => {
+                      const row = document.createElement('tr');
+
+                      const tdId = document.createElement('td');
+                      tdId.textContent = projetoItens.item.id;
+                      row.appendChild(tdId);
+
+                      const tdNome = document.createElement('td');
+                      tdNome.textContent = projetoItens.item.nome;
+                      row.appendChild(tdNome);
+
+                      const tdQuantidade = document.createElement('td');
+                      tdQuantidade.textContent = projetoItens.quantidade;
+                      row.appendChild(tdQuantidade);
+
+                      const tdTipo = document.createElement('td');
+                      tdTipo.textContent = projetoItens.item.tipo;
+                      row.appendChild(tdTipo);
+
+                      const tdDescricao = document.createElement('td');
+                      tdDescricao.textContent = projetoItens.item.descricao;
+                      row.appendChild(tdDescricao);
+
+                      const tdSala = document.createElement('td');
+                      tdSala.textContent = projetoItens.localArmazen.sala;
+                      row.appendChild(tdSala);
+
+                      const tdArmario = document.createElement('td');
+                      tdArmario.textContent = projetoItens.localArmazen.armario;
+                      row.appendChild(tdArmario);
+
+                      tbody.appendChild(row); // Adiciona a linha à tabela
+                    });
+                  })
+                  .catch(error => {
+                    console.error('Erro ao carregar os itens:', error);
+                  });
+              }
+
+              // Chama a função para carregar os itens quando a página for carregada
+              window.onload = carregarProjetos;
+            </script>
+</body>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>
