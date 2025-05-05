@@ -1,10 +1,10 @@
 body{
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   color: white;
 }
 .main-content{
   margin-left:250px;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   height: 70vh;
   width: 100vh;
   margin: 100px;
@@ -15,20 +15,15 @@ table{
   width: 800px;
 }
 
-.deletar {
-  background-color: #fff;
-}
-
-.alterar {
-  background-color: darkgreen;
-}
-
-.consulta {
-  background-color: yellow;
+.item:hover {
+  background-color: #606060;
+  color: white;
+  border: none;
 }
 
 .cadastro {
-  background-color: #007BFF;
+  background-color: #ffffff;
+  
 }
 
 /* Contêiner de grid */
@@ -39,27 +34,31 @@ table{
   width: 100%; /* Ocupa toda a largura */
   max-width: 800px; /* Largura máxima do contêiner */
   margin: 0 auto; /* Centraliza a div */
-  padding: 20px;
+  padding: 20px 0;
   height: 400px;
   justify-content: center;
   align-items: center;
 }
 
 label{
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 h1 {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .container{
   padding: 100px;
   margin-left:250px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
 }
 
 h3{
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 /* Estilos para os itens */
@@ -68,16 +67,16 @@ h3{
   padding: 20px;
   text-align: center;
   border-radius: 8px;
-  height: 200px;
+  /*height: 200px;*/
   font-size: xx-large;
-
+  border: 2px solid black;
 }
 
 /* Menu lateral */
 .sidebar {
   height: 100vh; /* 100% da altura da tela */
-  width: 250px; /* Largura do menu */
-  background-color: #333; /* Cor de fundo do menu */
+  width: 300px; /* Largura do menu */
+  background-color: #052561; /* Cor de fundo do menu */
   color: white;
   position: fixed; /* Fixa o menu na lateral */
   top: 0;
@@ -100,19 +99,27 @@ h3{
 }
 
 .sidebar ul li {
-  padding: 25px;
+  padding: 0px;
   text-align: center;
-  font-size:xx-large;
+  font-size:x-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidebar ul li a {
   color: white;
   text-decoration: none;
   display: block;
+  height: 60px;
+  margin: 20px;
+  padding: 10px 40px;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .sidebar ul li a:hover {
-  background-color: #575757; /* Cor de fundo ao passar o mouse */
+  background-color: #ffffff; /* Cor de fundo ao passar o mouse */
+  color: black;
 }
 
 /* Estilos para o conteúdo principal */
@@ -144,6 +151,7 @@ h3{
 
 .logo-isi-menu {
     height: 70px;
+    margin: 20px 0 40px 0 ;
 }
 
 .branco {
@@ -203,6 +211,8 @@ h3{
 
 a{
   text-decoration: none;
+  
+  border-radius: 10px;
 }
 
 .login-container {
@@ -264,3 +274,4 @@ h2 {
     align-items: center;   
     height: 100vh;  
 }
+
