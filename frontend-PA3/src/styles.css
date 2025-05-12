@@ -1,0 +1,285 @@
+body{
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+.main-content{
+  margin-left:250px;
+  background-color: rgb(255, 255, 255);
+  height: 70vh;
+  width: 100vh;
+  margin: 100px;
+  flex: 1;
+}
+
+table{
+  width: 800px;
+}
+
+.item:hover {
+  background-color: #606060;
+  color: white;
+  border: none;
+}
+
+.cadastro {
+  background-color: #ffffff;
+  
+}
+
+/* Contêiner de grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  gap: 20px; /* Espaçamento entre os itens */
+  width: 100%; /* Ocupa toda a largura */
+  max-width: 800px; /* Largura máxima do contêiner */
+  margin: 0 auto; /* Centraliza a div */
+  padding: 20px 0;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+}
+
+label{
+  color: rgb(0, 0, 0);
+}
+
+h1 {
+  color: rgb(0, 0, 0);
+}
+
+.container{
+  padding: 100px;
+  margin-left:250px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+}
+
+.containerbox{
+  padding: 100px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+}
+
+h3{
+  color: rgb(0, 0, 0);
+}
+
+/* Estilos para os itens */
+.item {
+  color: black;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  /*height: 200px;*/
+  font-size: xx-large;
+  border: 2px solid black;
+}
+
+/* Menu lateral */
+.sidebar {
+  height: 100vh; /* 100% da altura da tela */
+  width: 300px; /* Largura do menu */
+  background-color: #052561; /* Cor de fundo do menu */
+  color: white;
+  position: fixed; /* Fixa o menu na lateral */
+  top: 0;
+  left: 0;
+  flex-direction: column; /* Organiza os itens do menu em coluna */
+  justify-content: center; /* Alinha os itens no centro verticalmente */
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar o menu */
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos para os itens do menu */
+.sidebar ul {
+  list-style-type: none; /* Remove os marcadores */
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 0px;
+  text-align: center;
+  font-size:x-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  height: 60px;
+  margin: 20px;
+  padding: 10px 40px;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.sidebar ul li a:hover {
+  background-color: #ffffff; /* Cor de fundo ao passar o mouse */
+  color: black;
+}
+
+/* Estilos para o conteúdo principal */
+.content {
+  margin-left: 250px; /* Deixa espaço para o menu lateral */
+  padding: 20px;
+  flex: 1; /* Ocupa o restante do espaço */
+}
+
+/* h1 {
+  color: #333;
+} */
+
+ .outset {
+    border-style: outset;
+  }
+
+  .tudo {
+    font-family: "Roboto", sans-serif;
+  }
+
+  #h1-home{
+    font-weight: bold;
+  }
+
+.justified-center {
+  text-align: center;
+}
+
+.logo-isi-menu {
+    height: 70px;
+    margin: 20px 0 40px 0 ;
+}
+
+.branco {
+    fill: white;
+    color: white;
+}
+
+.logo-nome-navbar {
+    height: 20px;
+    margin: 0 10px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.interior-cadastro {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#container-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 80%;
+  align-items: center;
+}
+
+.paragrafo-home {
+  font-size: 1.5rem;
+}
+
+.nav-link {
+    font-size:x-large !important;
+}
+
+.round-corner {
+  border-radius: 50px;;
+}
+
+.div-container {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+}
+
+.main-div {
+    background-color: white;
+    width: 480px;
+    height: 640px;
+}
+
+a{
+  text-decoration: none;
+  
+  border-radius: 10px;
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-container a {
+  display: block;
+  text-align: center;
+  color: #007BFF;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+.login-container .btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-container .btn:hover {
+  background-color: #0056b3;
+}
+
+h2 {
+  color:black;
+}
+
+.container-login{
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    height: 100vh;  
+}
+
