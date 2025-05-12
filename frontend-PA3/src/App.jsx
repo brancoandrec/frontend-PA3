@@ -21,7 +21,12 @@ import AlterarFornecedor from './AlterarFornecedor';
 import AlterarItens from './AlterarItens';
 import AlterarLocal from './AlterarLocal';
 import AlterarProjeto from './AlterarProjeto';
-
+import DeletarCompra from './DeletarCompra';
+import DeletarConjuntoItens from './DeletarConjuntoItens';
+import DeletarFornecedor from './DeletarFornecedor';
+import DeletarItens from './DeletarItens';
+import DeletarLocal from './DeletarLocal';
+import DeletarProjeto from './DeletarProjeto';
 
 function App() {
   return (
@@ -49,6 +54,12 @@ function App() {
       <Route path="/AlterarItens" element={<AlterarItens/>} />
       <Route path="/AlterarLocal" element={<AlterarLocal/>} />
       <Route path="/AlterarProjeto" element={<AlterarProjeto/>} />
+      <Route path="/DeletarCompra" element={<DeletarCompra/>} />
+      <Route path="/DeletarConjuntoItens" element={<DeletarConjuntoItens/>} />
+      <Route path="/DeletarFornecedor" element={<DeletarFornecedor/>} />
+      <Route path="/DeletarItens" element={<DeletarItens/>} />
+      <Route path="/DeletarLocal" element={<DeletarLocal/>} />
+      <Route path="/DeletarProjeto" element={<DeletarProjeto/>} />
     </Routes>
   );
 }

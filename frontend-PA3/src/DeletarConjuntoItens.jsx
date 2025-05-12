@@ -1,0 +1,88 @@
+import React, { useEffect, useState } from 'react';
+import './styles.css';
+import Sidebar from './Sidebar';
+
+const DeletarConjuntoItens = () => {
+  const [itens, setItens] = useState([]);
+  const [itemId, setItemId] = useState('');
+
+  const carregarConjuntoItens = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/conjuntoitens/buscar');
+      const data = await response.json();
+      setItens(data);
+    } catch (error) {
+      console.error('Erro ao carregar os itens:', error);
+    }
+  };
+
+  useEffect(() => {
+    carregarConjuntoItens();
+  }, []);
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    try {
+      await fetch(`http://localhost:8080/conjuntoitens/excluir/${itemId}`, {
+        method: 'DELETE',
+      });
+      setItemId('');
+      setTimeout(() => {
+        carregarConjuntoItens();
+      }, 500);
+    } catch (error) {
+      console.error('Erro ao deletar item:', error);
+    }
+  };
+
+  return (
+    <div className="tudo div-container gradient-background">
+      <Sidebar />
+      <div className="container">
+        <br /><br />
+        <h1>Deletar Conjunto Itens</h1>
+        <br /><br />
+        <table className="table" id="tabelaItens">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Quantidade</th>
+              <th>Item</th>
+              <th>Sala</th>
+              <th>Armario</th>
+              <th>Projeto</th>
+            </tr>
+          </thead>
+          <tbody>
+            {itens.map((conjunto, index) => (
+              <tr key={index}>
+                <td>{conjunto.id}</td>
+                <td>{conjunto.quantidade}</td>
+                <td>{conjunto.item?.nome || '-'}</td>
+                <td>{conjunto.localArmazen?.sala || '-'}</td>
+                <td>{conjunto.localArmazen?.armario || '-'}</td>
+                <td>{conjunto.projeto?.nome || '-'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <form id="deleteForm" onSubmit={handleDelete}>
+          <label htmlFor="itemId">ID do Conjunto Itens:</label>
+          <input
+            type="number"
+            id="itemId"
+            name="itemId"
+            required
+            value={itemId}
+            onChange={(e) => setItemId(e.target.value)}
+          />
+          <button type="submit">Deletar</button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default DeletarConjuntoItens;
