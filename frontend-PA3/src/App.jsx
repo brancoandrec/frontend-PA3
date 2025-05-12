@@ -15,6 +15,12 @@ import ConsultaFornecedor from './ConsultaFornecedor';
 import ConsultaItens from './ConsultaItens';
 import ConsultaLocal from './ConsultaLocal';
 import ConsultaProjeto from './ConsultaProjeto';
+import AlterarCompra from './AlterarCompra';
+import AlterarConjuntoItens from './AlterarConjuntoItens';
+import AlterarFornecedor from './AlterarFornecedor';
+import AlterarItens from './AlterarItens';
+import AlterarLocal from './AlterarLocal';
+import AlterarProjeto from './AlterarProjeto';
 
 
 function App() {
@@ -37,6 +43,12 @@ function App() {
       <Route path="/ConsultaItens" element={<ConsultaItens/>} />
       <Route path="/ConsultaLocal" element={<ConsultaLocal/>} />
       <Route path="/ConsultaProjeto" element={<ConsultaProjeto/>} />
+      <Route path="/AlterarCompra" element={<AlterarCompra/>} />
+      <Route path="/AlterarConjuntoItens" element={<AlterarConjuntoItens/>} />
+      <Route path="/AlterarFornecedor" element={<AlterarFornecedor/>} />
+      <Route path="/AlterarItens" element={<AlterarItens/>} />
+      <Route path="/AlterarLocal" element={<AlterarLocal/>} />
+      <Route path="/AlterarProjeto" element={<AlterarProjeto/>} />
     </Routes>
   );
 }
