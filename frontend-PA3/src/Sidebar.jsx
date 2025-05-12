@@ -9,8 +9,8 @@ function Sidebar() {
         <li>
           <img className="logo-isi-menu" src={logo} alt="Logo Instituto Senai de Inovação" />
         </li>
-        <li><Link to="/cadastro">Cadastro</Link></li>
-        <li><Link to="/consulta">Consulta</Link></li>
+        <li><Link to="/cadastro">Cadastrar</Link></li>
+        <li><Link to="/consulta">Consultar</Link></li>
         <li><Link to="/alterar">Alterar</Link></li>
         <li><Link to="/deletar">Deletar</Link></li>
       </ul>
