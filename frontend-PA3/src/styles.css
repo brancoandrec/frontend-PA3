@@ -4,14 +4,15 @@ body{
   height: 100%;
   margin: 0;
 }
-.main-content{
+
+/*.main-content{
   margin-left:250px;
   background-color: rgb(255, 255, 255);
   height: 70vh;
   width: 100vh;
   margin: 100px;
   flex: 1;
-}
+}*/
 
 table{
   width: 800px;
@@ -40,6 +41,20 @@ table{
   justify-content: center;
   align-items: center;
 }
+
+/* Adicionando sombra no seu CSS global para garantir que a sombra apareça */
+.shadow-lg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-xl {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-2xl {
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
 
 label{
   color: rgb(0, 0, 0);
