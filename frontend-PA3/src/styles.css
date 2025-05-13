@@ -28,14 +28,13 @@ table{
   
 }
 
-/* Contêiner de grid */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  gap: 20px; /* Espaçamento entre os itens */
-  width: 100%; /* Ocupa toda a largura */
-  max-width: 800px; /* Largura máxima do contêiner */
-  margin: 0 auto; /* Centraliza a div */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; 
+  width: 100%; 
+  max-width: 800px; 
+  margin: 0 auto; 
   padding: 20px 0;
   height: 400px;
   justify-content: center;
@@ -70,7 +69,6 @@ h3{
   color: rgb(0, 0, 0);
 }
 
-/* Estilos para os itens */
 .item {
   color: black;
   padding: 20px;
@@ -84,7 +82,6 @@ h3{
   align-items: center;
 }
 
-/* Menu lateral */
 .sidebar {
   height: 100vh; 
   width: 300px; 
@@ -103,9 +100,8 @@ h3{
   margin-bottom: 20px;
 }
 
-/* Estilos para os itens do menu */
 .sidebar ul {
-  list-style-type: none; /* Remove os marcadores */
+  list-style-type: none; 
   padding: 0;
 }
 
@@ -129,39 +125,34 @@ h3{
 }
 
 .sidebar ul li a:hover {
-  background-color: #ffffff; /* Cor de fundo ao passar o mouse */
+  background-color: #ffffff; 
   color: black;
 }
 
-/* Estilos para o conteúdo principal */
 .content {
-  margin-left: 250px; /* Deixa espaço para o menu lateral */
+  margin-left: 250px; 
   padding: 20px;
-  flex: 1; /* Ocupa o restante do espaço */
+  flex: 1; 
 }
 
-/* h1 {
-  color: #333;
-} */
+.outset {
+  border-style: outset;
+}
 
- .outset {
-    border-style: outset;
-  }
+.tudo {
+  font-family: "Roboto", sans-serif;
+}
 
-  .tudo {
-    font-family: "Roboto", sans-serif;
-  }
-
-  #h1-home{
-    font-weight: bold;
-  }
+#h1-home{
+  font-weight: bold;
+}
 
 .justified-center {
   text-align: center;
 }
 
 .logo-isi-menu {
-    height: 100px;
+    height: 70px;
     margin: 0px;
 }
 
@@ -290,12 +281,12 @@ h2 {
 }
 
 .site-header {
-  background-color: #1b2635;
+  background-color: #052561;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 32px;
+  padding: 5px 32px;
   font-family: Arial, sans-serif;
   top: 0;
   right: 0;
@@ -321,7 +312,7 @@ h2 {
 
 /* Estilos do footer */
 .footer {
-  background-color: #1b2635;
+  background-color: #606060;
   color: #fff;
   padding: 20px 0;
   text-align: center;

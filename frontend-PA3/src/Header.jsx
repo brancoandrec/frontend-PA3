@@ -9,7 +9,7 @@ import './styles.css';
 const Header = () => {
   return (
     <header className="site-header flex justify-between items-center w-full px-6">
-  <div className="header-left flex flex-col items-center space-y-2">
+  <div className="header-left flex flex-col items-center space-y-2 p-6">
     <img className="logo-senai-menu" src={logosesi} alt="Logo Sesi" />
     <img className="logo-senai-menu" src={logosenai} alt="Logo Senai" />
   </div>
