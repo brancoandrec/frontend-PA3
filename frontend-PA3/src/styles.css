@@ -1,6 +1,8 @@
 body{
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
+  height: 100%;
+  margin: 0;
 }
 .main-content{
   margin-left:250px;
@@ -50,7 +52,6 @@ h1 {
 
 .container{
   padding: 100px;
-  margin-left:250px;
   flex-direction: column;
   display: flex;
   justify-content: center; 
@@ -85,17 +86,16 @@ h3{
 
 /* Menu lateral */
 .sidebar {
-  height: 100vh; /* 100% da altura da tela */
-  width: 300px; /* Largura do menu */
-  background-color: #052561; /* Cor de fundo do menu */
+  height: 100vh; 
+  width: 300px; 
+  background-color: #052561; 
   color: white;
-  position: fixed; /* Fixa o menu na lateral */
   top: 0;
   left: 0;
-  flex-direction: column; /* Organiza os itens do menu em coluna */
-  justify-content: center; /* Alinha os itens no centro verticalmente */
+  flex-direction: column; 
+  justify-content: center; 
   padding-top: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar o menu */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
 }
 
 .sidebar h2 {
@@ -161,8 +161,12 @@ h3{
 }
 
 .logo-isi-menu {
-    height: 70px;
-    margin: 20px 0 40px 0 ;
+    height: 100px;
+    margin: 0px;
+}
+
+.logo-senai-menu {
+  height: 30px;
 }
 
 .branco {
@@ -210,7 +214,6 @@ h3{
 
 .div-container {
     display: flex;
-    justify-content: center;
     align-items: top;
 }
 
@@ -286,3 +289,67 @@ h2 {
     height: 100vh;  
 }
 
+.site-header {
+  background-color: #1b2635;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 32px;
+  font-family: Arial, sans-serif;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header-logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.header-nav a:hover {
+  color: #00bcd4;
+}
+
+/* Estilos do footer */
+.footer {
+  background-color: #1b2635;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Conteúdo do footer */
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Links do footer */
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #00bcd4;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}

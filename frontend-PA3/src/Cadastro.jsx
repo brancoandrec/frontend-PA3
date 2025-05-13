@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import Sidebar from './Sidebar'; 
+import Sidebar from './Sidebar';
+import Footer from './Footer';
 import './styles.css'
 
 function Cadastro() {
