@@ -3,7 +3,7 @@ import './styles.css';
 
 function Sidebar() {
   return (
-    <div className="flex bg-gray-300 h-screen">
+    <div className="flex  h-screen">
       <div className="w-64  border-r border-gray-200 shadow-lg p-6">
         <ul>
           <li className="mb-6">

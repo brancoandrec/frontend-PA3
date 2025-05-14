@@ -8,7 +8,7 @@ function Footer() {
   <div className="footer-content flex flex-col items-center space-y-4">
 
     {/* Logos lado a lado */}
-    <div className="flex space-x-4">
+    <div className="flex space-x-4 m-5">
       <img className="h-10" src={logosesi} alt="Logo Sesi" />
       <img className="h-10" src={logosenai} alt="Logo Senai" />
     </div>

@@ -6,48 +6,50 @@ import './styles.css'
 function Cadastro() {
 
   return (
-    <>
-      <div className="div-container gradient-background min-h-screen flex">
+   <>
+  <div className="div-container gradient-background min-h-screen flex">
+    {/* Sidebar com largura fixa */}
+    <div className="w-64">
       <Sidebar />
-    <div className="flex justify-center items-start min-h-screen w-full">
-  <div className="grid grid-cols-3 grid-rows-2 gap-4 w-[700px] h-[500px] p-4">
-    <Link to="/cadastroCompra" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
-      <span className="material-icons text-blue-500 text-4xl">shopping_cart</span>
-      <span className="text-lg font-semibold">Cadastrar Compra</span>
-    </Link>
+    </div>
 
-    <Link to="/cadastroItens" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
-      <span className="material-icons text-green-500 text-4xl">inventory</span>
-      <span className="text-lg font-semibold">Cadastrar Itens</span>
-    </Link>
+    {/* Conteúdo central com flex-grow */}
+    <div className="absolute top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2">
+      <div className="grid grid-cols-3 grid-rows-2 gap-4 w-[700px] h-[500px]">
+        <Link to="/cadastroCompra" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
+          <span className="material-icons text-blue-500 text-4xl">shopping_cart</span>
+          <span className="font-semibold">Cadastrar Compra</span>
+        </Link>
 
-    <Link to="/cadastroFornecedor" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
-      <span className="material-icons text-yellow-500 text-4xl">store</span>
-      <span className="text-lg font-semibold">Cadastrar Fornecedor</span>
-    </Link>
+        <Link to="/cadastroItens" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
+          <span className="material-icons text-green-500 text-4xl">inventory</span>
+          <span className="font-semibold">Cadastrar Itens</span>
+        </Link>
 
-    <Link to="/cadastroProjeto" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
-      <span className="material-icons text-purple-500 text-4xl">work</span>
-      <span className="text-lg font-semibold">Cadastrar Projeto</span>
-    </Link>
+        <Link to="/cadastroFornecedor" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
+          <span className="material-icons text-yellow-500 text-4xl">store</span>
+          <span className="font-semibold">Cadastrar Fornecedor</span>
+        </Link>
 
-    <Link to="/cadastroLocal" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
-      <span className="material-icons text-red-500 text-4xl">place</span>
-      <span className="text-lg font-semibold">Cadastrar Local</span>
-    </Link>
+        <Link to="/cadastroProjeto" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
+          <span className="material-icons text-purple-500 text-4xl">work</span>
+          <span className="font-semibold">Cadastrar Projeto</span>
+        </Link>
 
-    <Link to="/cadastroConjuntoItens" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
-      <span className="material-icons text-indigo-500 text-4xl">layers</span>
-      <span className="text-lg font-semibold">Cadastrar Conjunto Itens</span>
-    </Link>
+        <Link to="/cadastroLocal" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
+          <span className="material-icons text-red-500 text-4xl">place</span>
+          <span className="font-semibold">Cadastrar Local</span>
+        </Link>
+
+        <Link to="/cadastroConjuntoItens" className="flex flex-col items-center justify-center gap-2 bg-white p-6 rounded-xl shadow-2xl hover:bg-gray-100 transition z-10">
+          <span className="material-icons text-indigo-500 text-4xl">layers</span>
+          <span className="font-semibold text-center">Cadastrar <br />Conjunto Itens</span>
+        </Link>
+      </div>
+    </div>
   </div>
-</div>
+</>
 
-
-
-
-</div>
-    </>
   )
 }
 
