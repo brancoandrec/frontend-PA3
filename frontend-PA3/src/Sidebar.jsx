@@ -4,7 +4,7 @@ import './styles.css';
 function Sidebar() {
   return (
     <div className="flex  h-screen">
-      <div className="w-64  border-r border-gray-200 shadow-lg p-6">
+      <div className="w-50  border-r border-gray-200 shadow-lg p-6">
         <ul>
           <li className="mb-6">
             <Link to="/cadastro" className="flex items-center text-gray-700 hover:text-blue-500">
@@ -28,6 +28,12 @@ function Sidebar() {
             <Link to="/deletar" className="flex items-center text-gray-700 hover:text-blue-500">
               <span className="material-icons mr-4">close</span>
               Deletar
+            </Link>
+          </li>
+          <li className="mb-6">
+            <Link to="/logs" className="flex items-center text-gray-700 hover:text-blue-500">
+              <span className="material-icons mr-4">sort</span>
+              Logs
             </Link>
           </li>
         </ul>

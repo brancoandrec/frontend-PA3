@@ -68,7 +68,6 @@ h1 {
   padding: 100px;
   flex-direction: column;
   display: flex;
-  justify-content: center; 
   align-items: center;     
 }
 
@@ -155,6 +154,10 @@ h3{
 
 .tudo {
   font-family: "Roboto", sans-serif;
+}
+
+.min-h-screen {
+  min-height: 150vh;
 }
 
 #h1-home{

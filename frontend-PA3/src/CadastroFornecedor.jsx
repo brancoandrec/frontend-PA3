@@ -44,17 +44,14 @@ function CadastroFornecedor() {
   };
 
   return (
-    <div className="div-container gradient-background">
-      <Sidebar />
-      <div className="container mt-5">
-        <br /><br />
-        <h1>Cadastro de Fornecedor</h1>
-        <br /><br />
-
-        <form onSubmit={handleSubmit}>
-          <h3>Fornecedor</h3>
-
-          <label htmlFor="name">Nome:</label>
+    <div className="div-container gradient-background min-h-screen flex">
+  <Sidebar />
+  <div className="flex-1 flex justify-center items-start mt-20">
+    <div className="w-1/2">
+      <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Fornecedor</h1>
+      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-lg space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="name">Nome:</label>
           <input
             type="text"
             id="name"
@@ -62,10 +59,11 @@ function CadastroFornecedor() {
             required
             value={formData.name}
             onChange={handleChange}
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <br /><br />
-
-          <label htmlFor="endereco">Endereço:</label>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="endereco">Endereço:</label>
           <input
             type="text"
             id="endereco"
@@ -73,10 +71,11 @@ function CadastroFornecedor() {
             required
             value={formData.endereco}
             onChange={handleChange}
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <br /><br />
-
-          <label htmlFor="telefone">Telefone:</label>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="telefone">Telefone:</label>
           <input
             type="text"
             id="telefone"
@@ -84,13 +83,20 @@ function CadastroFornecedor() {
             required
             value={formData.telefone}
             onChange={handleChange}
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <br /><br />
-
-          <button type="submit">Enviar</button>
-        </form>
-      </div>
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          Enviar
+        </button>
+      </form>
     </div>
+  </div>
+</div>
+
   );
 }
 

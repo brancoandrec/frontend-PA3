@@ -32,15 +32,14 @@ const CadastroProjeto = () => {
   };
 
   return (
-    <div className="div-container gradient-background">
-      <Sidebar />
-      <div className="container">
-        <br /><br />
-        <h1>Cadastro de Projeto</h1>
-        <br /><br />
-        <form onSubmit={handleSubmit}>
-          <h3>Projeto</h3>
-          <label htmlFor="name">Nome:</label>
+    <div className="div-container gradient-background min-h-screen flex">
+  <Sidebar />
+  <div className="flex-1 flex justify-center items-start mt-20">
+    <div className="w-1/2">
+      <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Projeto</h1>
+      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-lg space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="name">Nome:</label>
           <input
             type="text"
             id="name"
@@ -48,18 +47,23 @@ const CadastroProjeto = () => {
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             required
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <br /><br />
-          <label htmlFor="descricao">Descrição:</label>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="descricao">Descrição:</label>
           <textarea
             id="descricao"
             name="descricao"
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
             required
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            rows={4}
           />
-          <br /><br />
-          <label htmlFor="dataInicio">Data de início:</label>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="dataInicio">Data de início:</label>
           <input
             type="date"
             id="dataInicio"
@@ -67,12 +71,20 @@ const CadastroProjeto = () => {
             value={dataInicio}
             onChange={(e) => setDataInicio(e.target.value)}
             required
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <br /><br />
-          <button type="submit">Enviar</button>
-        </form>
-      </div>
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          Enviar
+        </button>
+      </form>
     </div>
+  </div>
+</div>
+
   );
 };
 

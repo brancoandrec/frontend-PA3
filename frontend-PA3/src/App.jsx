@@ -27,6 +27,7 @@ import DeletarFornecedor from './DeletarFornecedor';
 import DeletarItens from './DeletarItens';
 import DeletarLocal from './DeletarLocal';
 import DeletarProjeto from './DeletarProjeto';
+import Logs from './Logs';
 
 function App() {
   return (
@@ -42,24 +43,25 @@ function App() {
       <Route path="/cadastroLocal" element={<CadastroLocal/>} />
       <Route path="/cadastroProjeto" element={<CadastroProjeto/>} />
       <Route path="/cadastroConjuntoItens" element={<CadastroConjuntoItens/>} />
-      <Route path="/ConsultaCompra" element={<ConsultaCompra/>} />
-      <Route path="/ConsultaConjuntoItens" element={<ConsultaConjuntoItens/>} />
-      <Route path="/ConsultaFornecedor" element={<ConsultaFornecedor/>} />
-      <Route path="/ConsultaItens" element={<ConsultaItens/>} />
-      <Route path="/ConsultaLocal" element={<ConsultaLocal/>} />
-      <Route path="/ConsultaProjeto" element={<ConsultaProjeto/>} />
-      <Route path="/AlterarCompra" element={<AlterarCompra/>} />
-      <Route path="/AlterarConjuntoItens" element={<AlterarConjuntoItens/>} />
-      <Route path="/AlterarFornecedor" element={<AlterarFornecedor/>} />
-      <Route path="/AlterarItens" element={<AlterarItens/>} />
-      <Route path="/AlterarLocal" element={<AlterarLocal/>} />
-      <Route path="/AlterarProjeto" element={<AlterarProjeto/>} />
-      <Route path="/DeletarCompra" element={<DeletarCompra/>} />
-      <Route path="/DeletarConjuntoItens" element={<DeletarConjuntoItens/>} />
-      <Route path="/DeletarFornecedor" element={<DeletarFornecedor/>} />
-      <Route path="/DeletarItens" element={<DeletarItens/>} />
-      <Route path="/DeletarLocal" element={<DeletarLocal/>} />
-      <Route path="/DeletarProjeto" element={<DeletarProjeto/>} />
+      <Route path="/consultaCompra" element={<ConsultaCompra/>} />
+      <Route path="/consultaConjuntoItens" element={<ConsultaConjuntoItens/>} />
+      <Route path="/consultaFornecedor" element={<ConsultaFornecedor/>} />
+      <Route path="/consultaItens" element={<ConsultaItens/>} />
+      <Route path="/consultaLocal" element={<ConsultaLocal/>} />
+      <Route path="/consultaProjeto" element={<ConsultaProjeto/>} />
+      <Route path="/alterarCompra" element={<AlterarCompra/>} />
+      <Route path="/alterarConjuntoItens" element={<AlterarConjuntoItens/>} />
+      <Route path="/alterarFornecedor" element={<AlterarFornecedor/>} />
+      <Route path="/alterarItens" element={<AlterarItens/>} />
+      <Route path="/alterarLocal" element={<AlterarLocal/>} />
+      <Route path="/alterarProjeto" element={<AlterarProjeto/>} />
+      <Route path="/deletarCompra" element={<DeletarCompra/>} />
+      <Route path="/deletarConjuntoItens" element={<DeletarConjuntoItens/>} />
+      <Route path="/deletarFornecedor" element={<DeletarFornecedor/>} />
+      <Route path="/deletarItens" element={<DeletarItens/>} />
+      <Route path="/deletarLocal" element={<DeletarLocal/>} />
+      <Route path="/deletarProjeto" element={<DeletarProjeto/>} />
+      <Route path="/logs" element={<Logs/>} />
     </Routes>
   );
 }
