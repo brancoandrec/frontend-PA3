@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './styles.css';
+import Sidebar from './Sidebar';
 
 const ConsultaConjuntoItens = () => {
   const [conjuntoItens, setConjuntoItens] = useState([]);
@@ -21,28 +22,10 @@ const ConsultaConjuntoItens = () => {
 
   return (
     <div className="div-container gradient-background">
-      <div className="sidebar">
-        <ul>
-          <li>
-            <img
-              className="logo-isi-menu"
-              src="../images/image_53.png__486x175_q85_crop_subsampling-2_upscale.png"
-              alt="logo instituto senai de inovação"
-            />
-          </li>
-          <li><a href="invoice.html">Invoice</a></li>
-          <li><a href="cadastro.html">Cadastro</a></li>
-          <li><a href="consulta.html">Consulta</a></li>
-          <li><a href="alterar.html">Alterar</a></li>
-          <li><a href="deletar.html">Deletar</a></li>
-        </ul>
-      </div>
+     <Sidebar />
 
       <div className="container">
-        <br /><br />
-        <h1>Consulta de Conjunto Itens</h1>
-        <br /><br />
-
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Conjunto de Itens</h1>
         <table id="tabelaConjuntoItens" className="table">
           <thead>
             <tr>

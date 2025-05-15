@@ -34,9 +34,7 @@ const DeletarItem = () => {
     <div className="tudo div-container gradient-background">
       <Sidebar />
       <div className="container">
-        <br /><br />
-        <h1>Deletar Itens</h1>
-        <br /><br />
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Itens</h1>
         <table className="table" id="tabelaItens">
           <thead>
             <tr>
@@ -58,18 +56,28 @@ const DeletarItem = () => {
           </tbody>
         </table>
         <br /><br />
-        <form onSubmit={handleDelete} id="deleteForm">
-          <label htmlFor="itemId">ID do Item:</label>
-          <input
-            type="number"
-            id="itemId"
-            name="itemId"
-            value={itemId}
-            onChange={(e) => setItemId(e.target.value)}
-            required
-          />
-          <button type="submit">Deletar</button>
-        </form>
+        <form onSubmit={handleDelete} id="deleteForm" className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-md mx-auto mt-8">
+  <div>
+    <label htmlFor="itemId" className="block text-sm font-medium text-gray-700 mb-1">
+      ID do Item:
+    </label>
+    <input
+      type="number"
+      id="itemId"
+      name="itemId"
+      value={itemId}
+      onChange={(e) => setItemId(e.target.value)}
+      required
+      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+  <button
+    type="submit"
+    className="w-full bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-red-700 transition"
+  >
+    Deletar
+  </button>
+</form>
       </div>
     </div>
   );

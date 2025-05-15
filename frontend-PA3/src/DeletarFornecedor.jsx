@@ -35,10 +35,7 @@ const DeletarFornecedor = () => {
       <div className="div-container gradient-background">
         <Sidebar />
         <div className="container">
-          <br /><br />
-          <h1>Deletar Fornecedor</h1>
-          <br /><br />
-
+          <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Fornecedor</h1>
           <table className="table" id="tabelaFornecedores">
             <thead>
               <tr>
@@ -61,18 +58,34 @@ const DeletarFornecedor = () => {
           </table>
 
           <br /><br />
-          <form id="deleteForm" onSubmit={handleSubmit}>
-            <label htmlFor="fornecedorId">ID do fornecedor:</label>
-            <input
-              type="number"
-              id="fornecedorId"
-              name="fornecedorId"
-              required
-              value={fornecedorId}
-              onChange={(e) => setFornecedorId(e.target.value)}
-            />
-            <button type="submit">Deletar</button>
-          </form>
+          <form
+  id="deleteForm"
+  onSubmit={handleSubmit}
+  className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-md mx-auto mt-8">
+  <div>
+    <label
+      htmlFor="fornecedorId"
+      className="block text-sm font-medium text-gray-700 mb-1"
+    >
+      ID do fornecedor:
+    </label>
+    <input
+      type="number"
+      id="fornecedorId"
+      name="fornecedorId"
+      required
+      value={fornecedorId}
+      onChange={(e) => setFornecedorId(e.target.value)}
+      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+  <button
+    type="submit"
+    className="w-full bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-red-700 transition"
+  >
+    Deletar
+  </button>
+</form>
         </div>
       </div>
     </div>

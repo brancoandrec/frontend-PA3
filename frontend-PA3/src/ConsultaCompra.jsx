@@ -24,9 +24,7 @@ const ConsultaCompra = () => {
     <div className="div-container gradient-background">
       <Sidebar />
       <div className="container">
-        <br /><br />
-        <h1>Consulta de Compra</h1>
-        <br /><br />
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Compra</h1>
         <table id="tabelaCompras">
           <thead>
             <tr>

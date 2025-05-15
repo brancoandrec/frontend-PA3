@@ -17,10 +17,7 @@ const ConsultaItens = () => {
      <Sidebar />
 
       <div className="container">
-        <br /><br />
-        <h1>Consulta de Itens</h1>
-        <br /><br />
-
+       <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Itens</h1>
         <table id="tabelaItens" className="table">
           <thead>
             <tr>

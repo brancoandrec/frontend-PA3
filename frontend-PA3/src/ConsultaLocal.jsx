@@ -17,10 +17,7 @@ const ConsultaLocal = () => {
       <Sidebar />
 
       <div className="container">
-        <br /><br />
-        <h1>Consulta de Local</h1>
-        <br /><br />
-
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Local</h1>
         <table id="tabelaLocais" className="table">
           <thead>
             <tr>

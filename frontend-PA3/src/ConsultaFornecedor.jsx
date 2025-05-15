@@ -17,10 +17,7 @@ const ConsultaFornecedor = () => {
       <Sidebar />
 
       <div className="container">
-        <br /><br />
-        <h1>Consulta de Fornecedor</h1>
-        <br /><br />
-
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Fornecedor</h1>
         <table id="tabelaFornecedor" className="table">
           <thead>
             <tr>

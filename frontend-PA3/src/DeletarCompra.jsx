@@ -34,8 +34,8 @@ export default function DeletarCompra() {
     <div className="div-container gradient-background tudo">
       <Sidebar />
       <div className="container">
-        <br /><br />
-        <table id="tabelaCompras" className="table">
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Compra</h1>
+          <table id="tabelaCompras" className="table">
           <thead>
             <tr>
               <th>ID</th>
@@ -55,21 +55,29 @@ export default function DeletarCompra() {
             ))}
           </tbody>
         </table>
+        <form onSubmit={handleDelete} className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-md mx-auto mt-8">
+  <div>
+    <label htmlFor="compraId" className="block text-sm font-medium text-gray-700 mb-1">
+      ID da compra:
+    </label>
+    <input
+      type="number"
+      id="compraId"
+      name="compraId"
+      required
+      value={compraId}
+      onChange={(e) => setCompraId(e.target.value)}
+      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+  <button
+    type="submit"
+    className="w-full bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-red-700 transition"
+  >
+    Deletar
+  </button>
+</form>
 
-        <h1>Deletar Compra</h1>
-        <br /><br />
-        <form onSubmit={handleDelete}>
-          <label htmlFor="compraId">ID da compra:</label>
-          <input
-            type="number"
-            id="compraId"
-            name="compraId"
-            required
-            value={compraId}
-            onChange={(e) => setCompraId(e.target.value)}
-          />
-          <button type="submit">Deletar</button>
-        </form>
       </div>
     </div>
   );

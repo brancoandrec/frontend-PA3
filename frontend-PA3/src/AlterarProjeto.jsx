@@ -59,37 +59,46 @@ export default function AlterarProjeto() {
   };
 
   return (
-    <div className="div-container gradient-background tudo">
-      <Sidebar />
-      <div className="container">
-        <br /><br />
-        <h1>Alterar Projeto</h1>
-        <br /><br />
+    <div className="tudo div-container gradient-background">
+  <Sidebar />
+  <div className="flex-1 flex justify-center items-start mt-20">
+    <div className="w-1/2">
+      <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Projeto</h1>
 
-        <table id="tabelaProjetos" className="table table-bordered">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Descrição</th>
-              <th>Data de Início</th>
+      <table id="tabelaProjetos" className="table table-bordered w-full mb-10">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Data de Início</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projetos.map((projeto) => (
+            <tr key={projeto.id}>
+              <td>{projeto.id}</td>
+              <td>{projeto.nome}</td>
+              <td>{projeto.descricao}</td>
+              <td>{projeto.dataInicio}</td>
             </tr>
-          </thead>
-          <tbody>
-            {projetos.map((projeto) => (
-              <tr key={projeto.id}>
-                <td>{projeto.id}</td>
-                <td>{projeto.nome}</td>
-                <td>{projeto.descricao}</td>
-                <td>{projeto.dataInicio}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          ))}
+        </tbody>
+      </table>
 
-        <br /><br />
-        <form onSubmit={handleBuscarProjeto}>
-          <label htmlFor="projetoId">ID do projeto para alterar: </label>
+      <form
+        onSubmit={handleBuscarProjeto}
+        className="bg-white p-6 rounded-xl shadow-lg space-y-4 mb-8"
+      >
+        <h3 className="text-lg font-semibold">Buscar Projeto para Alteração</h3>
+
+        <div>
+          <label
+            htmlFor="projetoId"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            ID do projeto para alterar:
+          </label>
           <input
             type="number"
             id="projetoId"
@@ -97,16 +106,32 @@ export default function AlterarProjeto() {
             value={projetoId}
             onChange={(e) => setProjetoId(e.target.value)}
             required
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <button type="submit" id="alterarBtn">
-            Alterar
-          </button>
-        </form>
+        </div>
 
-        <br /><br />
-        <form onSubmit={handleAlterarProjeto}>
-          <h3>Projeto</h3>
-          <label htmlFor="name">Nome:</label>
+        <button
+          type="submit"
+          id="alterarBtn"
+          className="w-full bg-yellow-500 text-white font-semibold py-2 rounded-md hover:bg-yellow-600 transition"
+        >
+          Alterar
+        </button>
+      </form>
+
+      <form
+        onSubmit={handleAlterarProjeto}
+        className="bg-white p-6 rounded-xl shadow-lg space-y-4"
+      >
+        <h3 className="text-xl font-semibold mb-4">Projeto</h3>
+
+        <div>
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Nome:
+          </label>
           <input
             type="text"
             id="name"
@@ -114,18 +139,34 @@ export default function AlterarProjeto() {
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             required
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <br /><br />
-          <label htmlFor="descricao">Descrição:</label>
+        </div>
+
+        <div>
+          <label
+            htmlFor="descricao"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Descrição:
+          </label>
           <textarea
             id="descricao"
             name="descricao"
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
             required
+            className="w-full border border-gray-500 rounded-md p-2 h-24 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
-          <br /><br />
-          <label htmlFor="dataInicio">Data de início:</label>
+        </div>
+
+        <div>
+          <label
+            htmlFor="dataInicio"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Data de início:
+          </label>
           <input
             type="date"
             id="dataInicio"
@@ -133,13 +174,22 @@ export default function AlterarProjeto() {
             value={dataInicio}
             onChange={(e) => setDataInicio(e.target.value)}
             required
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <br /><br />
-          <button type="submit" id="enviarBtn">
-            Enviar
-          </button>
-        </form>
-      </div>
+        </div>
+
+        <button
+          type="submit"
+          id="enviarBtn"
+          className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          Enviar
+        </button>
+      </form>
     </div>
+  </div>
+</div>
+
+
   );
 }

@@ -26,9 +26,7 @@ const Logs = () => {
     <div className="div-container gradient-background">
         <Sidebar />
       <div className="container">
-        <br /><br />
-        <h1>Consulta de Logs</h1>
-        <br /><br />
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Logs</h1>
 
         <table className="table" id="tabelaCompras">
           <thead>

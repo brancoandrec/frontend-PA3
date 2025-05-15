@@ -30,10 +30,7 @@ const ConsultaProjeto = () => {
     <div className="div-container gradient-background">
       <Sidebar />
       <div className="container">
-        <br /><br />
-        <h1>Consulta de Projeto</h1>
-        <br /><br />
-
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Projeto</h1>
         <table id="tabelaProjetos" className="table">
           <thead>
             <tr>
@@ -53,12 +50,31 @@ const ConsultaProjeto = () => {
           </tbody>
         </table>
         <br /><br />
-        <form id="alterarForm" onSubmit={handleSubmit}>
-          <label htmlFor="projetoId">Id do projeto para consultar: </label>
-          <input type="text" id="projetoId" name="projetoId" required />
-          <button type="submit" id="alterarBtn">Selecionar</button>
-        </form>
-
+        <form
+  id="alterarForm"
+  onSubmit={handleSubmit}
+  className="bg-white p-6 rounded-xl shadow-lg space-y-4 mt-8 w-full max-w-md mx-auto">
+  <div>
+    <label
+      htmlFor="projetoId"
+      className="block text-sm font-medium text-gray-700 mb-1">
+      ID do Projeto para consultar:
+    </label>
+    <input
+      type="text"
+      id="projetoId"
+      name="projetoId"
+      required
+      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+  <button
+    type="submit"
+    id="alterarBtn"
+    className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition">
+      Selecionar
+      </button>
+      </form>
         <br /><br />
         <form id="formProjeto" method="POST">
           <h1>Itens do Projeto</h1>

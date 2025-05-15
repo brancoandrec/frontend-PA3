@@ -35,10 +35,7 @@ function DeletarLocal() {
     <div className="tudo div-container gradient-background">
       <Sidebar />
       <div className="container mt-4">
-        <br /><br />
-        <h1>Deletar Local</h1>
-        <br />
-
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Local</h1>
         <table className="table" id="tabelaLocais">
           <thead>
             <tr>
@@ -58,18 +55,34 @@ function DeletarLocal() {
           </tbody>
         </table>
 
-        <form id="deleteForm" onSubmit={handleSubmit}>
-          <label htmlFor="localId">ID do local:</label>
-          <input
-            type="number"
-            id="localId"
-            name="localId"
-            value={localId}
-            onChange={(e) => setLocalId(e.target.value)}
-            required
-          />
-          <button type="submit" className="btn btn-danger ms-2">Deletar</button>
-        </form>
+        <form
+  id="deleteForm"
+  onSubmit={handleSubmit}
+  className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-md mx-auto mt-8">
+  <div>
+    <label
+      htmlFor="localId"
+      className="block text-sm font-medium text-gray-700 mb-1"
+    >
+      ID do local:
+    </label>
+    <input
+      type="number"
+      id="localId"
+      name="localId"
+      value={localId}
+      onChange={(e) => setLocalId(e.target.value)}
+      required
+      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+  <button
+    type="submit"
+    className="w-full bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-red-700 transition"
+  >
+    Deletar
+  </button>
+</form>
       </div>
     </div>
   );
