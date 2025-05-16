@@ -24,21 +24,21 @@ const ConsultaConjuntoItens = () => {
     <div className="div-container gradient-background">
      <Sidebar />
 
-      <div className="container">
+      <div className="container container-conjitens">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Conjunto de Itens</h1>
-        <table id="tabelaConjuntoItens" className="table">
+        <table id="tabelaConjuntoItens" className="!w-auto">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Quantidade</th>
-              <th>Item</th>
-              <th>Tipo do item</th>
-              <th>Descrição do item</th>
-              <th>Sala</th>
-              <th>Armario</th>
-              <th>Nome do projeto</th>
-              <th>Descrição do projeto</th>
-              <th>Data de ínicio do projeto</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Quantidade</th>
+              <th className="text-left">Item</th>
+              <th className="text-left">Tipo do item</th>
+              <th className="text-left">Descrição do item</th>
+              <th className="text-left">Sala</th>
+              <th className="text-left">Armario</th>
+              <th className="text-left">Nome do projeto</th>
+              <th className="text-left">Descrição do projeto</th>
+              <th className="text-left">Data de ínicio do projeto</th>
             </tr>
           </thead>
           <tbody>

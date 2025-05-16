@@ -21,10 +21,10 @@ const ConsultaItens = () => {
         <table id="tabelaItens" className="table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Descrição</th>
-              <th>Tipo</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Nome</th>
+               <th className="text-left">Descrição</th>
+               <th className="text-left">Tipo</th>
             </tr>
           </thead>
           <tbody>

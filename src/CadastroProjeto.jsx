@@ -51,7 +51,7 @@ const CadastroProjeto = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="descricao">Descrição:</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1 " htmlFor="descricao">Descrição:</label>
           <textarea
             id="descricao"
             name="descricao"

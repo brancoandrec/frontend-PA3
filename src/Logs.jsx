@@ -31,11 +31,11 @@ const Logs = () => {
         <table className="table" id="tabelaCompras">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Método</th>
-              <th>Classe</th>
-              <th>Nome Método</th>
-              <th>Timestamp</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Método</th>
+              <th className="text-left">Classe</th>
+              <th className="text-left">Nome Método</th>
+              <th className="text-left">Timestamp</th>
             </tr>
           </thead>
           <tbody>

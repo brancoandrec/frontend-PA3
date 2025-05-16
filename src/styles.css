@@ -18,6 +18,7 @@ table{
   width: 800px;
 }
 
+
 .item:hover {
   background-color: #606060;
   color: white;
@@ -327,7 +328,6 @@ h2 {
   color: #00bcd4;
 }
 
-/* Estilos do footer */
 .footer {
   background-color: #606060;
   color: #fff;
@@ -339,14 +339,12 @@ h2 {
   width: 100%;
 }
 
-/* Conteúdo do footer */
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Links do footer */
 .footer-links {
   margin-top: 10px;
 }
@@ -360,4 +358,11 @@ h2 {
 
 .footer-links a:hover {
   text-decoration: underline;
+}
+
+.container-conjitens {
+  padding: 50px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;     
 }

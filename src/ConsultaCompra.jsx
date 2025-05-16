@@ -28,14 +28,14 @@ const ConsultaCompra = () => {
         <table id="tabelaCompras">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Itens</th>
-              <th>Data Compra</th>
-              <th>Data Invoice</th>
-              <th>Data Recebimento</th>
-              <th>Preço</th>
-              <th>Fornecedor</th>
-              <th>Projeto</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Itens</th>
+              <th className="text-left">Data Compra</th>
+              <th className="text-left">Data Invoice</th>
+              <th className="text-left">Data Recebimento</th>
+              <th className="text-left">Preço</th>
+              <th className="text-left">Fornecedor</th>
+              <th className="text-left">Projeto</th>
             </tr>
           </thead>
           <tbody>

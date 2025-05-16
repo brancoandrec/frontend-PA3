@@ -34,9 +34,9 @@ const ConsultaProjeto = () => {
         <table id="tabelaProjetos" className="table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Descrição</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Nome</th>
+              <th className="text-left">Descrição</th>
             </tr>
           </thead>
           <tbody>
@@ -77,17 +77,17 @@ const ConsultaProjeto = () => {
       </form>
         <br /><br />
         <form id="formProjeto" method="POST">
-          <h1>Itens do Projeto</h1>
+          <h1 className="text-2xl font-bold mb-6 text-center text-black">Itens do Projeto</h1>
           <table id="itensProjeto" className="table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Nome do item</th>
-                <th>Quantidade</th>
-                <th>Tipo</th>
-                <th>Descrição</th>
-                <th>Sala</th>
-                <th>Armario</th>
+                <th className="text-left">ID</th>
+                <th className="text-left">Nome do item</th>
+                <th className="text-left">Quantidade</th>
+                <th className="text-left">Tipo</th>
+                <th className="text-left">Descrição</th>
+                <th className="text-left">Sala</th>
+                <th className="text-left">Armario</th>
               </tr>
             </thead>
             <tbody>
