@@ -41,15 +41,15 @@ const DeletarConjuntoItens = () => {
       <Sidebar />
       <div className="container">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Conjunto de Itens</h1>
-        <table className="table" id="tabelaItens">
+        <table className="table w-full" id="tabelaItens">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Quantidade</th>
-              <th>Item</th>
-              <th>Sala</th>
-              <th>Armario</th>
-              <th>Projeto</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Quantidade</th>
+              <th className="text-left">Item</th>
+              <th className="text-left">Sala</th>
+              <th className="text-left">Armario</th>
+              <th className="text-left">Projeto</th>
             </tr>
           </thead>
           <tbody>

@@ -18,7 +18,7 @@ const ConsultaFornecedor = () => {
 
       <div className="container">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Fornecedor</h1>
-        <table id="tabelaFornecedor" className="table">
+        <table id="tabelaFornecedor" className="table w-full">
           <thead>
             <tr>
               <th className="text-left">ID</th>

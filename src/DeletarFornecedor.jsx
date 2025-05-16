@@ -36,13 +36,13 @@ const DeletarFornecedor = () => {
         <Sidebar />
         <div className="container">
           <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Fornecedor</h1>
-          <table className="table" id="tabelaFornecedores">
+          <table className="table w-full" id="tabelaFornecedores">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Contato</th>
-                <th>Endereço</th>
+                <th className="text-left">ID</th>
+                <th className="text-left">Nome</th>
+                <th className="text-left">Contato</th>
+                <th className="text-left">Endereço</th>
               </tr>
             </thead>
             <tbody>

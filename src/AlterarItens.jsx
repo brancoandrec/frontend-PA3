@@ -48,13 +48,13 @@ export default function AlterarItens() {
       <div className="flex-1 flex justify-center items-start mt-20">
     <div className="w-3/4">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Itens</h1>
-        <table className="table" id="tabelaItens">
+        <table className="table w-full" id="tabelaItens">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Tipo</th>
-              <th>Descrição</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Nome</th>
+              <th className="text-left">Tipo</th>
+              <th className="text-left">Descrição</th>
             </tr>
           </thead>
           <tbody>

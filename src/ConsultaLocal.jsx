@@ -18,7 +18,7 @@ const ConsultaLocal = () => {
 
       <div className="container">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Local</h1>
-        <table id="tabelaLocais" className="table">
+        <table id="tabelaLocais" className="table w-full">
           <thead>
             <tr>
               <th className="text-left">ID</th>

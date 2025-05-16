@@ -60,7 +60,7 @@ export default function AlterarConjuntoItens() {
   <Sidebar />
 
   <div className="flex justify-center items-start w-full mt-20">
-    <div className="w-1/2 max-w-4xl px-4">
+    <div className="w-full max-w-4xl px-4">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">
         Alterar Conjunto de Itens
       </h1>
@@ -68,15 +68,15 @@ export default function AlterarConjuntoItens() {
       <table className="table w-full mb-10" id="tabelaConjuntoItens">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Quantidade</th>
-            <th>Item ID</th>
-            <th>Item</th>
-            <th>Local ID</th>
-            <th>Sala</th>
-            <th>Armário</th>
-            <th>Projeto ID</th>
-            <th>Projeto</th>
+            <th className="text-left">ID</th>
+            <th className="text-left">Quantidade</th>
+            <th className="text-left">Item ID</th>
+            <th className="text-left">Item</th>
+            <th className="text-left">Local ID</th>
+            <th className="text-left">Sala</th>
+            <th className="text-left">Armário</th>
+            <th className="text-left">Projeto ID</th>
+            <th className="text-left">Projeto</th>
           </tr>
         </thead>
         <tbody>
@@ -95,12 +95,13 @@ export default function AlterarConjuntoItens() {
           ))}
         </tbody>
       </table>
+      <div className="flex justify-center">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}
-        className="bg-white p-6 rounded-xl shadow-lg space-y-4 mb-8"
+        className="bg-white w-3/4 p-6 rounded-xl shadow-lg space-y-4 mb-8"
       >
         <label htmlFor="conjuntoItensId" className="block text-sm font-medium text-gray-700 mb-1">
           ID do Conjunto Itens para alterar:
@@ -121,10 +122,12 @@ export default function AlterarConjuntoItens() {
           Alterar
         </button>
       </form>
+      </div>
+      <div className="flex justify-center">
       <form
         id="formConjuntoItens"
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow-lg space-y-4"
+        className="bg-white p-6 w-3/4 rounded-xl shadow-lg space-y-4"
       >
         <h3 className="text-xl font-semibold mb-4">Conjunto Itens</h3>
 
@@ -151,6 +154,7 @@ export default function AlterarConjuntoItens() {
           Enviar
         </button>
       </form>
+      </div>
     </div>
   </div>
 </div>

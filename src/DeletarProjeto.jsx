@@ -39,12 +39,12 @@ function DeletarProjeto() {
 
        <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Projeto</h1>
 
-        <table className="table" id="tabelaProjetos">
+        <table className="table w-full" id="tabelaProjetos">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Descrição</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Nome</th>
+              <th className="text-left">Descrição</th>
             </tr>
           </thead>
           <tbody>

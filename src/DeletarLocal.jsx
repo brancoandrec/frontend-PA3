@@ -36,12 +36,12 @@ function DeletarLocal() {
       <Sidebar />
       <div className="container mt-4">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Local</h1>
-        <table className="table" id="tabelaLocais">
+        <table className="table w-full" id="tabelaLocais">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Armário</th>
-              <th>Sala</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Armário</th>
+              <th className="text-left">Sala</th>
             </tr>
           </thead>
           <tbody>

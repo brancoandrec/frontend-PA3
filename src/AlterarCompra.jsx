@@ -94,21 +94,21 @@ const AlterarCompra = () => {
     <div className="div-container gradient-background">
       <Sidebar />
       <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-1/2">
+    <div className="w-full">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Compra</h1>
-        <table id="tabelaCompras">
+        <table id="tabelaCompras" className="w-full">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Itens</th>
-              <th>Data Compra</th>
-              <th>Data Invoice</th>
-              <th>Data Recebimento</th>
-              <th>Preço</th>
-              <th>Fornecedor ID</th>
-              <th>Fornecedor</th>
-              <th>Projeto ID</th>
-              <th>Projeto</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Itens</th>
+              <th className="text-left">Data Compra</th>
+              <th className="text-left">Data Invoice</th>
+              <th className="text-left">Data Recebimento</th>
+              <th className="text-left">Preço</th>
+              <th className="text-left">Fornecedor ID</th>
+              <th className="text-left">Fornecedor</th>
+              <th className="text-left">Projeto ID</th>
+              <th className="text-left">Projeto</th>
             </tr>
           </thead>
           <tbody>
@@ -131,6 +131,7 @@ const AlterarCompra = () => {
 
         <br />
         <br />
+        <div className="flex justify-center mt-10">
         <form
   id="formCompra"
   onSubmit={handleSubmit}
@@ -265,7 +266,7 @@ const AlterarCompra = () => {
     Enviar
   </button>
 </form>
-
+</div>
       </div>
     </div>
     </div>

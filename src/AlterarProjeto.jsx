@@ -62,16 +62,16 @@ export default function AlterarProjeto() {
     <div className="tudo div-container gradient-background">
   <Sidebar />
   <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-1/2">
+    <div className="w-full">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Projeto</h1>
 
       <table id="tabelaProjetos" className="table table-bordered w-full mb-10">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Data de Início</th>
+            <th className="text-left">ID</th>
+            <th className="text-left">Nome</th>
+            <th className="text-left">Descrição</th>
+            <th className="text-left">Data de Início</th>
           </tr>
         </thead>
         <tbody>
@@ -85,10 +85,10 @@ export default function AlterarProjeto() {
           ))}
         </tbody>
       </table>
-
+      <div className="flex justify-center">
       <form
         onSubmit={handleBuscarProjeto}
-        className="bg-white p-6 rounded-xl shadow-lg space-y-4 mb-8"
+        className="bg-white p-6 rounded-xl w-1/2 shadow-lg space-y-4 mb-8"
       >
         <h3 className="text-lg font-semibold">Buscar Projeto para Alteração</h3>
 
@@ -118,10 +118,11 @@ export default function AlterarProjeto() {
           Alterar
         </button>
       </form>
-
+       </div>
+       <div className="flex justify-center">
       <form
         onSubmit={handleAlterarProjeto}
-        className="bg-white p-6 rounded-xl shadow-lg space-y-4"
+        className="bg-white p-6 rounded-xl w-1/2 shadow-lg space-y-4"
       >
         <h3 className="text-xl font-semibold mb-4">Projeto</h3>
 
@@ -186,6 +187,7 @@ export default function AlterarProjeto() {
           Enviar
         </button>
       </form>
+      </div>
     </div>
   </div>
 </div>

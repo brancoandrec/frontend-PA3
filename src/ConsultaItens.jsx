@@ -18,7 +18,7 @@ const ConsultaItens = () => {
 
       <div className="container">
        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Itens</h1>
-        <table id="tabelaItens" className="table">
+        <table id="tabelaItens" className="table w-full">
           <thead>
             <tr>
               <th className="text-left">ID</th>

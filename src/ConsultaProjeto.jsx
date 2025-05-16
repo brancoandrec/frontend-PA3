@@ -31,7 +31,7 @@ const ConsultaProjeto = () => {
       <Sidebar />
       <div className="container">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Projeto</h1>
-        <table id="tabelaProjetos" className="table">
+        <table id="tabelaProjetos" className="table w-full">
           <thead>
             <tr>
               <th className="text-left">ID</th>
@@ -76,9 +76,9 @@ const ConsultaProjeto = () => {
       </button>
       </form>
         <br /><br />
-        <form id="formProjeto" method="POST">
+        <form id="formProjeto" method="POST" className="w-full">
           <h1 className="text-2xl font-bold mb-6 text-center text-black">Itens do Projeto</h1>
-          <table id="itensProjeto" className="table">
+          <table id="itensProjeto" className="table w-full">
             <thead>
               <tr>
                 <th className="text-left">ID</th>

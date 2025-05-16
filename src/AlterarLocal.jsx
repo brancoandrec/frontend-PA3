@@ -61,9 +61,9 @@ const AlterarLocal = () => {
       <table className="table w-full mb-10" id="tabelaLocais">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Sala</th>
-            <th>Armário</th>
+            <th className="text-left">ID</th>
+            <th className="text-left">Sala</th>
+            <th className="text-left">Armário</th>
           </tr>
         </thead>
         <tbody>

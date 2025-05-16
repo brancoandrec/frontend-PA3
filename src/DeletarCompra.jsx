@@ -35,13 +35,13 @@ export default function DeletarCompra() {
       <Sidebar />
       <div className="container">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Compra</h1>
-          <table id="tabelaCompras" className="table">
+          <table id="tabelaCompras" className="table w-full">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Projeto</th>
-              <th>Data compra</th>
-              <th>Fornecedor</th>
+              <th className="text-left">ID</th>
+              <th className="text-left">Projeto</th>
+              <th className="text-left">Data compra</th>
+              <th className="text-left">Fornecedor</th>
             </tr>
           </thead>
           <tbody>
