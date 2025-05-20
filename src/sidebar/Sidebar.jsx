@@ -7,6 +7,12 @@ function Sidebar() {
       <div className="w-50  border-r border-gray-200 shadow-lg p-6">
         <ul>
           <li className="mb-6">
+            <Link to="/upload" className="flex items-center text-gray-700 hover:text-blue-500">
+              <span className="material-icons mr-4">arrow_upward</span>
+              Upload
+            </Link>
+          </li>
+          <li className="mb-6">
             <Link to="/cadastro" className="flex items-center text-gray-700 hover:text-blue-500">
               <span className="material-icons mr-4">subdirectory_arrow_right</span>
               Cadastrar

@@ -27,6 +27,7 @@ import DeletarFornecedor from './deletar/DeletarFornecedor';
 import DeletarItens from './deletar/DeletarItens';
 import DeletarLocal from './deletar/DeletarLocal';
 import DeletarProjeto from './deletar/DeletarProjeto';
+import Upload from './upload/Upload';
 import Logs from './Logs';
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
       <Route path="/deletarItens" element={<DeletarItens/>} />
       <Route path="/deletarLocal" element={<DeletarLocal/>} />
       <Route path="/deletarProjeto" element={<DeletarProjeto/>} />
+      <Route path="/upload" element={<Upload/>} />
       <Route path="/logs" element={<Logs/>} />
     </Routes>
   );
