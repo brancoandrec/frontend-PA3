@@ -1,12 +1,26 @@
-# React + Vite
+# 🧾 Frontend - Gerenciamento de Estoque e Aquisição de Componentes Eletrônicos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o repositório **frontend** de uma aplicação web para processamento de **notas fiscais**. O sistema permite que o usuário envie arquivos (imagem ou PDF), visualize os dados extraídos automaticamente por OCR, edite/corrija as informações e envie os dados corrigidos para o backend, onde são armazenados em um banco **PostgreSQL**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🏗️ Visão Geral da Arquitetura
 
-## Expanding the ESLint configuration
+A aplicação é composta por:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend (React + Tailwind)**: Interface de usuário responsiva para upload, visualização, edição e envio de dados.
+- **Backend (Java)**:
+  - **Microsserviço de OCR**: Recebe o arquivo da nota, consome uma API OCR, processa o conteúdo e envia os dados extraídos.
+  - **Microsserviço de Armazenamento**: Recebe os dados revisados do frontend e os salva em um banco de dados PostgreSQL.
+
+---
+
+## ⚙️ Tecnologias Utilizadas
+
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router](https://reactrouter.com/)
+- `fetch` (API nativa do JavaScript) para comunicação com a API
+- [Vite](https://vitejs.dev/) para bundling e desenvolvimento local
+
+
