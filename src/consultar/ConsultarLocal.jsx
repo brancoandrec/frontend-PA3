@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
 
-const ConsultaLocal = () => {
+const ConsultarLocal = () => {
   const [locais, setLocais] = useState([]);
 
   useEffect(() => {
@@ -41,4 +41,4 @@ const ConsultaLocal = () => {
   );
 };
 
-export default ConsultaLocal;
+export default ConsultarLocal;

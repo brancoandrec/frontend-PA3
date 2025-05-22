@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from '../sidebar/Sidebar'; 
 import '../styles.css'; 
 
-function CadastroFornecedor() {
+function CadastrarFornecedor() {
   const [formData, setFormData] = useState({
     name: '',
     endereco: '',
@@ -100,4 +100,4 @@ function CadastroFornecedor() {
   );
 }
 
-export default CadastroFornecedor;
+export default CadastrarFornecedor;

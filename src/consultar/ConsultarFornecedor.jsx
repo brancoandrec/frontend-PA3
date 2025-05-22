@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
 
-const ConsultaFornecedor = () => {
+const ConsultarFornecedor = () => {
   const [fornecedores, setFornecedores] = useState([]);
 
   useEffect(() => {
@@ -43,4 +43,4 @@ const ConsultaFornecedor = () => {
   );
 };
 
-export default ConsultaFornecedor;
+export default ConsultarFornecedor;

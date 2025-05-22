@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
 
-const CadastroConjuntoItens = () => {
+const CadastrarConjuntoItens = () => {
   const [quantidade, setQuantidade] = useState('');
   const [itemId, setItemId] = useState('');
   const [localId, setLocalId] = useState('');
@@ -107,4 +107,4 @@ const CadastroConjuntoItens = () => {
   );
 };
 
-export default CadastroConjuntoItens;
+export default CadastrarConjuntoItens;

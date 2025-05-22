@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
 
-const CadastroProjeto = () => {
+const CadastrarProjeto = () => {
   const [nome, setNome] = useState('');
   const [descricao, setDescricao] = useState('');
   const [dataInicio, setDataInicio] = useState('');
@@ -88,4 +88,4 @@ const CadastroProjeto = () => {
   );
 };
 
-export default CadastroProjeto;
+export default CadastrarProjeto;

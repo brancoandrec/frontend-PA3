@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
 
-const ConsultaProjeto = () => {
+const ConsultarProjeto = () => {
   const [projetos, setProjetos] = useState([]);
   const [itens, setItens] = useState([]);
 
@@ -110,4 +110,4 @@ const ConsultaProjeto = () => {
   );
 };
 
-export default ConsultaProjeto;
+export default ConsultarProjeto;

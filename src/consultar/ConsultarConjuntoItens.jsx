@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
 
-const ConsultaConjuntoItens = () => {
+const ConsultarConjuntoItens = () => {
   const [conjuntoItens, setConjuntoItens] = useState([]);
 
   useEffect(() => {
@@ -63,4 +63,4 @@ const ConsultaConjuntoItens = () => {
   );
 };
 
-export default ConsultaConjuntoItens;
+export default ConsultarConjuntoItens;

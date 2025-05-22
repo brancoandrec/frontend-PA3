@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
 
-const ConsultaCompra = () => {
+const ConsultarCompra = () => {
   const [compras, setCompras] = useState([]);
 
   useEffect(() => {
@@ -62,4 +62,4 @@ const ConsultaCompra = () => {
   );
 };
 
-export default ConsultaCompra;
+export default ConsultarCompra;

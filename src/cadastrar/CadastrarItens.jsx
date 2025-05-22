@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from '../sidebar/Sidebar'; 
 import '../styles.css'; 
 
-function CadastroItens() {
+function CadastrarItens() {
   const [formData, setFormData] = useState({
     tipo: '',
     name: '',
@@ -104,4 +104,4 @@ function CadastroItens() {
 
 }
 
-export default CadastroItens;
+export default CadastrarItens;

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
 
-const ConsultaItens = () => {
+const ConsultarItens = () => {
   const [itens, setItens] = useState([]);
 
   useEffect(() => {
@@ -43,4 +43,4 @@ const ConsultaItens = () => {
   );
 };
 
-export default ConsultaItens;
+export default ConsultarItens;

@@ -1,5 +1,5 @@
 import React from 'react';
-import logoisi from '../assets/logo.png'; 
+import logoisi from '../assets/logo-isi.png'; 
 import iconuser from '../assets/icon-user.png';
 import iconexit from '../assets/icon-exit.png';
 import '../styles.css';
