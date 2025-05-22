@@ -35,7 +35,7 @@ function Upload() {
     formDataFile.append("file", selectedFile);
 
     try {
-      const response = await fetch("http://localhost:8080/upload", {
+      const response = await fetch("http://127.0.0.1:5000/upload", {
         method: "POST",
         body: formDataFile
       });
