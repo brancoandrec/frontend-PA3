@@ -15,7 +15,7 @@ const ConsultarItens = () => {
   return (
     <div className="div-container gradient-background">
      <Sidebar />
-
+{/* Tabela de Itens */} 
       <div className="container">
        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Itens</h1>
         <table id="tabelaItens" className="table w-full">

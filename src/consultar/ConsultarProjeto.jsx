@@ -29,6 +29,7 @@ const ConsultarProjeto = () => {
   return (
     <div className="div-container gradient-background">
       <Sidebar />
+      {/* Tabela de Projetos */} 
       <div className="container">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Projeto</h1>
         <table id="tabelaProjetos" className="table w-full">

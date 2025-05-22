@@ -53,6 +53,7 @@ function CadastrarItens() {
   <div className="flex-1 flex justify-center items-start mt-20">
     <div className="w-1/2">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Itens</h1>
+      {/* Campos do formulário */}
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-lg space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="tipo">Tipo:</label>

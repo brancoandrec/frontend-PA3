@@ -45,6 +45,7 @@ export default function AlterarItens() {
   return (
     <div className="tudo div-container gradient-background">
       <Sidebar />
+      {/* Tabela de Itens */}
       <div className="flex-1 flex justify-center items-start mt-20">
     <div className="w-3/4">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Itens</h1>
@@ -74,7 +75,7 @@ export default function AlterarItens() {
   className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto mb-8"
 >
   <h3 className="text-lg font-semibold">Buscar Item</h3>
-
+    {/* Campos do formulário */}
   <div>
     <label htmlFor="itemId" className="block text-sm font-medium text-gray-700 mb-1">
       ID do Item para alterar:

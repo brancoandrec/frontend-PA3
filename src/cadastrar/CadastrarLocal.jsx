@@ -53,7 +53,7 @@ function CadastrarLocal() {
   className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-3xl mx-auto w-full"
 >
   <h3 className="text-xl font-semibold mb-4">Compra</h3>
-
+{/* Campos do formulário */}
   <div>
     <label htmlFor="compraId" className="block text-sm font-medium text-gray-700 mb-1">
       ID Compra:

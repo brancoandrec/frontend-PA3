@@ -54,6 +54,7 @@ const AlterarLocal = () => {
   return (
     <div className="tudo div-container gradient-background">
   <Sidebar />
+  {/* Tabela de Locais */}
   <div className="flex-1 flex justify-center items-start mt-20">
     <div className="w-1/2">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Local</h1>
@@ -82,7 +83,7 @@ const AlterarLocal = () => {
         className="bg-white p-6 rounded-xl shadow-lg space-y-4 mb-8"
       >
         <h3 className="text-lg font-semibold">Buscar Local</h3>
-
+        {/* Campos do formulário */}
         <div>
           <label htmlFor="localId" className="block text-sm font-medium text-gray-700 mb-1">
             ID do local para alterar:

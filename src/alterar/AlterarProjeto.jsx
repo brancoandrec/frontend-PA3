@@ -61,6 +61,7 @@ export default function AlterarProjeto() {
   return (
     <div className="tudo div-container gradient-background">
   <Sidebar />
+  {/* Tabela de Projetos */}
   <div className="flex-1 flex justify-center items-start mt-20">
     <div className="w-full">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Projeto</h1>
@@ -91,7 +92,7 @@ export default function AlterarProjeto() {
         className="bg-white p-6 rounded-xl w-1/2 shadow-lg space-y-4 mb-8"
       >
         <h3 className="text-lg font-semibold">Buscar Projeto para Alteração</h3>
-
+          {/* Campos do formulário */}
         <div>
           <label
             htmlFor="projetoId"

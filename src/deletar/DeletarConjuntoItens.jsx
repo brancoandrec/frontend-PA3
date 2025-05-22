@@ -39,6 +39,7 @@ const DeletarConjuntoItens = () => {
   return (
     <div className="tudo div-container gradient-background">
       <Sidebar />
+      {/* Tabela de Conjunto de Itens */} 
       <div className="container">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Conjunto de Itens</h1>
         <table className="table w-full" id="tabelaItens">

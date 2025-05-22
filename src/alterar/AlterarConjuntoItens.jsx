@@ -58,7 +58,7 @@ export default function AlterarConjuntoItens() {
   return (
     <div className="tudo flex min-h-screen">
   <Sidebar />
-
+  {/* Tabela de Conjunto de Itens */} 
   <div className="flex justify-center items-start w-full mt-20">
     <div className="w-full max-w-4xl px-4">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">
@@ -131,6 +131,7 @@ export default function AlterarConjuntoItens() {
       >
         <h3 className="text-xl font-semibold mb-4">Conjunto Itens</h3>
 
+        {/* Campos do formulário */}
         {["quantidade", "item", "local", "projeto"].map((field) => (
           <div key={field}>
             <label htmlFor={field} className="block text-sm font-medium text-gray-700 mb-1">

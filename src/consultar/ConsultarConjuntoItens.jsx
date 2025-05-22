@@ -23,7 +23,7 @@ const ConsultarConjuntoItens = () => {
   return (
     <div className="div-container gradient-background">
      <Sidebar />
-
+{/* Tabela de Conjunto de Itens */} 
       <div className="container container-conjitens">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Conjunto de Itens</h1>
         <table id="tabelaConjuntoItens" className="!w-auto">

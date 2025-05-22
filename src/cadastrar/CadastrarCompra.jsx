@@ -93,6 +93,7 @@ function CadastrarCompra() {
   return (
   <div className="div-container gradient-background min-h-screen flex">
   <Sidebar />
+  {/* Tabela de Compras */}
   <div className="flex-1 flex justify-center items-start mt-20">
     <div className="w-1/2">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Compra</h1>
@@ -102,7 +103,7 @@ function CadastrarCompra() {
   className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto"
 >
   <h3 className="text-xl font-semibold mb-4">Compra</h3>
-
+{/* Campos do formulário */}
  <div>
     <label htmlFor="item_id" className="block text-sm font-medium text-gray-700 mb-1">
       IDs dos Itens (separados por vírgulas):

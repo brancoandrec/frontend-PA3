@@ -93,6 +93,8 @@ const AlterarCompra = () => {
   return (
     <div className="div-container gradient-background">
       <Sidebar />
+
+      {/* Tabela de Compras */}
       <div className="flex-1 flex justify-center items-start mt-20">
     <div className="w-full">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Compra</h1>
@@ -139,6 +141,7 @@ const AlterarCompra = () => {
 >
   <h3 className="text-xl font-semibold mb-4">Compra</h3>
 
+  {/* Campos do formulário */}
   <div>
     <label htmlFor="compraId" className="block text-sm font-medium text-gray-700 mb-1">
       ID Compra:

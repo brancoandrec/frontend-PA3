@@ -34,6 +34,7 @@ const DeletarFornecedor = () => {
     <div className="tudo">
       <div className="div-container gradient-background">
         <Sidebar />
+        {/* Tabela de Fornecedores */} 
         <div className="container">
           <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Fornecedor</h1>
           <table className="table w-full" id="tabelaFornecedores">

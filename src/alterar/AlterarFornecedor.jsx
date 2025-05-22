@@ -61,6 +61,7 @@ export default function AlterarFornecedor() {
   return (
     <div className="tudo div-container gradient-background">
   <Sidebar />
+  {/* Tabela de Fonecedores */}
   <div className="flex-1 flex justify-center items-start mt-20">
     <div className="w-3/4">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">
@@ -92,7 +93,7 @@ export default function AlterarFornecedor() {
         <h3 className="text-xl font-semibold mb-4">
           Buscar Fornecedor para Alteração
         </h3>
-
+        {/* Campos do formulário */}
         <div>
           <label
             htmlFor="fornecedorId"

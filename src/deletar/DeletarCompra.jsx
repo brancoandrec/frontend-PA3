@@ -33,6 +33,7 @@ export default function DeletarCompra() {
   return (
     <div className="div-container gradient-background tudo">
       <Sidebar />
+      {/* Tabela de Compras */}
       <div className="container">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Compra</h1>
           <table id="tabelaCompras" className="table w-full">
