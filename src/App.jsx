@@ -33,7 +33,7 @@ import Logs from './Logs';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/cadastro" replace />} />
+      <Route path="/" element={<Navigate to="/cadastrar" replace />} />
       <Route path="/cadastrar" element={<Cadastrar />} />
       <Route path="/consultar" element={<Consultar />} />
       <Route path="/deletar" element={<Deletar/>} />
