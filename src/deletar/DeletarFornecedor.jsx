@@ -35,7 +35,7 @@ const DeletarFornecedor = () => {
       <div className="div-container gradient-background">
         <Sidebar />
         {/* Tabela de Fornecedores */} 
-        <div className="container">
+        <div className="container mx-auto w-[90%] max-w-6xl">
           <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Fornecedor</h1>
           <table className="table w-full" id="tabelaFornecedores">
             <thead>
@@ -62,7 +62,7 @@ const DeletarFornecedor = () => {
           <form
   id="deleteForm"
   onSubmit={handleSubmit}
-  className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-md mx-auto mt-8">
+  className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-xl mx-auto mt-8">
   <div>
     <label
       htmlFor="fornecedorId"

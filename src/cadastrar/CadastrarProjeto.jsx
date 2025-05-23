@@ -35,10 +35,10 @@ const CadastrarProjeto = () => {
     <div className="div-container gradient-background min-h-screen flex">
   <Sidebar />
   <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-1/2">
+    <div className="w-full max-w-xl">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Projeto</h1>
       {/* Campos do formulário */}
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-lg space-y-4">
+      <form onSubmit={handleSubmit} className="bg-white p-6 max-w-xl rounded-xl shadow-lg space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="name">Nome:</label>
           <input

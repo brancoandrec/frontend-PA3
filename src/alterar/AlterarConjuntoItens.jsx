@@ -101,7 +101,7 @@ export default function AlterarConjuntoItens() {
           e.preventDefault();
           handleSubmit();
         }}
-        className="bg-white w-3/4 p-6 rounded-xl shadow-lg space-y-4 mb-8"
+        className="bg-white w-[36rem] p-6 rounded-xl shadow-lg space-y-4 mb-8"
       >
         <label htmlFor="conjuntoItensId" className="block text-sm font-medium text-gray-700 mb-1">
           ID do Conjunto Itens para alterar:
@@ -127,7 +127,7 @@ export default function AlterarConjuntoItens() {
       <form
         id="formConjuntoItens"
         onSubmit={handleSubmit}
-        className="bg-white p-6 w-3/4 rounded-xl shadow-lg space-y-4"
+        className="bg-white p-6 w-[36rem] rounded-xl shadow-lg space-y-4"
       >
         <h3 className="text-xl font-semibold mb-4">Conjunto Itens</h3>
 

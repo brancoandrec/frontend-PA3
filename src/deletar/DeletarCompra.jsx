@@ -34,7 +34,7 @@ export default function DeletarCompra() {
     <div className="div-container gradient-background tudo">
       <Sidebar />
       {/* Tabela de Compras */}
-      <div className="container">
+      <div className="container mx-auto w-[90%] max-w-6xl">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Compra</h1>
           <table id="tabelaCompras" className="table w-full">
           <thead>
@@ -56,7 +56,7 @@ export default function DeletarCompra() {
             ))}
           </tbody>
         </table>
-        <form onSubmit={handleDelete} className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-md mx-auto mt-8">
+        <form onSubmit={handleDelete} className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-xl mx-auto mt-8">
   <div>
     <label htmlFor="compraId" className="block text-sm font-medium text-gray-700 mb-1">
       ID da compra:

@@ -106,7 +106,7 @@ function Upload() {
     />
     <button
       onClick={handleFileUpload}
-      className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition"
+      className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
     >
       Enviar Arquivo
     </button>

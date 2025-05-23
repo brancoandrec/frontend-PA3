@@ -50,7 +50,7 @@ function CadastrarLocal() {
       <form
   id="formCompra"
   onSubmit={handleSubmit}
-  className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-3xl mx-auto w-full"
+  className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto w-full"
 >
   <h3 className="text-xl font-semibold mb-4">Compra</h3>
 {/* Campos do formulário */}

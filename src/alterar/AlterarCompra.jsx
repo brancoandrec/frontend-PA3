@@ -137,7 +137,7 @@ const AlterarCompra = () => {
         <form
   id="formCompra"
   onSubmit={handleSubmit}
-  className="bg-white p-6 rounded-xl shadow-lg max-w-3xl w-full space-y-4"
+  className="bg-white p-6 rounded-xl shadow-lg max-w-xl w-full space-y-4"
 >
   <h3 className="text-xl font-semibold mb-4">Compra</h3>
 

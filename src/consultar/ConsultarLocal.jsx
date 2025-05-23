@@ -16,7 +16,7 @@ const ConsultarLocal = () => {
     <div className="div-container gradient-background">
       <Sidebar />
 {/* Tabela de Locais */} 
-      <div className="container">
+      <div className="container mx-auto w-[90%] max-w-6xl">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Local</h1>
         <table id="tabelaLocais" className="table w-full">
           <thead>

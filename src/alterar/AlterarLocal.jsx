@@ -56,8 +56,8 @@ const AlterarLocal = () => {
   <Sidebar />
   {/* Tabela de Locais */}
   <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-1/2">
-      <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Local</h1>
+    <div className="w-full max-w-xl">
+      <h1 className="text-2xl font-bold mb-6 text-center max-w-xl text-black">Alterar Local</h1>
 
       <table className="table w-full mb-10" id="tabelaLocais">
         <thead>

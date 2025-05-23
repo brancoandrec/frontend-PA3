@@ -25,7 +25,7 @@ const Logs = () => {
     <>
     <div className="div-container gradient-background">
         <Sidebar />
-      <div className="container">
+      <div className="container mx-auto w-[80%]">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Logs</h1>
 
         <table className="table" id="tabelaCompras">

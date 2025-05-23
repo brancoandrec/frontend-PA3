@@ -63,7 +63,7 @@ export default function AlterarProjeto() {
   <Sidebar />
   {/* Tabela de Projetos */}
   <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-full">
+    <div className="w-full max-w-xl">
       <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Projeto</h1>
 
       <table id="tabelaProjetos" className="table table-bordered w-full mb-10">
@@ -89,7 +89,7 @@ export default function AlterarProjeto() {
       <div className="flex justify-center">
       <form
         onSubmit={handleBuscarProjeto}
-        className="bg-white p-6 rounded-xl w-1/2 shadow-lg space-y-4 mb-8"
+        className="bg-white rounded-xl w-[36rem] shadow-lg space-y-4 mb-8"
       >
         <h3 className="text-lg font-semibold">Buscar Projeto para Alteração</h3>
           {/* Campos do formulário */}
@@ -123,7 +123,7 @@ export default function AlterarProjeto() {
        <div className="flex justify-center">
       <form
         onSubmit={handleAlterarProjeto}
-        className="bg-white p-6 rounded-xl w-1/2 shadow-lg space-y-4"
+        className="bg-white rounded-xl w-[36rem] p-6 shadow-lg space-y-4"
       >
         <h3 className="text-xl font-semibold mb-4">Projeto</h3>
 
@@ -141,7 +141,7 @@ export default function AlterarProjeto() {
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             required
-            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
@@ -158,7 +158,7 @@ export default function AlterarProjeto() {
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
             required
-            className="w-full border border-gray-500 rounded-md p-2 h-24 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-500 rounded-md h-24 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
         </div>
 
@@ -176,7 +176,7 @@ export default function AlterarProjeto() {
             value={dataInicio}
             onChange={(e) => setDataInicio(e.target.value)}
             required
-            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 

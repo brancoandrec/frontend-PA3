@@ -24,7 +24,7 @@ const ConsultarCompra = () => {
     <div className="div-container gradient-background">
       <Sidebar />
       {/* Tabela de Compras */}
-      <div className="container">
+      <div className="container mx-auto w-[90%] max-w-6xl">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Compra</h1>
         <table id="tabelaCompras"className="w-full">
           <thead>

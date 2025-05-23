@@ -34,7 +34,7 @@ function DeletarLocal() {
   return (
     <div className="tudo div-container gradient-background">
       <Sidebar />
-      <div className="container mt-4">
+      <div className="container  mx-auto w-[90%] max-w-6xl mt-4">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Local</h1>
         <table className="table w-full" id="tabelaLocais">
           <thead>
@@ -58,7 +58,7 @@ function DeletarLocal() {
         <form
   id="deleteForm"
   onSubmit={handleSubmit}
-  className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-md mx-auto mt-8">
+  className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-xl mx-auto mt-8">
   <div>
     <label
       htmlFor="localId"

@@ -33,7 +33,7 @@ const DeletarItem = () => {
   return (
     <div className="tudo div-container gradient-background">
       <Sidebar />
-      <div className="container">
+      <div className="container mx-auto w-[90%] max-w-6xl">
         <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Itens</h1>
         <table className="table w-full" id="tabelaItens">
           <thead>
@@ -56,7 +56,7 @@ const DeletarItem = () => {
           </tbody>
         </table>
         <br /><br />
-        <form onSubmit={handleDelete} id="deleteForm" className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-md mx-auto mt-8">
+        <form onSubmit={handleDelete} id="deleteForm" className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-full max-w-xl mx-auto mt-8">
   <div>
     <label htmlFor="itemId" className="block text-sm font-medium text-gray-700 mb-1">
       ID do Item:
