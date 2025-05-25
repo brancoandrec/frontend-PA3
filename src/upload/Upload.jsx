@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Sidebar from '../sidebar/Sidebar'; 
+import Sidebar from '../sidebar/Sidebar';
 import '../styles.css';
 
 function Upload() {
@@ -80,6 +80,7 @@ function Upload() {
     setSelectedFile(e.target.files[0]);
   };
 
+
   const handleFileUpload = async () => {
     if (!selectedFile) {
       alert("Selecione um arquivo primeiro.");
@@ -94,8 +95,56 @@ function Upload() {
       });
       if (response.ok) {
         const result = await response.json();
-        console.log("Arquivo enviado com sucesso:", result);
-        alert("Arquivo enviado com sucesso!");
+
+        // Aqui você pega os dados aninhados
+        const nfe = result.nfeProc?.NFe?.infNFe;
+
+        // Atualiza os estados com dados do JSON
+        setFormFornecedor({
+          nome: nfe?.emit?.xNome || '',
+          contato: nfe?.emit?.enderEmit.fone || '',
+          endereco: nfe?.emit?.enderEmit?.xLgr
+            ? `${nfe.emit.enderEmit.xLgr}, ${nfe.emit.enderEmit.nro}, ${nfe.emit.enderEmit.xBairro}`
+            : ''
+        });
+
+        setFormData({
+          preco : nfe?.total?.ICMSTot?.vNF || ''
+        });
+
+
+        // Pega os itens da nota (det)
+        const itens = nfe?.det || [];
+
+        // Garante que é array, pois se for 1 item, pode vir como objeto
+        const itensArray = Array.isArray(itens) ? itens : [itens];
+
+        // Mapeia para o formato esperado no estado
+        const novosItens = itensArray.map(item => ({
+          nome: item.prod?.xProd || '',
+          descricao: '',  // ou alguma outra informação que queira preencher
+          tipo: ''        // pode preencher com outra tag se quiser
+        }));
+
+        setFormItems(novosItens);
+
+
+        // setFormItems({
+        //   nome: nfe?.det?.xProd || '',
+        //   descricao: nfe?.emit?.enderEmit.fone || '',
+        //   tipo: nfe?.emit?.enderEmit?.xLgr 
+
+        // });
+
+        setFormData(prev => ({
+          ...prev,        
+          dataCompra: nfe?.ide?.dhEmi?.slice(0, 10) || ''  // Pega só a data (YYYY-MM-DD)
+        }));
+
+
+
+
+        alert("Dados do XML carregados no formulário!");
       } else {
         alert("Erro ao enviar arquivo.");
       }
@@ -103,6 +152,35 @@ function Upload() {
       console.error("Erro ao enviar o arquivo:", error);
     }
   };
+
+
+
+
+
+  // versao antiga
+  // const handleFileUpload = async () => {
+  //   if (!selectedFile) {
+  //     alert("Selecione um arquivo primeiro.");
+  //     return;
+  //   }
+  //   const formDataFile = new FormData();
+  //   formDataFile.append("file", selectedFile);
+  //   try {
+  //     const response = await fetch("http://127.0.0.1:5000/upload", {
+  //       method: "POST",
+  //       body: formDataFile
+  //     });
+  //     if (response.ok) {
+  //       const result = await response.json();
+  //       console.log("Arquivo enviado com sucesso:", result);
+  //       alert("Arquivo enviado com sucesso!");
+  //     } else {
+  //       alert("Erro ao enviar arquivo.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Erro ao enviar o arquivo:", error);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -322,7 +400,7 @@ function Upload() {
               required
               className="w-full border border-gray-500 rounded-md p-2 mb-2"
             />
-              <h1>Data da Compra</h1>
+            <h1>Data da Compra</h1>
             <input
               type="date"
               id="dataCompra"
@@ -354,7 +432,7 @@ function Upload() {
               placeholder="Data da invoice"
               required
               className="w-full border border-gray-500 rounded-md p-2 mb-6"
-              
+
             />
 
             <button
