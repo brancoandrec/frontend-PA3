@@ -322,7 +322,7 @@ function Upload() {
               required
               className="w-full border border-gray-500 rounded-md p-2 mb-2"
             />
-
+              <h1>Data da Compra</h1>
             <input
               type="date"
               id="dataCompra"
@@ -333,7 +333,7 @@ function Upload() {
               required
               className="w-full border border-gray-500 rounded-md p-2 mb-2"
             />
-
+            <h1>Data do Recebimento</h1>
             <input
               type="date"
               id="dataRecebimento"
@@ -344,7 +344,7 @@ function Upload() {
               required
               className="w-full border border-gray-500 rounded-md p-2 mb-2"
             />
-
+            <h1>Data da Invoice</h1>
             <input
               type="date"
               id="dataInvoice"
@@ -354,6 +354,7 @@ function Upload() {
               placeholder="Data da invoice"
               required
               className="w-full border border-gray-500 rounded-md p-2 mb-6"
+              
             />
 
             <button
