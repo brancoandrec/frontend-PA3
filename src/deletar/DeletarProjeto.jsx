@@ -23,7 +23,7 @@ function DeletarProjeto() {
     fetch(`http://localhost:8080/projeto/excluir/${projetoId}`, {
       method: 'DELETE',
     })
-      .then((res) => res.json())
+      .then((res) => res.text())
       .then(() => {
         setProjetoId('');
         setTimeout(carregarProjetos, 500);
