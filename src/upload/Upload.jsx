@@ -66,6 +66,7 @@ function Upload() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -109,7 +110,7 @@ function Upload() {
         });
 
         setFormData({
-          preco : nfe?.total?.ICMSTot?.vNF || ''
+          preco: nfe?.total?.ICMSTot?.vNF || ''
         });
 
 
@@ -137,7 +138,7 @@ function Upload() {
         // });
 
         setFormData(prev => ({
-          ...prev,        
+          ...prev,
           dataCompra: nfe?.ide?.dhEmi?.slice(0, 10) || ''  // Pega só a data (YYYY-MM-DD)
         }));
 
@@ -219,6 +220,23 @@ function Upload() {
 
     // Enviar compra com todos os nomes dos itens
     try {
+
+
+      //   // transforma o preco em inteiro antes de mandar pro backend
+      // const precoStr = String(formData.preco);
+      // const precoInteiro = parseInt(precoStr.split(/[.,]/)[0], 10);
+
+      // const compra = {
+      //   itemNomes: formItems.map(item => item.nome),
+      //   fornecedorNome: formFornecedor.nome,
+      //   projetoNome: selectedProjeto,
+      //   preco: isNaN(precoInteiro) ? 0 : precoInteiro,
+      //   dataCompra: formData.dataCompra,
+      //   dataRecebimento: formData.dataRecebimento,
+      //   dataInvoice: formData.dataInvoice,
+      // };
+
+
       const compra = {
         itemNomes: formItems.map(item => item.nome),
         fornecedorNome: formFornecedor.nome,
@@ -227,225 +245,225 @@ function Upload() {
         dataCompra: formData.dataCompra,
         dataRecebimento: formData.dataRecebimento,
         dataInvoice: formData.dataInvoice,
-      };
+      }
 
-      const res = await fetch('http://localhost:8080/compra/add', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(compra)
-      });
-      const data = await res.json();
-      console.log("Compra salva:", data);
-      setFormData({
-        quantidade: '',
-        preco: '',
-        dataCompra: '',
-        dataRecebimento: '',
-        dataInvoice: ''
-      });
-      setSelectedProjeto('');
-    } catch (err) {
-      console.error("Erro ao salvar compra:", err);
-    }
-  };
+    const res = await fetch('http://localhost:8080/compra/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(compra)
+    });
+    const data = await res.json();
+    console.log("Compra salva:", data);
+    setFormData({
+      quantidade: '',
+      preco: '',
+      dataCompra: '',
+      dataRecebimento: '',
+      dataInvoice: ''
+    });
+    setSelectedProjeto('');
+  } catch (err) {
+    console.error("Erro ao salvar compra:", err);
+  }
+};
 
-  return (
-    <div className="div-container gradient-background min-h-screen flex">
-      <Sidebar />
-      <div className="flex-1 flex justify-center items-start mt-20">
-        <div className="w-1/2">
-          <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Compra</h1>
+return (
+  <div className="div-container gradient-background min-h-screen flex">
+    <Sidebar />
+    <div className="flex-1 flex justify-center items-start mt-20">
+      <div className="w-1/2">
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Compra</h1>
 
-          {/* Upload de Arquivo */}
-          <div className="flex justify-center w-full mb-6">
-            <div className="bg-white p-4 rounded-xl shadow text-center">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Selecionar arquivo:
-              </label>
-              <input
-                type="file"
-                onChange={handleFileChange}
-                className="mb-4 mx-auto block"
-              />
-              <button
-                onClick={handleFileUpload}
-                className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
-              >
-                Enviar Arquivo
-              </button>
-            </div>
+        {/* Upload de Arquivo */}
+        <div className="flex justify-center w-full mb-6">
+          <div className="bg-white p-4 rounded-xl shadow text-center">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Selecionar arquivo:
+            </label>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              className="mb-4 mx-auto block"
+            />
+            <button
+              onClick={handleFileUpload}
+              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+            >
+              Enviar Arquivo
+            </button>
           </div>
-
-          {/* Formulário */}
-          <form
-            id="formCompra"
-            onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto"
-          >
-            <h3 className="text-xl font-semibold mb-4">Itens</h3>
-
-            {formItems.map((item, index) => (
-              <div key={index} className="mb-4 border p-4 rounded-lg relative">
-                <input
-                  type="text"
-                  name="nome"
-                  value={item.nome}
-                  onChange={e => handleItemChange(index, e)}
-                  placeholder="Nome"
-                  required
-                  className="w-full border border-gray-500 rounded-md p-2 mb-2"
-                />
-                <input
-                  type="text"
-                  name="descricao"
-                  value={item.descricao}
-                  onChange={e => handleItemChange(index, e)}
-                  placeholder="Descrição"
-                  required
-                  className="w-full border border-gray-500 rounded-md p-2 mb-2"
-                />
-                <input
-                  type="text"
-                  name="tipo"
-                  value={item.tipo}
-                  onChange={e => handleItemChange(index, e)}
-                  placeholder="Tipo"
-                  required
-                  className="w-full border border-gray-500 rounded-md p-2 mb-2"
-                />
-                {formItems.length > 1 && (
-                  <button
-                    type="button"
-                    onClick={() => removeItem(index)}
-                    className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded"
-                  >
-                    Remover
-                  </button>
-                )}
-              </div>
-            ))}
-
-            <button
-              type="button"
-              onClick={addItem}
-              className="mb-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-            >
-              Adicionar Item
-            </button>
-
-            <h3 className="text-xl font-semibold mb-4">Fornecedor</h3>
-            <input
-              type="text"
-              name="nome"
-              value={formFornecedor.nome}
-              onChange={handleFornecedorChange}
-              placeholder="Nome do fornecedor"
-              required
-              className="w-full border border-gray-500 rounded-md p-2 mb-2"
-            />
-            <input
-              type="text"
-              name="contato"
-              value={formFornecedor.contato}
-              onChange={handleFornecedorChange}
-              placeholder="Contato"
-              required
-              className="w-full border border-gray-500 rounded-md p-2 mb-2"
-            />
-            <input
-              type="text"
-              name="endereco"
-              value={formFornecedor.endereco}
-              onChange={handleFornecedorChange}
-              placeholder="Endereço"
-              required
-              className="w-full border border-gray-500 rounded-md p-2 mb-6"
-            />
-
-            <h3 className="text-xl font-semibold mb-4">Compra</h3>
-
-            <select
-              id="projeto"
-              value={selectedProjeto}
-              onChange={handleProjetoChange}
-              className="w-full border border-gray-500 rounded-md p-2 mb-4"
-              required
-            >
-              <option value="">Selecione um projeto</option>
-              {projetos.map((projeto) => (
-                <option key={projeto.nome} value={projeto.nome}>
-                  {projeto.nome}
-                </option>
-              ))}
-            </select>
-
-            <input
-              type="number"
-              id="quantidade"
-              name="quantidade"
-              value={formData.quantidade}
-              onChange={handleChange}
-              placeholder="Quantidade"
-              required
-              className="w-full border border-gray-500 rounded-md p-2 mb-2"
-            />
-
-            <input
-              type="number"
-              id="preco"
-              name="preco"
-              value={formData.preco}
-              onChange={handleChange}
-              placeholder="Preço"
-              required
-              className="w-full border border-gray-500 rounded-md p-2 mb-2"
-            />
-            <h1>Data da Compra</h1>
-            <input
-              type="date"
-              id="dataCompra"
-              name="dataCompra"
-              value={formData.dataCompra}
-              onChange={handleChange}
-              placeholder="Data da compra"
-              required
-              className="w-full border border-gray-500 rounded-md p-2 mb-2"
-            />
-            <h1>Data do Recebimento</h1>
-            <input
-              type="date"
-              id="dataRecebimento"
-              name="dataRecebimento"
-              value={formData.dataRecebimento}
-              onChange={handleChange}
-              placeholder="Data de recebimento"
-              required
-              className="w-full border border-gray-500 rounded-md p-2 mb-2"
-            />
-            <h1>Data da Invoice</h1>
-            <input
-              type="date"
-              id="dataInvoice"
-              name="dataInvoice"
-              value={formData.dataInvoice}
-              onChange={handleChange}
-              placeholder="Data da invoice"
-              required
-              className="w-full border border-gray-500 rounded-md p-2 mb-6"
-
-            />
-
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
-            >
-              Enviar
-            </button>
-          </form>
         </div>
+
+        {/* Formulário */}
+        <form
+          id="formCompra"
+          onSubmit={handleSubmit}
+          className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto"
+        >
+          <h3 className="text-xl font-semibold mb-4">Itens</h3>
+
+          {formItems.map((item, index) => (
+            <div key={index} className="mb-4 border p-4 rounded-lg relative">
+              <input
+                type="text"
+                name="nome"
+                value={item.nome}
+                onChange={e => handleItemChange(index, e)}
+                placeholder="Nome"
+                required
+                className="w-full border border-gray-500 rounded-md p-2 mb-2"
+              />
+              <input
+                type="text"
+                name="descricao"
+                value={item.descricao}
+                onChange={e => handleItemChange(index, e)}
+                placeholder="Descrição"
+                required
+                className="w-full border border-gray-500 rounded-md p-2 mb-2"
+              />
+              <input
+                type="text"
+                name="tipo"
+                value={item.tipo}
+                onChange={e => handleItemChange(index, e)}
+                placeholder="Tipo"
+                required
+                className="w-full border border-gray-500 rounded-md p-2 mb-2"
+              />
+              {formItems.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => removeItem(index)}
+                  className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded"
+                >
+                  Remover
+                </button>
+              )}
+            </div>
+          ))}
+
+          <button
+            type="button"
+            onClick={addItem}
+            className="mb-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+          >
+            Adicionar Item
+          </button>
+
+          <h3 className="text-xl font-semibold mb-4">Fornecedor</h3>
+          <input
+            type="text"
+            name="nome"
+            value={formFornecedor.nome}
+            onChange={handleFornecedorChange}
+            placeholder="Nome do fornecedor"
+            required
+            className="w-full border border-gray-500 rounded-md p-2 mb-2"
+          />
+          <input
+            type="text"
+            name="contato"
+            value={formFornecedor.contato}
+            onChange={handleFornecedorChange}
+            placeholder="Contato"
+            required
+            className="w-full border border-gray-500 rounded-md p-2 mb-2"
+          />
+          <input
+            type="text"
+            name="endereco"
+            value={formFornecedor.endereco}
+            onChange={handleFornecedorChange}
+            placeholder="Endereço"
+            required
+            className="w-full border border-gray-500 rounded-md p-2 mb-6"
+          />
+
+          <h3 className="text-xl font-semibold mb-4">Compra</h3>
+
+          <select
+            id="projeto"
+            value={selectedProjeto}
+            onChange={handleProjetoChange}
+            className="w-full border border-gray-500 rounded-md p-2 mb-4"
+            required
+          >
+            <option value="">Selecione um projeto</option>
+            {projetos.map((projeto) => (
+              <option key={projeto.nome} value={projeto.nome}>
+                {projeto.nome}
+              </option>
+            ))}
+          </select>
+
+          <input
+            type="number"
+            id="quantidade"
+            name="quantidade"
+            value={formData.quantidade}
+            onChange={handleChange}
+            placeholder="Quantidade"
+            required
+            className="w-full border border-gray-500 rounded-md p-2 mb-2"
+          />
+
+          <input
+            type="number"
+            id="preco"
+            name="preco"
+            value={formData.preco}
+            onChange={handleChange}
+            placeholder="Preço"
+            required
+            className="w-full border border-gray-500 rounded-md p-2 mb-2"
+          />
+          <h1>Data da Compra</h1>
+          <input
+            type="date"
+            id="dataCompra"
+            name="dataCompra"
+            value={formData.dataCompra}
+            onChange={handleChange}
+            placeholder="Data da compra"
+            required
+            className="w-full border border-gray-500 rounded-md p-2 mb-2"
+          />
+          <h1>Data do Recebimento</h1>
+          <input
+            type="date"
+            id="dataRecebimento"
+            name="dataRecebimento"
+            value={formData.dataRecebimento}
+            onChange={handleChange}
+            placeholder="Data de recebimento"
+            required
+            className="w-full border border-gray-500 rounded-md p-2 mb-2"
+          />
+          <h1>Data da Invoice</h1>
+          <input
+            type="date"
+            id="dataInvoice"
+            name="dataInvoice"
+            value={formData.dataInvoice}
+            onChange={handleChange}
+            placeholder="Data da invoice"
+            required
+            className="w-full border border-gray-500 rounded-md p-2 mb-6"
+
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+          >
+            Enviar
+          </button>
+        </form>
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default Upload;
