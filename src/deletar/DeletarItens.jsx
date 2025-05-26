@@ -23,7 +23,7 @@ const DeletarItem = () => {
     fetch(`http://localhost:8080/item/excluir/${itemId}`, {
       method: 'DELETE',
     })
-      .then(response => response.json())
+      .then(response => response.text())
       .then(() => {
         setItemId('');
         setTimeout(carregarItens, 500);

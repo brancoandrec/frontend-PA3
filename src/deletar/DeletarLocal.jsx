@@ -23,7 +23,7 @@ function DeletarLocal() {
     fetch(`http://localhost:8080/localarmazen/excluir/${localId}`, {
       method: 'DELETE',
     })
-      .then((res) => res.json())
+      .then((res) => res.text())
       .then(() => {
         setLocalId('');
         setTimeout(carregarLocais, 500);

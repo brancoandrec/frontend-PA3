@@ -23,7 +23,7 @@ const DeletarFornecedor = () => {
     fetch(`http://localhost:8080/fornecedor/excluir/${fornecedorId}`, {
       method: 'DELETE'
     })
-      .then(response => response.json())
+      .then(response => response.text())
       .then(() => {
         setFornecedorId('');
         setTimeout(() => carregarFornecedores(), 500);
