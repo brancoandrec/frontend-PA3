@@ -131,7 +131,7 @@ function Upload() {
           nome: item.prod?.xProd || '',
           descricao: '',
           tipo: '',
-          quantidade: '',
+          quantidade: item.prod?.qCom ||'',
           localArmazenId: ''
         }));
         setFormItems(novosItens);
