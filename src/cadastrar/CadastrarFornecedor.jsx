@@ -35,6 +35,9 @@ function CadastrarFornecedor() {
         body: JSON.stringify(fornecedor)
       });
 
+      if (response.ok) {
+        alert('Fornecedor cadastrado com sucesso!!')
+      }
       const data = await response.json();
       console.log('Sucesso:', data);
       setFormData({ name: '', endereco: '', telefone: '' });

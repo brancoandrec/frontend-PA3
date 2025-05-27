@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
 
@@ -7,6 +7,15 @@ function CadastrarLocal() {
     sala: '',
     armario: ''
   });
+  const [locais, setLocais] = useState([]);
+
+  // Carregar locais existentes ao montar o componente
+  useEffect(() => {
+    fetch('http://127.0.0.1:8080/localarmazen/buscar')
+      .then((res) => res.json())
+      .then((data) => setLocais(data))
+      .catch((err) => console.error('Erro ao buscar locais:', err));
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,173 +28,91 @@ function CadastrarLocal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const localArmazen = {
-      sala: formData.sala,
-      armario: formData.armario
-    };
+    // Verifica se já existe local com a mesma sala e armario
+    const existeLocal = locais.some(
+      local =>
+        local.sala.toLowerCase() === formData.sala.trim().toLowerCase() &&
+        local.armario.toLowerCase() === formData.armario.trim().toLowerCase()
+    );
+
+    if (existeLocal) {
+      alert('Já existe um local com essa sala e armário cadastrados.');
+      return;
+    }
 
     try {
-      const response = await fetch('http://localhost:8080/localarmazen/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(localArmazen)
+      const response = await fetch("http://127.0.0.1:8080/localarmazen/add", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
 
-      const data = await response.json();
-      console.log('Sucesso:', data);
-      setFormData({ sala: '', armario: '' });
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Dados enviados:', result);
+        alert('Local cadastrado com sucesso');
+        setFormData({ sala: '', armario: '' });
+
+        // Atualiza a lista locais com o novo cadastro
+        setLocais(prevLocais => [...prevLocais, result]);
+      } else {
+        alert('Erro ao cadastrar local.');
+      }
     } catch (error) {
-      console.error('Erro:', error);
+      console.error("Erro ao enviar o arquivo:", error);
     }
   };
 
   return (
-   <div className="div-container gradient-background min-h-screen flex">
-  <Sidebar />
-  <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-1/2">
-      <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Local</h1>
-      <form
-  id="formCompra"
-  onSubmit={handleSubmit}
-  className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto w-full"
->
-  <h3 className="text-xl font-semibold mb-4">Compra</h3>
-{/* Campos do formulário */}
-  <div>
-    <label htmlFor="compraId" className="block text-sm font-medium text-gray-700 mb-1">
-      ID Compra:
-    </label>
-    <input
-      type="number"
-      id="compraId"
-      name="compraId"
-      value={formData.compraId}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
+    <div className="div-container gradient-background min-h-screen flex">
+      <Sidebar />
+      <div className="flex-1 flex justify-center items-start mt-20">
+        <div className="w-full max-w-md">
+          <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Local de Armazenamento</h1>
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white p-6 rounded-xl shadow-lg space-y-4"
+          >
+            <div>
+              <label htmlFor="sala" className="block text-sm font-medium text-gray-700 mb-1">
+                Sala:
+              </label>
+              <input
+                type="text"
+                id="sala"
+                name="sala"
+                value={formData.sala}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-  <div>
-    <label htmlFor="item_id" className="block text-sm font-medium text-gray-700 mb-1">
-      IDs dos Itens (separados por vírgulas):
-    </label>
-    <input
-      type="text"
-      id="item_id"
-      name="item_id"
-      value={formData.item_id}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
+            <div>
+              <label htmlFor="armario" className="block text-sm font-medium text-gray-700 mb-1">
+                Armário:
+              </label>
+              <input
+                type="text"
+                id="armario"
+                name="armario"
+                value={formData.armario}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-  <div>
-    <label htmlFor="fornecedor_id" className="block text-sm font-medium text-gray-700 mb-1">
-      ID Fornecedor:
-    </label>
-    <input
-      type="number"
-      id="fornecedor_id"
-      name="fornecedor_id"
-      value={formData.fornecedor_id}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="projeto_id" className="block text-sm font-medium text-gray-700 mb-1">
-      ID Projeto:
-    </label>
-    <input
-      type="number"
-      id="projeto_id"
-      name="projeto_id"
-      value={formData.projeto_id}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="preco" className="block text-sm font-medium text-gray-700 mb-1">
-      Preço:
-    </label>
-    <input
-      type="number"
-      id="preco"
-      name="preco"
-      value={formData.preco}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="dataCompra" className="block text-sm font-medium text-gray-700 mb-1">
-      Data da compra:
-    </label>
-    <input
-      type="date"
-      id="dataCompra"
-      name="dataCompra"
-      value={formData.dataCompra}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="dataInvoice" className="block text-sm font-medium text-gray-700 mb-1">
-      Data Invoice:
-    </label>
-    <input
-      type="date"
-      id="dataInvoice"
-      name="dataInvoice"
-      value={formData.dataInvoice}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="dataRecebimento" className="block text-sm font-medium text-gray-700 mb-1">
-      Data de recebimento:
-    </label>
-    <input
-      type="date"
-      id="dataRecebimento"
-      name="dataRecebimento"
-      value={formData.dataRecebimento}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <button
-    type="submit"
-    className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
-  >
-    Enviar
-  </button>
-</form>
-
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+            >
+              Enviar
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
   );
 }
 

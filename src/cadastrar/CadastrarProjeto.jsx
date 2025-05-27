@@ -12,23 +12,33 @@ const CadastrarProjeto = () => {
 
     const projeto = { nome, descricao, dataInicio };
 
-    fetch('http://localhost:8080/projeto/add', {
+      fetch('http://localhost:8080/projeto/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(projeto),
     })
-      .then((response) => response.json())
+
+    
+
+      .then((response) => {
+        if (response.ok) {
+          alert('Projeto cadastrado com sucesso')
+        }
+        return response.json()})
+          
       .then((data) => {
         console.log('Sucesso:', data);
         setNome('');
         setDescricao('');
         setDataInicio('');
       })
+      
       .catch((error) => {
         console.error('Erro:', error);
       });
+      
   };
 
   return (

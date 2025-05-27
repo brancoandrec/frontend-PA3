@@ -4,7 +4,7 @@ import '../styles.css';
 
 function Upload() {
   const [formItems, setFormItems] = useState([
-    { nome: '', descricao: '', tipo: '' }
+    { nome: '', descricao: '', tipo: '', quantidade: '', localArmazenId: '' }
   ]);
 
   const [formFornecedor, setFormFornecedor] = useState({
@@ -14,7 +14,6 @@ function Upload() {
   });
 
   const [formData, setFormData] = useState({
-    quantidade: '',
     preco: '',
     dataCompra: '',
     dataRecebimento: '',
@@ -23,6 +22,9 @@ function Upload() {
 
   const [selectedProjeto, setSelectedProjeto] = useState('');
   const [projetos, setProjetos] = useState([]);
+
+  const [locais, setLocais] = useState([]);
+
   const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
@@ -35,7 +37,19 @@ function Upload() {
         console.error('Erro ao buscar projetos:', error);
       }
     }
+
+    async function fetchLocais() {
+      try {
+        const response = await fetch('http://localhost:8080/localarmazen/buscar');
+        const data = await response.json();
+        setLocais(data);
+      } catch (error) {
+        console.error('Erro ao buscar locais:', error);
+      }
+    }
+
     fetchProjetos();
+    fetchLocais();
   }, []);
 
   // Atualiza o item específico dentro do array
@@ -49,7 +63,7 @@ function Upload() {
   };
 
   const addItem = () => {
-    setFormItems(prev => [...prev, { nome: '', descricao: '', tipo: '' }]);
+    setFormItems(prev => [...prev, { nome: '', descricao: '', tipo: '', quantidade: '', localArmazenId: '' }]);
   };
 
   const removeItem = (index) => {
@@ -66,7 +80,6 @@ function Upload() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -80,7 +93,6 @@ function Upload() {
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
-
 
   const handleFileUpload = async () => {
     if (!selectedFile) {
@@ -96,11 +108,8 @@ function Upload() {
       });
       if (response.ok) {
         const result = await response.json();
-
-        // Aqui você pega os dados aninhados
         const nfe = result.nfeProc?.NFe?.infNFe;
 
-        // Atualiza os estados com dados do JSON
         setFormFornecedor({
           nome: nfe?.emit?.xNome || '',
           contato: nfe?.emit?.enderEmit.fone || '',
@@ -110,40 +119,22 @@ function Upload() {
         });
 
         setFormData({
-          preco: nfe?.total?.ICMSTot?.vNF || ''
+          preco: nfe?.total?.ICMSTot?.vNF || '',
+          dataCompra: nfe?.ide?.dhEmi?.slice(0, 10) || '',
+          dataRecebimento: '',
+          dataInvoice: ''
         });
 
-
-        // Pega os itens da nota (det)
         const itens = nfe?.det || [];
-
-        // Garante que é array, pois se for 1 item, pode vir como objeto
         const itensArray = Array.isArray(itens) ? itens : [itens];
-
-        // Mapeia para o formato esperado no estado
         const novosItens = itensArray.map(item => ({
           nome: item.prod?.xProd || '',
-          descricao: '',  // ou alguma outra informação que queira preencher
-          tipo: ''        // pode preencher com outra tag se quiser
+          descricao: '',
+          tipo: '',
+          quantidade: item.prod?.qCom ||'',
+          localArmazenId: ''
         }));
-
         setFormItems(novosItens);
-
-
-        // setFormItems({
-        //   nome: nfe?.det?.xProd || '',
-        //   descricao: nfe?.emit?.enderEmit.fone || '',
-        //   tipo: nfe?.emit?.enderEmit?.xLgr 
-
-        // });
-
-        setFormData(prev => ({
-          ...prev,
-          dataCompra: nfe?.ide?.dhEmi?.slice(0, 10) || ''  // Pega só a data (YYYY-MM-DD)
-        }));
-
-
-
 
         alert("Dados do XML carregados no formulário!");
       } else {
@@ -154,316 +145,299 @@ function Upload() {
     }
   };
 
-
-
-
-
-  // versao antiga
-  // const handleFileUpload = async () => {
-  //   if (!selectedFile) {
-  //     alert("Selecione um arquivo primeiro.");
-  //     return;
-  //   }
-  //   const formDataFile = new FormData();
-  //   formDataFile.append("file", selectedFile);
-  //   try {
-  //     const response = await fetch("http://127.0.0.1:5000/upload", {
-  //       method: "POST",
-  //       body: formDataFile
-  //     });
-  //     if (response.ok) {
-  //       const result = await response.json();
-  //       console.log("Arquivo enviado com sucesso:", result);
-  //       alert("Arquivo enviado com sucesso!");
-  //     } else {
-  //       alert("Erro ao enviar arquivo.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Erro ao enviar o arquivo:", error);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Enviar cada item individualmente
-    try {
-      for (const item of formItems) {
-        const res = await fetch('http://localhost:8080/item/add', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(item)
-        });
-        const data = await res.json();
-        console.log("Item salvo:", data);
-      }
-      setFormItems([{ nome: '', descricao: '', tipo: '' }]);
-    } catch (err) {
-      console.error("Erro ao salvar item:", err);
+    if (!selectedProjeto) {
+      alert("Selecione um projeto.");
       return;
     }
 
-    // Enviar fornecedor
     try {
-      const res = await fetch('http://localhost:8080/fornecedor/add', {
+      // Enviar fornecedor
+      const resFornecedor = await fetch('http://localhost:8080/fornecedor/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formFornecedor)
       });
-      const data = await res.json();
-      console.log("Fornecedor salvo:", data);
-      setFormFornecedor({ nome: '', contato: '', endereco: '' });
-    } catch (err) {
-      console.error("Erro ao salvar fornecedor:", err);
-      return;
-    }
+      const fornecedorData = await resFornecedor.json();
 
-    // Enviar compra com todos os nomes dos itens
-    try {
+      // Primeiro envia os itens para /item/add e obtém seus ids
+      const itemIds = [];
+      for (const item of formItems) {
+        if (item.nome.trim() === '') continue;
 
-
-      //   // transforma o preco em inteiro antes de mandar pro backend
-      // const precoStr = String(formData.preco);
-      // const precoInteiro = parseInt(precoStr.split(/[.,]/)[0], 10);
-
-      // const compra = {
-      //   itemNomes: formItems.map(item => item.nome),
-      //   fornecedorNome: formFornecedor.nome,
-      //   projetoNome: selectedProjeto,
-      //   preco: isNaN(precoInteiro) ? 0 : precoInteiro,
-      //   dataCompra: formData.dataCompra,
-      //   dataRecebimento: formData.dataRecebimento,
-      //   dataInvoice: formData.dataInvoice,
-      // };
-
-
-      const compra = {
-        itemNomes: formItems.map(item => item.nome),
-        fornecedorNome: formFornecedor.nome,
-        projetoNome: selectedProjeto,
-        preco: formData.preco,
-        dataCompra: formData.dataCompra,
-        dataRecebimento: formData.dataRecebimento,
-        dataInvoice: formData.dataInvoice,
+        const resItem = await fetch('http://localhost:8080/item/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nome: item.nome,
+            descricao: item.descricao,
+            tipo: item.tipo
+          })
+        });
+        const itemData = await resItem.json();
+        itemIds.push({ id: itemData.id, quantidade: item.quantidade, localArmazenId: item.localArmazenId });
       }
 
-    const res = await fetch('http://localhost:8080/compra/add', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(compra)
-    });
-    const data = await res.json();
-    console.log("Compra salva:", data);
-    setFormData({
-      quantidade: '',
-      preco: '',
-      dataCompra: '',
-      dataRecebimento: '',
-      dataInvoice: ''
-    });
-    setSelectedProjeto('');
-  } catch (err) {
-    console.error("Erro ao salvar compra:", err);
-  }
-};
+      // Enviar conjunto itens com quantidade, projeto e local armazen (usando os ids retornados)
+      for (const itemInfo of itemIds) {
+        if (!itemInfo.quantidade || !itemInfo.localArmazenId) continue;
 
-return (
-  <div className="div-container gradient-background min-h-screen flex">
-    <Sidebar />
-    <div className="flex-1 flex justify-center items-start mt-20">
-      <div className="w-1/2">
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Compra</h1>
+        const conjuntoItem = {
+          quantidade: parseInt(itemInfo.quantidade, 10),
+          item: { id: itemInfo.id },
+          projeto: { id: parseInt(selectedProjeto, 10) },
+          localArmazen: { id: parseInt(itemInfo.localArmazenId, 10) }
+        };
 
-        {/* Upload de Arquivo */}
-        <div className="flex justify-center w-full mb-6">
-          <div className="bg-white p-4 rounded-xl shadow text-center">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Selecionar arquivo:
-            </label>
-            <input
-              type="file"
-              onChange={handleFileChange}
-              className="mb-4 mx-auto block"
-            />
-            <button
-              onClick={handleFileUpload}
-              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
-            >
-              Enviar Arquivo
-            </button>
+        await fetch('http://localhost:8080/conjuntoitens/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(conjuntoItem)
+        });
+      }
+
+      // Enviar compra
+      const precoStr = String(formData.preco);
+      const precoInteiro = parseInt(precoStr.split(/[.,]/)[0], 10);
+
+      const compra = {
+        itemNomes: formItems.map(item => item.nome), // array só com nomes dos itens
+        fornecedorNome: formFornecedor.nome,          // nome do fornecedor
+        projetoNome: (() => {
+          // Se selectedProjeto for ID, busca nome correspondente:
+          const projetoSelecionado = projetos.find(p => p.id === parseInt(selectedProjeto, 10));
+          return projetoSelecionado ? projetoSelecionado.nome : selectedProjeto;
+        })(),
+        preco: isNaN(precoInteiro) ? 0 : precoInteiro,
+        dataCompra: formData.dataCompra,
+        dataRecebimento: formData.dataRecebimento,
+        dataInvoice: formData.dataInvoice
+      };
+      await fetch('http://localhost:8080/compra/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(compra)
+      });
+
+      // Resetar estados após sucesso
+      setFormItems([{ nome: '', descricao: '', tipo: '', quantidade: '', localArmazenId: '' }]);
+      setFormFornecedor({ nome: '', contato: '', endereco: '' });
+      setFormData({ preco: '', dataCompra: '', dataRecebimento: '', dataInvoice: '' });
+      setSelectedProjeto('');
+
+      alert('Dados enviados com sucesso!');
+    } catch (err) {
+      console.error('Erro ao salvar dados:', err);
+      alert('Erro ao enviar dados. Veja o console.');
+    }
+  };
+
+  return (
+    <div className="div-container gradient-background min-h-screen flex">
+      <Sidebar />
+      <div className="flex-1 flex justify-center items-start mt-20">
+        <div className="w-1/2">
+          <h1 className="text-2xl font-bold mb-6 text-center text-black">Cadastro de Compra</h1>
+
+          {/* Upload de Arquivo */}
+          <div className="flex justify-center w-full mb-6">
+            <div className="bg-white p-4 rounded-xl shadow text-center">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Selecione um arquivo: .xml
+              </label>
+              <input
+                type="file"
+                accept=".xml"
+                onChange={handleFileChange}
+                className="mb-4 mx-auto block"
+              />
+              <button
+                onClick={handleFileUpload}
+                className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+              >
+                Enviar Arquivo
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* Formulário */}
-        <form
-          id="formCompra"
-          onSubmit={handleSubmit}
-          className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto"
-        >
-          <h3 className="text-xl font-semibold mb-4">Itens</h3>
+          {/* Formulário */}
+          <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-lg space-y-6">
 
-          {formItems.map((item, index) => (
-            <div key={index} className="mb-4 border p-4 rounded-lg relative">
+            {/* Itens dinâmicos */}
+            {formItems.map((item, index) => (
+              <div key={index} className="border p-4 rounded-md space-y-2">
+                <h2 className="font-semibold">Item {index + 1}</h2>
+
+                <input
+                  type="text"
+                  name="nome"
+                  placeholder="Nome do item"
+                  value={item.nome}
+                  onChange={(e) => handleItemChange(index, e)}
+                  required
+                  className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
+                <input
+                  type="text"
+                  name="descricao"
+                  placeholder="Descrição"
+                  value={item.descricao}
+                  onChange={(e) => handleItemChange(index, e)}
+                  className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
+                <input
+                  type="text"
+                  name="tipo"
+                  placeholder="Tipo"
+                  value={item.tipo}
+                  onChange={(e) => handleItemChange(index, e)}
+                  className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
+                <input
+                  type="number"
+                  name="quantidade"
+                  placeholder="Quantidade"
+                  min="1"
+                  value={item.quantidade}
+                  onChange={(e) => handleItemChange(index, e)}
+                  required
+                  className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
+                <label className="block font-medium mt-2 mb-1">Local de Armazenamento:</label>
+                <select
+                  name="localArmazenId"
+                  value={item.localArmazenId}
+                  onChange={(e) => handleItemChange(index, e)}
+                  required
+                  className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">Selecione um local</option>
+                  {locais.map(local => (
+                    <option key={local.id} value={local.id}>
+                      Sala {local.sala} - Armário {local.armario}
+                    </option>
+                  ))}
+                </select>
+
+                {formItems.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => removeItem(index)}
+                    className="bg-red-400 px-4 py-2 rounded-md hover:bg-red-500 transition"
+                  >
+                    Remover Item
+                  </button>
+                )}
+              </div>
+            ))}
+
+            <button
+              type="button"
+              onClick={addItem}
+              className="bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-400 transition"
+            >
+              Adicionar Item
+            </button>
+
+            {/* Dados do Fornecedor */}
+            <div>
+              <h2 className="font-semibold mb-2">Dados do Fornecedor</h2>
               <input
                 type="text"
                 name="nome"
-                value={item.nome}
-                onChange={e => handleItemChange(index, e)}
-                placeholder="Nome"
+                placeholder="Nome do fornecedor"
+                value={formFornecedor.nome}
+                onChange={handleFornecedorChange}
                 required
-                className="w-full border border-gray-500 rounded-md p-2 mb-2"
+                className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <input
                 type="text"
-                name="descricao"
-                value={item.descricao}
-                onChange={e => handleItemChange(index, e)}
-                placeholder="Descrição"
-                required
-                className="w-full border border-gray-500 rounded-md p-2 mb-2"
+                name="contato"
+                placeholder="Contato"
+                value={formFornecedor.contato}
+                onChange={handleFornecedorChange}
+                className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-2"
               />
               <input
                 type="text"
-                name="tipo"
-                value={item.tipo}
-                onChange={e => handleItemChange(index, e)}
-                placeholder="Tipo"
-                required
-                className="w-full border border-gray-500 rounded-md p-2 mb-2"
+                name="endereco"
+                placeholder="Endereço"
+                value={formFornecedor.endereco}
+                onChange={handleFornecedorChange}
+                className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-2"
               />
-              {formItems.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => removeItem(index)}
-                  className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded"
-                >
-                  Remover
-                </button>
-              )}
             </div>
-          ))}
+            {/* Projeto */}
+            <div>
+              <label className="block font-semibold mb-1">Projeto</label>
+              <select
+                value={selectedProjeto}
+                onChange={handleProjetoChange}
+                required
+                className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">Selecione um projeto</option>
+                {projetos.map(proj => (
+                  <option key={proj.id} value={proj.id}>
+                    {proj.nome}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <button
-            type="button"
-            onClick={addItem}
-            className="mb-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-          >
-            Adicionar Item
-          </button>
+            {/* Dados da Compra */}
+            <div className="grid grid-cols-2 gap-4">
+              <input
+                type="number"
+                name="preco"
+                placeholder="Preço"
+                value={formData.preco}
+                onChange={handleChange}
+                required
+                className="border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="date"
+                name="dataCompra"
+                value={formData.dataCompra}
+                onChange={handleChange}
+                required
+                className="border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="date"
+                name="dataRecebimento"
+                value={formData.dataRecebimento}
+                onChange={handleChange}
+                className="border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="date"
+                name="dataInvoice"
+                value={formData.dataInvoice}
+                onChange={handleChange}
+                className="border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-          <h3 className="text-xl font-semibold mb-4">Fornecedor</h3>
-          <input
-            type="text"
-            name="nome"
-            value={formFornecedor.nome}
-            onChange={handleFornecedorChange}
-            placeholder="Nome do fornecedor"
-            required
-            className="w-full border border-gray-500 rounded-md p-2 mb-2"
-          />
-          <input
-            type="text"
-            name="contato"
-            value={formFornecedor.contato}
-            onChange={handleFornecedorChange}
-            placeholder="Contato"
-            required
-            className="w-full border border-gray-500 rounded-md p-2 mb-2"
-          />
-          <input
-            type="text"
-            name="endereco"
-            value={formFornecedor.endereco}
-            onChange={handleFornecedorChange}
-            placeholder="Endereço"
-            required
-            className="w-full border border-gray-500 rounded-md p-2 mb-6"
-          />
-
-          <h3 className="text-xl font-semibold mb-4">Compra</h3>
-
-          <select
-            id="projeto"
-            value={selectedProjeto}
-            onChange={handleProjetoChange}
-            className="w-full border border-gray-500 rounded-md p-2 mb-4"
-            required
-          >
-            <option value="">Selecione um projeto</option>
-            {projetos.map((projeto) => (
-              <option key={projeto.nome} value={projeto.nome}>
-                {projeto.nome}
-              </option>
-            ))}
-          </select>
-
-          <input
-            type="number"
-            id="quantidade"
-            name="quantidade"
-            value={formData.quantidade}
-            onChange={handleChange}
-            placeholder="Quantidade"
-            required
-            className="w-full border border-gray-500 rounded-md p-2 mb-2"
-          />
-
-          <input
-            type="number"
-            id="preco"
-            name="preco"
-            value={formData.preco}
-            onChange={handleChange}
-            placeholder="Preço"
-            required
-            className="w-full border border-gray-500 rounded-md p-2 mb-2"
-          />
-          <h1>Data da Compra</h1>
-          <input
-            type="date"
-            id="dataCompra"
-            name="dataCompra"
-            value={formData.dataCompra}
-            onChange={handleChange}
-            placeholder="Data da compra"
-            required
-            className="w-full border border-gray-500 rounded-md p-2 mb-2"
-          />
-          <h1>Data do Recebimento</h1>
-          <input
-            type="date"
-            id="dataRecebimento"
-            name="dataRecebimento"
-            value={formData.dataRecebimento}
-            onChange={handleChange}
-            placeholder="Data de recebimento"
-            required
-            className="w-full border border-gray-500 rounded-md p-2 mb-2"
-          />
-          <h1>Data da Invoice</h1>
-          <input
-            type="date"
-            id="dataInvoice"
-            name="dataInvoice"
-            value={formData.dataInvoice}
-            onChange={handleChange}
-            placeholder="Data da invoice"
-            required
-            className="w-full border border-gray-500 rounded-md p-2 mb-6"
-
-          />
-
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
-          >
-            Enviar
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition w-full mt-4"
+            >
+              Enviar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default Upload;
