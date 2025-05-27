@@ -34,8 +34,14 @@ function CadastrarItens() {
         body: JSON.stringify(item) 
       });
 
+      if (res.ok)  {
+        alert('item cadastrado com sucesso');
+
+      }
       const data = await res.json();
+      
       console.log('Sucesso:', data);
+      
       setFormData({
         tipo: '',
         name: '',

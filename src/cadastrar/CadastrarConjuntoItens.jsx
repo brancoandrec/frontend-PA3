@@ -167,7 +167,14 @@ const CadastrarConjuntoItens = () => {
       },
       body: JSON.stringify(fornecedor),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        
+        if(response.ok) {
+           alert('Conjunto itens cadastrado com sucesso !!')
+
+        } 
+        
+          return response.json()})
       .then((data) => {
         console.log('Sucesso:', data);
         setQuantidade('');
