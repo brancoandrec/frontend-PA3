@@ -329,7 +329,7 @@ function Upload() {
                   <button
                     type="button"
                     onClick={() => removeItem(index)}
-                    className="text-red-600 hover:underline mt-2"
+                    className="bg-red-400 px-4 py-2 rounded-md hover:bg-red-500 transition"
                   >
                     Remover Item
                   </button>
