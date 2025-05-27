@@ -245,10 +245,11 @@ function Upload() {
           <div className="flex justify-center w-full mb-6">
             <div className="bg-white p-4 rounded-xl shadow text-center">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Selecionar arquivo:
+                Selecione um arquivo: .xml
               </label>
               <input
                 type="file"
+                accept=".xml"
                 onChange={handleFileChange}
                 className="mb-4 mx-auto block"
               />
