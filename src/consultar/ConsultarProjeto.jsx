@@ -27,84 +27,96 @@ const ConsultarProjeto = () => {
   };
 
   return (
-    <div className="div-container gradient-background">
+    <div className="div-container gradient-background min-h-screen flex">
       <Sidebar />
-      {/* Tabela de Projetos */} 
-      <div className="container mx-auto w-[90%] max-w-6xl">
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Projeto</h1>
-        <table id="tabelaProjetos" className="table w-full">
-          <thead>
-            <tr>
-              <th className="text-left">ID</th>
-              <th className="text-left">Nome</th>
-              <th className="text-left">Descrição</th>
-            </tr>
-          </thead>
-          <tbody>
-            {projetos.map((projeto, index) => (
-              <tr key={index}>
-                <td>{projeto.id}</td>
-                <td>{projeto.nome}</td>
-                <td>{projeto.descricao}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <br /><br />
-        <form
-  id="alterarForm"
-  onSubmit={handleSubmit}
-  className="bg-white p-6 rounded-xl shadow-lg space-y-4 mt-8 w-full max-w-md mx-auto">
-  <div>
-    <label
-      htmlFor="projetoId"
-      className="block text-sm font-medium text-gray-700 mb-1">
-      ID do Projeto para consultar:
-    </label>
-    <input
-      type="text"
-      id="projetoId"
-      name="projetoId"
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-  <button
-    type="submit"
-    id="alterarBtn"
-    className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition">
-      Selecionar
-      </button>
-      </form>
-        <br /><br />
-        <form id="formProjeto" method="POST" className="w-full">
-          <h1 className="text-2xl font-bold mb-6 text-center text-black">Itens do Projeto</h1>
-          <table id="itensProjeto" className="table w-full">
+
+      <div className="container mx-auto w-[90%] max-w-6xl mt-10">
+        <h1 className="text-3xl font-bold mb-8 text-center text-black">Consulta de Projeto</h1>
+
+        {/* Tabela de Projetos */}
+        <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6 mb-12">
+          <table className="min-w-full table-auto border-collapse">
             <thead>
-              <tr>
-                <th className="text-left">ID</th>
-                <th className="text-left">Nome do item</th>
-                <th className="text-left">Quantidade</th>
-                <th className="text-left">Tipo</th>
-                <th className="text-left">Descrição</th>
-                <th className="text-left">Sala</th>
-                <th className="text-left">Armario</th>
+              <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+                <th className="px-6 py-4 text-left">ID</th>
+                <th className="px-6 py-4 text-left">Nome</th>
+                <th className="px-6 py-4 text-left">Descrição</th>
               </tr>
             </thead>
-            <tbody>
-              {itens.map((projetoItens, index) => (
-                <tr key={index}>
-                  <td>{projetoItens.item.id}</td>
-                  <td>{projetoItens.item.nome}</td>
-                  <td>{projetoItens.quantidade}</td>
-                  <td>{projetoItens.item.tipo}</td>
-                  <td>{projetoItens.item.descricao}</td>
-                  <td>{projetoItens.localArmazen.sala}</td>
-                  <td>{projetoItens.localArmazen.armario}</td>
+            <tbody className="text-gray-800 text-sm">
+              {projetos.map((projeto, index) => (
+                <tr key={index} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 border-t">{projeto.id}</td>
+                  <td className="px-6 py-4 border-t">{projeto.nome}</td>
+                  <td className="px-6 py-4 border-t">{projeto.descricao}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Formulário de seleção do projeto */}
+        <form
+          id="alterarForm"
+          onSubmit={handleSubmit}
+          className="bg-white p-6 rounded-xl shadow-lg space-y-4 mt-8 w-full max-w-md mx-auto"
+        >
+          <div>
+            <label
+              htmlFor="projetoId"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              ID do Projeto para consultar:
+            </label>
+            <input
+              type="text"
+              id="projetoId"
+              name="projetoId"
+              required
+              className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <button
+            type="submit"
+            id="alterarBtn"
+            className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+          >
+            Selecionar
+          </button>
+        </form>
+
+        {/* Tabela de Itens do Projeto */}
+        <form id="formProjeto" method="POST" className="w-full mt-16">
+          <h1 className="text-3xl font-bold mb-8 text-center text-black">Itens do Projeto</h1>
+
+          <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6">
+            <table className="min-w-full table-auto border-collapse">
+              <thead>
+                <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+                  <th className="px-6 py-4 text-left">ID</th>
+                  <th className="px-6 py-4 text-left">Nome do item</th>
+                  <th className="px-6 py-4 text-left">Quantidade</th>
+                  <th className="px-6 py-4 text-left">Tipo</th>
+                  <th className="px-6 py-4 text-left">Descrição</th>
+                  <th className="px-6 py-4 text-left">Sala</th>
+                  <th className="px-6 py-4 text-left">Armário</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-800 text-sm">
+                {itens.map((projetoItens, index) => (
+                  <tr key={index} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 border-t">{projetoItens.item.id}</td>
+                    <td className="px-6 py-4 border-t">{projetoItens.item.nome}</td>
+                    <td className="px-6 py-4 border-t">{projetoItens.quantidade}</td>
+                    <td className="px-6 py-4 border-t">{projetoItens.item.tipo}</td>
+                    <td className="px-6 py-4 border-t">{projetoItens.item.descricao}</td>
+                    <td className="px-6 py-4 border-t">{projetoItens.localArmazen.sala}</td>
+                    <td className="px-6 py-4 border-t">{projetoItens.localArmazen.armario}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </form>
       </div>
     </div>
