@@ -20,44 +20,48 @@ const ConsultarCompra = () => {
     return `${day}-${month}-${year}`;
   };
 
-  return (
-    <div className="div-container gradient-background">
+ return (
+    <div className="div-container gradient-background min-h-screen flex">
       <Sidebar />
+
       {/* Tabela de Compras */}
-      <div className="container mx-auto w-[90%] max-w-6xl">
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Compra</h1>
-        <table id="tabelaCompras"className="w-full">
-          <thead>
-            <tr>
-              <th className="text-left">ID</th>
-              <th className="text-left">Itens</th>
-              <th className="text-left">Data Compra</th>
-              <th className="text-left">Data Invoice</th>
-              <th className="text-left">Data Recebimento</th>
-              <th className="text-left">Preço</th>
-              <th className="text-left">Fornecedor</th>
-              <th className="text-left">Projeto</th>
-            </tr>
-          </thead>
-          <tbody>
-            {compras.map((compra, index) => (
-              <tr key={index}>
-                <td>{compra.id}</td>
-                <td>
-                  {Array.isArray(compra.item)
-                    ? compra.item.map(i => i.nome).join(', ')
-                    : compra.item?.nome || 'Nenhum item'}
-                </td>
-                <td>{formataData(compra.dataRecebimento)}</td>
-                <td>{formataData(compra.dataRecebimento)}</td>
-                <td>{formataData(compra.dataRecebimento)}</td>
-                <td>{compra.preco}</td>
-                <td>{compra.fornecedor?.id ? compra.fornecedor.nome : ''}</td>
-                <td>{compra.projeto?.id ? compra.projeto.nome : ''}</td>
+      <div className="container mx-auto w-[90%] max-w-6xl mt-10">
+        <h1 className="text-3xl font-bold mb-8 text-center text-black">Consulta de Compra</h1>
+
+        <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6">
+          <table className="min-w-full table-auto border-collapse">
+            <thead>
+              <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+                <th className="px-6 py-4 text-left">ID</th>
+                <th className="px-6 py-4 text-left">Itens</th>
+                <th className="px-6 py-4 text-left">Data Compra</th>
+                <th className="px-6 py-4 text-left">Data Invoice</th>
+                <th className="px-6 py-4 text-left">Data Recebimento</th>
+                <th className="px-6 py-4 text-left">Preço</th>
+                <th className="px-6 py-4 text-left">Fornecedor</th>
+                <th className="px-6 py-4 text-left">Projeto</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="text-gray-800 text-sm">
+              {compras.map((compra, index) => (
+                <tr key={index} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 border-t">{compra.id}</td>
+                  <td className="px-6 py-4 border-t">
+                    {Array.isArray(compra.item)
+                      ? compra.item.map(i => i.nome).join(', ')
+                      : compra.item?.nome || 'Nenhum item'}
+                  </td>
+                  <td className="px-6 py-4 border-t">{formataData(compra.dataCompra)}</td>
+                  <td className="px-6 py-4 border-t">{formataData(compra.dataInvoice)}</td>
+                  <td className="px-6 py-4 border-t">{formataData(compra.dataRecebimento)}</td>
+                  <td className="px-6 py-4 border-t">R$ {compra.preco?.toFixed(2)}</td>
+                  <td className="px-6 py-4 border-t">{compra.fornecedor?.id ? compra.fornecedor.nome : ''}</td>
+                  <td className="px-6 py-4 border-t">{compra.projeto?.id ? compra.projeto.nome : ''}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

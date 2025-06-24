@@ -50,4 +50,4 @@ function Consultar() {
   )
 }
 
-export default Consultar
+export default Consultar;

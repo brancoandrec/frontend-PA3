@@ -21,44 +21,49 @@ const ConsultarConjuntoItens = () => {
   };
 
   return (
-    <div className="div-container gradient-background">
-     <Sidebar />
-{/* Tabela de Conjunto de Itens */} 
-      <div className="container container-conjitens mx-auto w-[90%] max-w-6xl">
-        <div className="container mx-auto w-[90%] max-w-6xl container-conjitens"></div>
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">Consulta de Conjunto de Itens</h1>
-        <table id="tabelaConjuntoItens" className="!w-auto">
-          <thead>
-            <tr>
-              <th className="text-left">ID</th>
-              <th className="text-left">Quantidade</th>
-              <th className="text-left">Item</th>
-              <th className="text-left">Tipo do item</th>
-              <th className="text-left">Descrição do item</th>
-              <th className="text-left">Sala</th>
-              <th className="text-left">Armario</th>
-              <th className="text-left">Nome do projeto</th>
-              <th className="text-left">Descrição do projeto</th>
-              <th className="text-left">Data de ínicio do projeto</th>
-            </tr>
-          </thead>
-          <tbody>
-            {conjuntoItens.map((conjunto) => (
-              <tr key={conjunto.id}>
-                <td>{conjunto.id}</td>
-                <td>{conjunto.quantidade}</td>
-                <td>{conjunto.item.nome}</td>
-                <td>{conjunto.item.tipo}</td>
-                <td>{conjunto.item.descricao}</td>
-                <td>{conjunto.localArmazen.sala}</td>
-                <td>{conjunto.localArmazen.armario}</td>
-                <td>{conjunto.projeto.nome}</td>
-                <td>{conjunto.projeto.descricao}</td>
-                <td>{formataData(conjunto.projeto.dataInicio)}</td>
+    <div className="div-container gradient-background min-h-screen flex">
+      <Sidebar />
+
+      {/* Tabela de Conjunto de Itens */}
+      <div className="container mx-auto w-[90%] max-w-7xl mt-10">
+        <h1 className="text-3xl font-bold mb-8 text-center text-black">
+          Consulta de Conjunto de Itens
+        </h1>
+
+        <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6">
+          <table className="min-w-full table-auto border-collapse">
+            <thead>
+              <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+                <th className="px-6 py-4 text-left">ID</th>
+                <th className="px-6 py-4 text-left">Quantidade</th>
+                <th className="px-6 py-4 text-left">Item</th>
+                <th className="px-6 py-4 text-left">Tipo do item</th>
+                <th className="px-6 py-4 text-left">Descrição do item</th>
+                <th className="px-6 py-4 text-left">Sala</th>
+                <th className="px-6 py-4 text-left">Armário</th>
+                <th className="px-6 py-4 text-left">Nome do projeto</th>
+                <th className="px-6 py-4 text-left">Descrição do projeto</th>
+                <th className="px-6 py-4 text-left">Data início</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="text-gray-800 text-sm">
+              {conjuntoItens.map((conjunto) => (
+                <tr key={conjunto.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 border-t">{conjunto.id}</td>
+                  <td className="px-6 py-4 border-t">{conjunto.quantidade}</td>
+                  <td className="px-6 py-4 border-t">{conjunto.item?.nome}</td>
+                  <td className="px-6 py-4 border-t">{conjunto.item?.tipo}</td>
+                  <td className="px-6 py-4 border-t">{conjunto.item?.descricao}</td>
+                  <td className="px-6 py-4 border-t">{conjunto.localArmazen?.sala}</td>
+                  <td className="px-6 py-4 border-t">{conjunto.localArmazen?.armario}</td>
+                  <td className="px-6 py-4 border-t">{conjunto.projeto?.nome}</td>
+                  <td className="px-6 py-4 border-t">{conjunto.projeto?.descricao}</td>
+                  <td className="px-6 py-4 border-t">{formataData(conjunto.projeto?.dataInicio)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
