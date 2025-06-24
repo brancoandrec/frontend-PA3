@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import '../styles.css';
 import Sidebar from '../sidebar/Sidebar';
+import '../functions/csv'
+import { exportToCsv } from '../functions/csv';
 
 const ConsultarProjeto = () => {
   const [projetos, setProjetos] = useState([]);
@@ -116,10 +118,19 @@ const ConsultarProjeto = () => {
                 ))}
               </tbody>
             </table>
+            <button
+            type="button"
+            onClick={() => exportToCsv('consulta_itens.csv', itens)}
+            className="mb-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition"
+          >
+            Exportar CSV
+          </button>
           </div>
         </form>
+        
       </div>
     </div>
+    
   );
 };
 
