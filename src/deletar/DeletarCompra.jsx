@@ -31,27 +31,28 @@ export default function DeletarCompra() {
   };
 
   return (
-    <div className="div-container gradient-background tudo">
+    <div className="div-container gradient-background min-h-screen flex">
       <Sidebar />
       {/* Tabela de Compras */}
-      <div className="container mx-auto w-[90%] max-w-6xl">
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">Deletar Compra</h1>
-          <table id="tabelaCompras" className="table w-full">
+      <div className="container mx-auto w-[90%] max-w-6xl mt-10">
+        <h1 className="text-3xl font-bold mb-8 text-center text-black">Deletar Compra</h1>
+          <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6">
+          <table className="min-w-full table-auto border-collapse">
           <thead>
-            <tr>
-              <th className="text-left">ID</th>
-              <th className="text-left">Projeto</th>
-              <th className="text-left">Data compra</th>
-              <th className="text-left">Fornecedor</th>
+              <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+              <th className="px-6 py-4 text-left">ID</th>
+              <th className="px-6 py-4 text-left">Projeto</th>
+              <th className="px-6 py-4 text-left">Data compra</th>
+              <th className="px-6 py-4 text-left">Fornecedor</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-gray-800 text-sm">
             {compras.map((compra) => (
-              <tr key={compra.id}>
-                <td>{compra.id}</td>
-                <td>{compra.projeto?.nome}</td>
-                <td>{compra.dataCompra}</td>
-                <td>{compra.fornecedor?.nome}</td>
+              <tr key={compra.id} className="hover:bg-gray-50"> 
+                 <td className="px-6 py-4 border-t">{compra.id}</td>
+                <td className="px-6 py-4 border-t">{compra.projeto?.nome}</td>
+               <td className="px-6 py-4 border-t">{compra.dataCompra}</td>
+               <td className="px-6 py-4 border-t">{compra.fornecedor?.nome}</td>
               </tr>
             ))}
           </tbody>
@@ -71,14 +72,16 @@ export default function DeletarCompra() {
       className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
   </div>
+
   <button
     type="submit"
     className="w-full bg-red-600 text-white font-semibold py-2 rounded-md hover:bg-red-700 transition"
   >
     Deletar
   </button>
+  
 </form>
-
+  </div>
       </div>
     </div>
   );
