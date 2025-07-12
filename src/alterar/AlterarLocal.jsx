@@ -52,38 +52,41 @@ const AlterarLocal = () => {
   }, []);
 
   return (
-    <div className="tudo div-container gradient-background">
-  <Sidebar />
-  {/* Tabela de Locais */}
-  <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-full max-w-xl">
-      <h1 className="text-2xl font-bold mb-6 text-center max-w-xl text-black">Alterar Local</h1>
+  <div className="div-container gradient-background min-h-screen flex">
+    <Sidebar />
 
-      <table className="table w-full mb-10" id="tabelaLocais">
-        <thead>
-          <tr>
-            <th className="text-left">ID</th>
-            <th className="text-left">Sala</th>
-            <th className="text-left">Armário</th>
-          </tr>
-        </thead>
-        <tbody>
-          {locais.map((local) => (
-            <tr key={local.id}>
-              <td>{local.id}</td>
-              <td>{local.sala}</td>
-              <td>{local.armario}</td>
+    <div className="container mx-auto w-[90%] max-w-6xl mt-10">
+      <h1 className="text-3xl font-bold mb-8 text-center text-black">Alterar Local</h1>
+
+      {/* Tabela de Locais */}
+      <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6 mb-10">
+        <table className="min-w-full table-auto border-collapse">
+          <thead>
+            <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+              <th className="px-6 py-4 text-left">ID</th>
+              <th className="px-6 py-4 text-left">Sala</th>
+              <th className="px-6 py-4 text-left">Armário</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="text-gray-800 text-sm">
+            {locais.map((local) => (
+              <tr key={local.id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 border-t">{local.id}</td>
+                <td className="px-6 py-4 border-t">{local.sala}</td>
+                <td className="px-6 py-4 border-t">{local.armario}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
+      {/* Formulário de Busca */}
       <form
         onSubmit={buscarLocal}
-        className="bg-white p-6 rounded-xl shadow-lg space-y-4 mb-8"
+        className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto mb-10"
       >
-        <h3 className="text-lg font-semibold">Buscar Local</h3>
-        {/* Campos do formulário */}
+        <h3 className="text-xl font-semibold mb-2 text-center text-black">Buscar Local</h3>
+
         <div>
           <label htmlFor="localId" className="block text-sm font-medium text-gray-700 mb-1">
             ID do local para alterar:
@@ -95,7 +98,7 @@ const AlterarLocal = () => {
             value={localId}
             onChange={(e) => setLocalId(e.target.value)}
             required
-            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
         </div>
 
@@ -108,11 +111,12 @@ const AlterarLocal = () => {
         </button>
       </form>
 
+      {/* Formulário de Alteração */}
       <form
         onSubmit={alterarLocal}
-        className="bg-white p-6 rounded-xl shadow-lg space-y-4"
+        className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto"
       >
-        <h3 className="text-xl font-semibold mb-4">Local</h3>
+        <h3 className="text-xl font-semibold mb-4 text-center text-black">Local</h3>
 
         <div>
           <label htmlFor="sala" className="block text-sm font-medium text-gray-700 mb-1">
@@ -154,9 +158,7 @@ const AlterarLocal = () => {
       </form>
     </div>
   </div>
-</div>
-
-  );
+);
 };
 
 export default AlterarLocal;

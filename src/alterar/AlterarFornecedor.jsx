@@ -58,42 +58,45 @@ export default function AlterarFornecedor() {
       .catch((err) => console.error("Erro na atualização:", err));
   };
 
-  return (
-    <div className="tudo div-container gradient-background">
-  <Sidebar />
-  {/* Tabela de Fonecedores */}
-  <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-3/4">
-      <h1 className="text-2xl font-bold mb-6 text-center text-black">
+ return (
+  <div className="div-container gradient-background min-h-screen flex">
+    <Sidebar />
+
+    <div className="container mx-auto w-[90%] max-w-6xl mt-10">
+      <h1 className="text-3xl font-bold mb-8 text-center text-black">
         Alterar Fornecedor
       </h1>
 
-      <table className="table w-full" id="tabelaFornecedor">
-        <thead>
-          <tr>
-            <th className="text-left">ID</th>
-            <th className="text-left">Nome</th>
-            <th className="text-left">Contato</th>
-            <th className="text-left">Endereço</th>
-          </tr>
-        </thead>
-        <tbody>
-          {fornecedores.map((fornecedor) => (
-            <tr key={fornecedor.id}>
-              <td>{fornecedor.id}</td>
-              <td>{fornecedor.nome}</td>
-              <td>{fornecedor.contato}</td>
-              <td>{fornecedor.endereco}</td>
+      {/* Tabela de Fornecedores */}
+      <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6">
+        <table className="min-w-full table-auto border-collapse">
+          <thead>
+            <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+              <th className="px-6 py-4 text-left">ID</th>
+              <th className="px-6 py-4 text-left">Nome</th>
+              <th className="px-6 py-4 text-left">Contato</th>
+              <th className="px-6 py-4 text-left">Endereço</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="text-gray-800 text-sm">
+            {fornecedores.map((fornecedor) => (
+              <tr key={fornecedor.id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 border-t">{fornecedor.id}</td>
+                <td className="px-6 py-4 border-t">{fornecedor.nome}</td>
+                <td className="px-6 py-4 border-t">{fornecedor.contato}</td>
+                <td className="px-6 py-4 border-t">{fornecedor.endereco}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <div className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto my-10">
-        <h3 className="text-xl font-semibold mb-4">
+      {/* Formulário de busca */}
+      <div className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto mt-10">
+        <h3 className="text-xl font-semibold mb-4 text-center text-black">
           Buscar Fornecedor para Alteração
         </h3>
-        {/* Campos do formulário */}
+
         <div>
           <label
             htmlFor="fornecedorId"
@@ -107,7 +110,7 @@ export default function AlterarFornecedor() {
             value={fornecedorId}
             onChange={(e) => setFornecedorId(e.target.value)}
             required
-            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
         </div>
 
@@ -120,63 +123,38 @@ export default function AlterarFornecedor() {
         </button>
       </div>
 
+      {/* Formulário principal */}
       <form
         id="formFornecedor"
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto mb-8"
+        className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl w-full mx-auto mt-10 mb-16"
       >
-        <h3 className="text-xl font-semibold mb-4">Fornecedor</h3>
+        <h3 className="text-xl font-semibold mb-4 text-center text-black">
+          Fornecedor
+        </h3>
 
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Nome:
-          </label>
-          <input
-            id="name"
-            name="nome"
-            value={formData.nome}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="contato"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Contato:
-          </label>
-          <input
-            id="contato"
-            name="contato"
-            value={formData.contato}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="endereco"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Endereço:
-          </label>
-          <input
-            id="endereco"
-            name="endereco"
-            value={formData.endereco}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+        {[
+          { label: 'Nome', name: 'nome' },
+          { label: 'Contato', name: 'contato' },
+          { label: 'Endereço', name: 'endereco' },
+        ].map(({ label, name }) => (
+          <div key={name}>
+            <label
+              htmlFor={name}
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              {label}:
+            </label>
+            <input
+              id={name}
+              name={name}
+              value={formData[name]}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        ))}
 
         <button
           type="submit"
@@ -188,7 +166,5 @@ export default function AlterarFornecedor() {
       </form>
     </div>
   </div>
-</div>
-
-  );
-}
+);
+};

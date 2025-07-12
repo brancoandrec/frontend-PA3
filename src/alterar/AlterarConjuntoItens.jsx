@@ -55,53 +55,56 @@ export default function AlterarConjuntoItens() {
     }
   };
 
-  return (
-    <div className="tudo flex min-h-screen">
-  <Sidebar />
-  {/* Tabela de Conjunto de Itens */} 
-  <div className="flex justify-center items-start w-full mt-20">
-    <div className="w-full max-w-4xl px-4">
-      <h1 className="text-2xl font-bold mb-6 text-center text-black">
+ return (
+  <div className="div-container gradient-background min-h-screen flex">
+    <Sidebar />
+
+    <div className="container mx-auto w-[90%] max-w-6xl mt-10">
+      <h1 className="text-3xl font-bold mb-8 text-center text-black">
         Alterar Conjunto de Itens
       </h1>
 
-      <table className="table w-full mb-10" id="tabelaConjuntoItens">
-        <thead>
-          <tr>
-            <th className="text-left">ID</th>
-            <th className="text-left">Quantidade</th>
-            <th className="text-left">Item ID</th>
-            <th className="text-left">Item</th>
-            <th className="text-left">Local ID</th>
-            <th className="text-left">Sala</th>
-            <th className="text-left">Armário</th>
-            <th className="text-left">Projeto ID</th>
-            <th className="text-left">Projeto</th>
-          </tr>
-        </thead>
-        <tbody>
-          {conjuntos.map((c) => (
-            <tr key={c.id}>
-              <td>{c.id}</td>
-              <td>{c.quantidade}</td>
-              <td>{c.item.id}</td>
-              <td>{c.item.nome}</td>
-              <td>{c.localArmazen.id}</td>
-              <td>{c.localArmazen.sala}</td>
-              <td>{c.localArmazen.armario}</td>
-              <td>{c.projeto.id}</td>
-              <td>{c.projeto.nome}</td>
+      {/* Tabela de Conjuntos */}
+      <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6">
+        <table className="min-w-full table-auto border-collapse">
+          <thead>
+            <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+              <th className="px-6 py-4 text-left">ID</th>
+              <th className="px-6 py-4 text-left">Quantidade</th>
+              <th className="px-6 py-4 text-left">Item ID</th>
+              <th className="px-6 py-4 text-left">Item</th>
+              <th className="px-6 py-4 text-left">Local ID</th>
+              <th className="px-6 py-4 text-left">Sala</th>
+              <th className="px-6 py-4 text-left">Armário</th>
+              <th className="px-6 py-4 text-left">Projeto ID</th>
+              <th className="px-6 py-4 text-left">Projeto</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="flex justify-center">
+          </thead>
+          <tbody className="text-gray-800 text-sm">
+            {conjuntos.map((c) => (
+              <tr key={c.id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 border-t">{c.id}</td>
+                <td className="px-6 py-4 border-t">{c.quantidade}</td>
+                <td className="px-6 py-4 border-t">{c.item.id}</td>
+                <td className="px-6 py-4 border-t">{c.item.nome}</td>
+                <td className="px-6 py-4 border-t">{c.localArmazen.id}</td>
+                <td className="px-6 py-4 border-t">{c.localArmazen.sala}</td>
+                <td className="px-6 py-4 border-t">{c.localArmazen.armario}</td>
+                <td className="px-6 py-4 border-t">{c.projeto.id}</td>
+                <td className="px-6 py-4 border-t">{c.projeto.nome}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Formulário de seleção */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}
-        className="bg-white w-[36rem] p-6 rounded-xl shadow-lg space-y-4 mb-8"
+        className="bg-white p-6 rounded-xl shadow-lg max-w-xl w-full mx-auto mt-10 space-y-4"
       >
         <label htmlFor="conjuntoItensId" className="block text-sm font-medium text-gray-700 mb-1">
           ID do Conjunto Itens para alterar:
@@ -113,7 +116,7 @@ export default function AlterarConjuntoItens() {
           value={formData.conjuntoItensId}
           onChange={handleInputChange}
           required
-          className="w-full border border-gray-500 rounded-md p-2"
+          className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
         />
         <button
           type="submit"
@@ -122,28 +125,33 @@ export default function AlterarConjuntoItens() {
           Alterar
         </button>
       </form>
-      </div>
-      <div className="flex justify-center">
+
+      {/* Formulário de alteração */}
       <form
         id="formConjuntoItens"
         onSubmit={handleSubmit}
-        className="bg-white p-6 w-[36rem] rounded-xl shadow-lg space-y-4"
+        className="bg-white p-6 rounded-xl shadow-lg max-w-xl w-full mx-auto mt-10 space-y-4"
       >
-        <h3 className="text-xl font-semibold mb-4">Conjunto Itens</h3>
+        <h3 className="text-xl font-semibold mb-4 text-center text-black">Conjunto Itens</h3>
 
-        {/* Campos do formulário */}
-        {["quantidade", "item", "local", "projeto"].map((field) => (
-          <div key={field}>
-            <label htmlFor={field} className="block text-sm font-medium text-gray-700 mb-1">
-              {`ID ${field.charAt(0).toUpperCase() + field.slice(1)}:`}
+        {[
+          { label: 'Quantidade', name: 'quantidade', type: 'number' },
+          { label: 'ID Item', name: 'item', type: 'number' },
+          { label: 'ID Local', name: 'local', type: 'number' },
+          { label: 'ID Projeto', name: 'projeto', type: 'number' },
+        ].map(({ label, name, type }) => (
+          <div key={name}>
+            <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
+              {label}:
             </label>
             <input
-              id={field}
-              name={field}
-              value={formData[field]}
+              type={type}
+              id={name}
+              name={name}
+              value={formData[name]}
               onChange={handleInputChange}
               required
-              className="w-full border border-gray-500 rounded-md p-2"
+              className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
         ))}
@@ -155,11 +163,7 @@ export default function AlterarConjuntoItens() {
           Enviar
         </button>
       </form>
-      </div>
     </div>
   </div>
-</div>
-
-
-  );
-}
+);
+};

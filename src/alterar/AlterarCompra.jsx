@@ -90,190 +90,95 @@ const AlterarCompra = () => {
     }));
   };
 
-  return (
-    <div className="div-container gradient-background">
-      <Sidebar />
+ return (
+  <div className="div-container gradient-background min-h-screen flex">
+    <Sidebar />
 
-      {/* Tabela de Compras */}
-      <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-full">
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Compra</h1>
-        <table id="tabelaCompras" className="w-full">
+    <div className="container mx-auto w-[90%] max-w-6xl mt-10">
+      <h1 className="text-3xl font-bold mb-8 text-center text-black">Alterar Compra</h1>
+
+      <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6">
+        <table className="min-w-full table-auto border-collapse">
           <thead>
-            <tr>
-              <th className="text-left">ID</th>
-              <th className="text-left">Itens</th>
-              <th className="text-left">Data Compra</th>
-              <th className="text-left">Data Invoice</th>
-              <th className="text-left">Data Recebimento</th>
-              <th className="text-left">Preço</th>
-              <th className="text-left">Fornecedor ID</th>
-              <th className="text-left">Fornecedor</th>
-              <th className="text-left">Projeto ID</th>
-              <th className="text-left">Projeto</th>
+            <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+              <th className="px-6 py-4 text-left">ID</th>
+              <th className="px-6 py-4 text-left">Itens</th>
+              <th className="px-6 py-4 text-left">Data Compra</th>
+              <th className="px-6 py-4 text-left">Data Invoice</th>
+              <th className="px-6 py-4 text-left">Data Recebimento</th>
+              <th className="px-6 py-4 text-left">Preço</th>
+              <th className="px-6 py-4 text-left">Fornecedor ID</th>
+              <th className="px-6 py-4 text-left">Fornecedor</th>
+              <th className="px-6 py-4 text-left">Projeto ID</th>
+              <th className="px-6 py-4 text-left">Projeto</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-gray-800 text-sm">
             {compras.map((compra) => (
-              <tr key={compra.id}>
-                <td>{compra.id}</td>
-                <td>{Array.isArray(compra.item) ? compra.item.map(i => i.nome).join(', ') : compra.item.nome}</td>
-                <td>{formataData(compra.dataCompra)}</td>
-                <td>{formataData(compra.dataInvoice)}</td>
-                <td>{formataData(compra.dataRecebimento)}</td>
-                <td>{compra.preco}</td>
-                <td>{compra.fornecedor?.id || ''}</td>
-                <td>{compra.fornecedor?.nome || ''}</td>
-                <td>{compra.projeto?.id || ''}</td>
-                <td>{compra.projeto?.nome || ''}</td>
+              <tr key={compra.id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 border-t">{compra.id}</td>
+                <td className="px-6 py-4 border-t">
+                  {Array.isArray(compra.item)
+                    ? compra.item.map(i => i.nome).join(', ')
+                    : compra.item?.nome}
+                </td>
+                <td className="px-6 py-4 border-t">{formataData(compra.dataCompra)}</td>
+                <td className="px-6 py-4 border-t">{formataData(compra.dataInvoice)}</td>
+                <td className="px-6 py-4 border-t">{formataData(compra.dataRecebimento)}</td>
+                <td className="px-6 py-4 border-t">R$ {compra.preco?.toFixed(2)}</td>
+                <td className="px-6 py-4 border-t">{compra.fornecedor?.id || ''}</td>
+                <td className="px-6 py-4 border-t">{compra.fornecedor?.nome || ''}</td>
+                <td className="px-6 py-4 border-t">{compra.projeto?.id || ''}</td>
+                <td className="px-6 py-4 border-t">{compra.projeto?.nome || ''}</td>
               </tr>
             ))}
           </tbody>
         </table>
-
-        <br />
-        <br />
-        <div className="flex justify-center mt-10">
-        <form
-  id="formCompra"
-  onSubmit={handleSubmit}
-  className="bg-white p-6 rounded-xl shadow-lg max-w-xl w-full space-y-4"
->
-  <h3 className="text-xl font-semibold mb-4">Compra</h3>
-
-  {/* Campos do formulário */}
-  <div>
-    <label htmlFor="compraId" className="block text-sm font-medium text-gray-700 mb-1">
-      ID Compra:
-    </label>
-    <input
-      type="number"
-      id="compraId"
-      name="compraId"
-      value={formData.compraId}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="item_id" className="block text-sm font-medium text-gray-700 mb-1">
-      IDs dos Itens (separados por vírgulas):
-    </label>
-    <input
-      type="text"
-      id="item_id"
-      name="item_id"
-      value={formData.item_id}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="fornecedor_id" className="block text-sm font-medium text-gray-700 mb-1">
-      ID Fornecedor:
-    </label>
-    <input
-      type="number"
-      id="fornecedor_id"
-      name="fornecedor_id"
-      value={formData.fornecedor_id}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="projeto_id" className="block text-sm font-medium text-gray-700 mb-1">
-      ID Projeto:
-    </label>
-    <input
-      type="number"
-      id="projeto_id"
-      name="projeto_id"
-      value={formData.projeto_id}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="preco" className="block text-sm font-medium text-gray-700 mb-1">
-      Preço:
-    </label>
-    <input
-      type="number"
-      id="preco"
-      name="preco"
-      value={formData.preco}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="dataCompra" className="block text-sm font-medium text-gray-700 mb-1">
-      Data da compra:
-    </label>
-    <input
-      type="date"
-      id="dataCompra"
-      name="dataCompra"
-      value={formData.dataCompra}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="dataInvoice" className="block text-sm font-medium text-gray-700 mb-1">
-      Data Invoice:
-    </label>
-    <input
-      type="date"
-      id="dataInvoice"
-      name="dataInvoice"
-      value={formData.dataInvoice}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <div>
-    <label htmlFor="dataRecebimento" className="block text-sm font-medium text-gray-700 mb-1">
-      Data de recebimento:
-    </label>
-    <input
-      type="date"
-      id="dataRecebimento"
-      name="dataRecebimento"
-      value={formData.dataRecebimento}
-      onChange={handleChange}
-      required
-      className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
-
-  <button
-    type="submit"
-    className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
-  >
-    Enviar
-  </button>
-</form>
-</div>
       </div>
+
+      <form
+        id="formCompra"
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-xl shadow-lg max-w-xl w-full space-y-4 mx-auto mt-16"
+      >
+        <h3 className="text-xl font-semibold mb-4 text-center text-black">Compra</h3>
+
+        {[
+          { label: 'ID Compra', name: 'compraId', type: 'number' },
+          { label: 'IDs dos Itens (separados por vírgulas)', name: 'item_id', type: 'text' },
+          { label: 'ID Fornecedor', name: 'fornecedor_id', type: 'number' },
+          { label: 'ID Projeto', name: 'projeto_id', type: 'number' },
+          { label: 'Preço', name: 'preco', type: 'number' },
+          { label: 'Data da compra', name: 'dataCompra', type: 'date' },
+          { label: 'Data Invoice', name: 'dataInvoice', type: 'date' },
+          { label: 'Data de recebimento', name: 'dataRecebimento', type: 'date' },
+        ].map(({ label, name, type }) => (
+          <div key={name}>
+            <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
+              {label}:
+            </label>
+            <input
+              type={type}
+              id={name}
+              name={name}
+              value={formData[name]}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        ))}
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          Enviar
+        </button>
+      </form>
     </div>
-    </div>
-  );
+  </div>
+);
 };
 
 export default AlterarCompra;

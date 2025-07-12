@@ -58,46 +58,45 @@ export default function AlterarProjeto() {
       .catch((error) => console.error('Erro ao alterar projeto:', error));
   };
 
-  return (
-    <div className="tudo div-container gradient-background">
-  <Sidebar />
-  {/* Tabela de Projetos */}
-  <div className="flex-1 flex justify-center items-start mt-20">
-    <div className="w-full max-w-xl">
-      <h1 className="text-2xl font-bold mb-6 text-center text-black">Alterar Projeto</h1>
+ return (
+  <div className="div-container gradient-background min-h-screen flex">
+    <Sidebar />
 
-      <table id="tabelaProjetos" className="table table-bordered w-full mb-10">
-        <thead>
-          <tr>
-            <th className="text-left">ID</th>
-            <th className="text-left">Nome</th>
-            <th className="text-left">Descrição</th>
-            <th className="text-left">Data de Início</th>
-          </tr>
-        </thead>
-        <tbody>
-          {projetos.map((projeto) => (
-            <tr key={projeto.id}>
-              <td>{projeto.id}</td>
-              <td>{projeto.nome}</td>
-              <td>{projeto.descricao}</td>
-              <td>{projeto.dataInicio}</td>
+    <div className="container mx-auto w-[90%] max-w-6xl mt-10">
+      <h1 className="text-3xl font-bold mb-8 text-center text-black">Alterar Projeto</h1>
+
+      {/* Tabela de Projetos */}
+      <div className="overflow-x-auto bg-white rounded-xl shadow-md p-6 mb-10">
+        <table className="min-w-full table-auto border-collapse">
+          <thead>
+            <tr className="bg-gray-100 text-gray-700 text-sm uppercase tracking-wide">
+              <th className="px-6 py-4 text-left">ID</th>
+              <th className="px-6 py-4 text-left">Nome</th>
+              <th className="px-6 py-4 text-left">Descrição</th>
+              <th className="px-6 py-4 text-left">Data de Início</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="flex justify-center">
+          </thead>
+          <tbody className="text-gray-800 text-sm">
+            {projetos.map((projeto) => (
+              <tr key={projeto.id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 border-t">{projeto.id}</td>
+                <td className="px-6 py-4 border-t">{projeto.nome}</td>
+                <td className="px-6 py-4 border-t">{projeto.descricao}</td>
+                <td className="px-6 py-4 border-t">{projeto.dataInicio}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Formulário de busca */}
       <form
         onSubmit={handleBuscarProjeto}
-        className="bg-white rounded-xl w-[36rem] shadow-lg space-y-4 mb-8"
+        className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto mb-10"
       >
         <h3 className="text-lg font-semibold">Buscar Projeto para Alteração</h3>
-          {/* Campos do formulário */}
         <div>
-          <label
-            htmlFor="projetoId"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
+          <label htmlFor="projetoId" className="block text-sm font-medium text-gray-700 mb-1">
             ID do projeto para alterar:
           </label>
           <input
@@ -119,19 +118,16 @@ export default function AlterarProjeto() {
           Alterar
         </button>
       </form>
-       </div>
-       <div className="flex justify-center">
+
+      {/* Formulário de alteração */}
       <form
         onSubmit={handleAlterarProjeto}
-        className="bg-white rounded-xl w-[36rem] p-6 shadow-lg space-y-4"
+        className="bg-white p-6 rounded-xl shadow-lg space-y-4 max-w-xl mx-auto mb-16"
       >
         <h3 className="text-xl font-semibold mb-4">Projeto</h3>
 
         <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
             Nome:
           </label>
           <input
@@ -141,15 +137,12 @@ export default function AlterarProjeto() {
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             required
-            className="w-full border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <div>
-          <label
-            htmlFor="descricao"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
+          <label htmlFor="descricao" className="block text-sm font-medium text-gray-700 mb-1">
             Descrição:
           </label>
           <textarea
@@ -158,15 +151,12 @@ export default function AlterarProjeto() {
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
             required
-            className="w-full border border-gray-500 rounded-md h-24 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-500 rounded-md h-24 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
         </div>
 
         <div>
-          <label
-            htmlFor="dataInicio"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
+          <label htmlFor="dataInicio" className="block text-sm font-medium text-gray-700 mb-1">
             Data de início:
           </label>
           <input
@@ -176,7 +166,7 @@ export default function AlterarProjeto() {
             value={dataInicio}
             onChange={(e) => setDataInicio(e.target.value)}
             required
-            className="w-full border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
@@ -188,11 +178,7 @@ export default function AlterarProjeto() {
           Enviar
         </button>
       </form>
-      </div>
     </div>
   </div>
-</div>
-
-
-  );
-}
+);
+};
